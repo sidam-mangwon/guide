@@ -154,9 +154,14 @@
   .meta-row { display: grid; grid-template-columns: 74px 1fr; gap: 10px; }
   .meta-label { color: var(--faint); font-size: 11.5px; padding-top: 2px; letter-spacing: 0.04em; }
   .meta-val { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .p-thumb {
+    float: right; width: 88px; height: 88px;
+    object-fit: cover; border-radius: 10px;
+    margin: 2px 0 8px 14px; background: var(--line);
+  }
   .p-foot {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 10px; margin-top: 12px; flex-wrap: wrap;
+    gap: 10px; margin-top: 12px; flex-wrap: wrap; clear: both;
   }
   .addr { font-size: 12px; color: var(--faint); }
   .maps { display: flex; gap: 6px; flex-shrink: 0; }
@@ -550,6 +555,26 @@ const SECTIONS = [
 }
 ];
 
+/* 장소별 사진 파일명. images/{값}.jpg 파일을 올리면 자동으로 썸네일 표시, 없으면 숨김 */
+const IMG = {
+  "포스트 노빌즈":"postnobills","로트":"rote","M1CT":"m1ct","올웨이즈 어거스트 로스터스":"alwaysaugust",
+  "한강에스프레소":"hangang-espresso","브라운 프론트 도어":"brownfrontdoor","우이그":"uig",
+  "포트레이트커피바":"portrait","HHSS 하우스":"hhss","히비노":"hibino",
+  "밀로밀":"milomil","어글리베이커리":"uglybakery",
+  "몽골 생소금구이":"mongol","윤재윤지네 왕십리곱창":"gopchang","꽃추장":"kkotchujang","이치젠":"ichizen",
+  "베우노":"bueno","쑨송":"ssunsong","류진":"ryujin","홍두깨손칼국수":"hongdukkae","강동원":"gangdongwon",
+  "송정":"songjeong","헤키":"heki","우리바다수산":"uribada","만나식당":"manna","행진":"haengjin",
+  "온랭":"onraeng","일렌토":"illento",
+  "크리머리":"kreamery","타코야키쿤":"takoyakikun","바삭마차":"basakmacha","우이락":"wooyirak",
+  "훈이네빈대떡":"hooni","망원수제고로케":"croquette","경기떡집":"gyeonggi-tteok",
+  "책바":"chaegbar","미자카야":"mizakaya","선술집 위군":"wigun","유진":"yujin","성립":"seongnip","모우키":"moukee",
+  "해수향당":"haesoo","에메모가든":"ememo","무드":"mood","제로스페이스":"zerospace","프레젠트모먼트":"presentmoment",
+  "하루필름":"harufilm","포토이즘박스 망원점":"photoism-box","모노맨션":"monomansion",
+  "포토이즘컬러드 망원점":"photoism-colored","모멘터링":"momentering",
+  "망원초록길 입구":"chorokgil","망원한강공원 입구":"hangang-entrance",
+  "야경 스팟, 슬로프":"night-slope","야경 스팟, 계단":"night-steps"
+};
+
 const nav = document.getElementById("nav");
 const app = document.getElementById("app");
 const esc = s => (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -589,7 +614,9 @@ for (const sec of SECTIONS) {
       if (p.menu) meta += `<div class="meta-row"><span class="meta-label">메뉴 Menu</span><span class="meta-val">${esc(p.menu)}</span></div>`;
       if (p.hours) meta += `<div class="meta-row"><span class="meta-label">영업 Hours</span><span class="meta-val">${esc(p.hours)}</span></div>`;
       if (p.insta) meta += `<div class="meta-row"><span class="meta-label">인스타</span><span class="meta-val">@${esc(p.insta)}</span></div>`;
+      const slug = IMG[p.ko];
       div.innerHTML =
+        (slug ? `<img class="p-thumb" src="images/${slug}.jpg" alt="${esc(p.ko)}" loading="lazy" onerror="this.remove()">` : "") +
         `<div class="p-head"><span class="p-name">${esc(p.ko)}</span>` +
         (p.en ? `<span class="p-en">${esc(p.en)}</span>` : "") + `</div>` +
         `<div class="p-tag">${esc(p.tag)}</div>` +
