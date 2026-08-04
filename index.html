@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>시담 로컬 가이드 — 망원동</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127818;</text></svg>">
+</head>
+<body>
+<style>
+  :root {
+    --ground: #F7F5F0;
+    --surface: #FDFCFA;
+    --ink: #2B2723;
+    --muted: #7A7268;
+    --faint: #A39A8E;
+    --line: #E5DFD3;
+    --accent: #C4622D;
+    --accent-soft: #F3E4D8;
+    --serif: "Apple Myungjo", "AppleMyungjo", "Nanum Myeongjo", "Noto Serif KR", Batang, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #211E1A;
+      --surface: #282420;
+      --ink: #EAE4DA;
+      --muted: #A89E92;
+      --faint: #7E766B;
+      --line: #3A352E;
+      --accent: #DE9163;
+      --accent-soft: #3D2E23;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #211E1A;
+    --surface: #282420;
+    --ink: #EAE4DA;
+    --muted: #A89E92;
+    --faint: #7E766B;
+    --line: #3A352E;
+    --accent: #DE9163;
+    --accent-soft: #3D2E23;
+  }
+  :root[data-theme="light"] {
+    --ground: #F7F5F0;
+    --surface: #FDFCFA;
+    --ink: #2B2723;
+    --muted: #7A7268;
+    --faint: #A39A8E;
+    --line: #E5DFD3;
+    --accent: #C4622D;
+    --accent-soft: #F3E4D8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 620px; margin: 0 auto; padding: 0 20px 80px; }
+
+  /* ---------- header ---------- */
+  header { padding: 56px 0 8px; text-align: center; }
+  .mark {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent); margin: 0 auto 20px;
+    position: relative;
+  }
+  .mark::after {
+    content: ""; position: absolute; top: -6px; left: 55%;
+    width: 6px; height: 7px; border-radius: 60% 40% 60% 40%;
+    background: var(--faint); transform: rotate(28deg);
+  }
+  h1 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: 0.16em;
+    margin: 0 0 4px;
+    text-wrap: balance;
+  }
+  .sub {
+    font-size: 11px; letter-spacing: 0.22em; color: var(--faint);
+    text-transform: uppercase; margin-bottom: 28px;
+  }
+  .intro { color: var(--muted); font-size: 14px; margin: 0 auto; max-width: 42ch; }
+  .intro .en { display: block; font-size: 12.5px; color: var(--faint); margin-top: 4px; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--ground) 92%, transparent);
+    backdrop-filter: blur(8px);
+    margin: 28px -20px 0; padding: 10px 20px;
+    border-bottom: 1px solid var(--line);
+    overflow-x: auto; white-space: nowrap;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav a {
+    display: inline-block; margin-right: 8px;
+    padding: 5px 13px; border: 1px solid var(--line); border-radius: 99px;
+    color: var(--muted); text-decoration: none; font-size: 12.5px;
+    background: var(--surface);
+  }
+  nav a:active, nav a:focus-visible { color: var(--accent); border-color: var(--accent); outline: none; }
+
+  /* ---------- sections ---------- */
+  section { padding-top: 44px; }
+  .sec-eyebrow {
+    font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 6px;
+  }
+  h2 {
+    font-family: var(--sans); font-weight: 300;
+    font-size: 21px; letter-spacing: 0.1em; margin: 0 0 4px;
+  }
+  .hanja {
+    font-family: "PingFang SC", "Hiragino Sans", "Noto Sans KR", var(--sans);
+    font-weight: 600;
+  }
+  .sec-note { font-size: 12.5px; color: var(--faint); margin: 0 0 8px; }
+
+  /* ---------- place ---------- */
+  .place { padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .place:last-child { border-bottom: none; }
+  .p-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .p-name { font-weight: 700; font-size: 16px; }
+  .p-en { color: var(--faint); font-size: 12.5px; }
+  .p-tag { font-size: 12px; color: var(--accent); margin-top: 1px; }
+  .p-desc { margin-top: 6px; font-size: 14px; }
+  .p-desc .en { display: block; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+  .chip {
+    font-size: 11.5px; padding: 2px 9px; border-radius: 99px;
+    border: 1px solid var(--line); color: var(--muted); background: var(--surface);
+  }
+  .chip.walk { border-color: transparent; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .meta { margin-top: 10px; display: grid; gap: 3px; font-size: 13px; }
+  .meta-row { display: grid; grid-template-columns: 74px 1fr; gap: 10px; }
+  .meta-label { color: var(--faint); font-size: 11.5px; padding-top: 2px; letter-spacing: 0.04em; }
+  .meta-val { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .p-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; margin-top: 12px; flex-wrap: wrap;
+  }
+  .addr { font-size: 12px; color: var(--faint); }
+  .maps { display: flex; gap: 6px; flex-shrink: 0; }
+  .maps a {
+    font-size: 12px; text-decoration: none; color: var(--accent);
+    border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px;
+    background: var(--surface);
+  }
+  .maps a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- essentials ---------- */
+  .ess { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+  .ess:last-child { border-bottom: none; }
+  .ess-name { font-size: 14px; font-weight: 600; }
+  .ess-note { color: var(--faint); font-size: 12px; margin-left: 6px; }
+  .ess-links { display: flex; gap: 10px; flex-shrink: 0; }
+  .ess-links a { font-size: 12px; color: var(--accent); text-decoration: none; }
+  .ess-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- footer ---------- */
+  .notice {
+    margin-top: 56px; padding: 16px 18px; border: 1px solid var(--line);
+    border-radius: 10px; font-size: 12.5px; color: var(--muted); background: var(--surface);
+  }
+  .notice .en { display: block; color: var(--faint); margin-top: 3px; font-size: 12px; }
+  footer { text-align: center; padding: 72px 0 0; }
+  .f-name { font-family: var(--sans); font-weight: 600; font-size: 19px; letter-spacing: 0.18em; }
+  .f-line { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .f-en { color: var(--faint); font-size: 12px; margin-top: 3px; }
+  .f-date { color: var(--faint); font-size: 11px; margin-top: 28px; letter-spacing: 0.08em; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="mark" aria-hidden="true"></div>
+    <h1>시담 <span class="hanja">柿淡</span></h1>
+    <div class="sub">SIDAM Mangwon Local Guide</div>
+    <p class="intro">
+      시담에서 걸어서 닿는 곳들을 모았습니다.<br>바로 옆 카페부터 한강 야경까지, 가까운 순서로.
+      <span class="en">Places within a walk from SIDAM,<br>listed nearest first — from the café next door to the river at night.</span>
+    </p>
+  </header>
+
+  <nav id="nav" aria-label="카테고리"></nav>
+  <main id="app"></main>
+
+  <div class="notice">
+    여기 담긴 곳들은 호스트의 취향으로 고른 자리라, 입맛에 꼭 맞지 않을 수도 있어요.
+    여행이 조금 수월해지길 바라는 마음으로 만든 가이드이니 가볍게 참고해 주세요.
+    <span class="en">These are one host's personal picks, so your taste may differ.
+    This guide was made in the hope of smoothing your trip a little — take it as a friendly reference.</span>
+    <span style="display:block; margin-top:10px;">영업시간과 가격은 바뀔 수 있어요. 방문 전에 지도 링크에서 확인해 주세요.</span>
+    <span class="en">Hours and prices may change — please check the map links before visiting.</span>
+  </div>
+
+  <footer>
+    <div class="f-name">시담 <span class="hanja">柿淡</span></div>
+    <div class="f-line">감나무 곁, 담백하고 고요한 집</div>
+    <div class="f-en">A quiet, simple house beside a persimmon tree</div>
+    <div class="f-date">2026.08 · Mangwon-dong, Seoul</div>
+  </footer>
+</div>
+
+<script>
+/*
+  링크 규칙:
+  - nurl / gurl : 문주님이 검증한 바로가기 링크 (최우선)
+  - qn / qg     : 네이버 / 구글 전용 검색어
+  - q           : 공통 검색어 (기본값)
+  정렬: 시담(망원로2길 80, 37.5545, 126.9023) 기준 지오코딩 직선거리 순.
+  2026-08-05 검증. 몽골<윤재윤지네<강동원 상대 순서는 문주님 확인 기준.
+*/
+const SECTIONS = [
+{
+  id: "cafe", eyebrow: "Cafés", ko: "카페",
+  items: [
+    { ko:"포스트 노빌즈", en:"Post No Bills", tag:"카페 · Café", walk:"도보 1분 · 1 min",
+      dKo:"시담 바로 옆. 큰 나무 두 그루가 그늘을 만드는 창가 자리.", dEn:"Right next door — window seats shaded by two tall trees. Dog-friendly.",
+      menu:"체리 히비스커스 아이스티 · Cherry hibiscus iced tea", hours:"12:00–22:00",
+      addr:"망원로2길 82", q:"포스트노빌즈 망원" },
+    { ko:"로트", en:"ROTE", tag:"카페 · Café",
+      dKo:"커피가 좋은 골목 카페. 주 후반에는 밤까지 엽니다.", dEn:"A quiet coffee spot; open late Thursday to Saturday.",
+      hours:"일–수 12:00–19:00, 목–토 12:00–24:00 · 화 휴무 / Closed Tue",
+      addr:"희우정로16길 31", qn:"로트 망원동 카페", qg:"ROTE" },
+    { ko:"M1CT", en:"", tag:"로스터리 · Roastery",
+      dKo:"골목의 작은 로스터리. 테이블 대신 바 좌석.", dEn:"A tiny back-alley roastery with bar seating only.",
+      menu:"오토레세트(연유 밀크커피) · Otto Reset, condensed-milk coffee", hours:"월·화 휴무 / Closed Mon–Tue",
+      addr:"희우정로15길 13", q:"M1CT 망원" },
+    { ko:"올웨이즈 어거스트 로스터스", en:"Always August Roasters", tag:"로스터리 · Roastery",
+      dKo:"주택가 사이의 스웨덴식 로스터리. 망원에서 줄이 가장 긴 카페.", dEn:"A Swedish-style roastery on a residential backstreet — the longest line in Mangwon.",
+      chips:[["웨이팅","Expect a wait"]],
+      hours:"월–토 12:00–22:00, 일 12:00–21:00",
+      addr:"망원로6길 19", q:"올웨이즈어거스트 망원" },
+    { ko:"한강에스프레소", en:"Hangang Espresso", tag:"에스프레소 바 · Espresso & whisky bar",
+      dKo:"에스프레소와 위스키, 칵테일을 함께 내는 아담한 바. 아침엔 커피, 밤엔 한잔.", dEn:"A snug ten-seat bar pouring espresso, whisky and cocktails — coffee by day, a drink by night.",
+      menu:"에스프레소, 봄본, 콘파냐 · Espresso, bombón, con panna",
+      hours:"일–목 08:00–22:00, 금–토 08:00–24:00",
+      addr:"희우정로 97", q:"한강에스프레소 망원" },
+    { ko:"브라운 프론트 도어", en:"Brown Front Door", tag:"카페, 편집샵 · Café & select shop",
+      dKo:"카페와 편집샵, 자수 아틀리에가 한 공간에.", dEn:"A café, select shop and embroidery atelier in one room.",
+      hours:"12:00–22:00 · 월 휴무 / Closed Mon",
+      addr:"포은로 94", q:"브라운프론트도어 망원" },
+    { ko:"우이그", en:"Uig", tag:"카페, 위스키 · Café & whisky",
+      dKo:"스코틀랜드 산장을 옮겨온 듯한 2층 카페. 밤에는 위스키.", dEn:"A two-floor café styled after a Scottish lodge; whisky after dark.",
+      hours:"일–목 11:00–22:30, 금–토 11:00–23:00",
+      addr:"망원로3길 7", q:"Uig 망원 카페" },
+    { ko:"포트레이트커피바", en:"Portrait Coffee Bar", tag:"카페 · Café",
+      dKo:"창작 시그니처 음료를 만드는 스페셜티 바.", dEn:"Specialty coffee with inventive signature drinks.",
+      menu:"코코넛 비엔나 · Coconut Vienna", hours:"매일 11:00–22:00 / Daily",
+      addr:"포은로8길 32", q:"포트레이트커피바 망원" },
+    { ko:"HHSS 하우스", en:"HHSS House", tag:"카페 · Café",
+      dKo:"신발 벗고 올라가는 3층. 통창과 고양이, 혼자 머물기 좋은 곳.", dEn:"A shoes-off third-floor room with big windows and a resident cat. Good for going alone.",
+      menu:"드립커피 6,000 · 쑥 스콘 / Drip coffee, mugwort scone", hours:"월–목 11:00–21:00, 금–일 11:00–22:00",
+      addr:"월드컵로 113, 3층", q:"HHSS HOUSE 망원" },
+    { ko:"히비노", en:"Hibino", tag:"카페 · Café",
+      dKo:"성미산 초입의 카페. 8월은 여름휴가 — 운영 여부는 인스타그램에서 확인해 주세요.", dEn:"A café at the foot of Seongmisan. On summer break through August — check Instagram before visiting.",
+      insta:"cafe.hibino", hours:"12:00–18:00 · 수 휴무 / Closed Wed",
+      addr:"성미산로 20, 2층", q:"카페 히비노 성미산로" }
+  ]
+},
+{
+  id: "bakery", eyebrow: "Bakeries", ko: "빵집",
+  items: [
+    { ko:"밀로밀", en:"Milomil", tag:"베이커리 · Bakery",
+      dKo:"소금빵으로 오전에만 문 여는 집. 소진되면 마감.", dEn:"Open mornings only — famous salt bread, closes when sold out.",
+      chips:[["오전 방문","Go early"]],
+      menu:"소금빵 · Salt bread (1인 6개 제한 / limit 6)", hours:"11:00–14:00 · 일·월 휴무 / Closed Sun–Mon",
+      addr:"희우정로10길 9", q:"밀로밀 망원" },
+    { ko:"어글리베이커리", en:"Ugly Bakery", tag:"베이커리 · Bakery",
+      dKo:"대파빵으로 유명한 웨이팅 빵집. 포장만 가능합니다.", dEn:"Famous for its scallion bread — takeout only, expect a line.",
+      chips:[["웨이팅","Expect a wait"],["포장만","Takeout only"]],
+      menu:"대파빵 · 말차 맘모스 / Scallion bread, matcha mammoth",
+      hours:"12:00–21:00 · 월·화 휴무 / Closed Mon–Tue",
+      addr:"월드컵로13길 73", q:"어글리베이커리 망원" }
+  ]
+},
+{
+  id: "food", eyebrow: "Restaurants", ko: "식당",
+  items: [
+    { ko:"몽골 생소금구이", en:"Mongol Saengsogeum-gui", tag:"돼지 소금구이 · Pork BBQ",
+      dKo:"24년 된 소금구이 노포. 혼자여도 구울 수 있습니다.", dEn:"A 24-year-old salt-grilled pork joint; solo diners welcome.",
+      chips:[["웨이팅","Expect a wait"]],
+      menu:"목살 소금구이 16,000 · 항정살 19,000 / Salt-grilled pork",
+      hours:"화–일 17:00–24:00 · 월 휴무 / Closed Mon",
+      addr:"희우정로 93-1", q:"몽골생소금구이 망원" },
+    { ko:"윤재윤지네 왕십리곱창", en:"Yunjae-yunjine Gopchang", tag:"곱창 · Gopchang",
+      dKo:"저녁에만 여는 곱창집.", dEn:"Evening-only grilled beef and pork intestines.",
+      menu:"야채곱창 14,000 · 소알곱창볶음 20,000 / Stir-fried gopchang",
+      hours:"월–토 17:00–24:00 · 일 휴무 / Closed Sun",
+      addr:"희우정로 76", q:"윤재윤지네왕십리곱창 망원" },
+    { ko:"꽃추장", en:"Kkotchujang", tag:"즉석떡볶이 · Tteokbokki hot pot",
+      dKo:"배추와 깻잎이 들어가는 즉석떡볶이.", dEn:"Table-cooked tteokbokki with cabbage and perilla leaves.",
+      menu:"즉석떡볶이 2인 22,000 · Hot-pot tteokbokki for two",
+      hours:"화–일 12:00–21:00 · 월 휴무 / Closed Mon",
+      addr:"망원로 48", q:"꽃추장 망원" },
+    { ko:"이치젠", en:"Ichizen", tag:"텐동 · Tendon",
+      dKo:"'서울 2대 텐동'으로 불리는 튀김덮밥집.", dEn:"Crisp tempura rice bowls — often called one of Seoul's two best tendon shops.",
+      chips:[["웨이팅","Expect a wait"]],
+      menu:"이치젠텐동 9,000 · 에비텐동 11,000 / Tendon",
+      hours:"화–토 12:00–21:00 (브레이크 15:30–17:30), 일 12:00–17:00 · 월 휴무 / Closed Mon",
+      addr:"포은로 109", q:"이치젠 망원 텐동" },
+    { ko:"베우노", en:"Bueno", tag:"스페인 요리 · Spanish",
+      dKo:"간판 없는 작은 스페인 식당. 문어 요리와 와인.", dEn:"A tiny unmarked Spanish restaurant — octopus and wine.",
+      chips:[["예약 필수","Reservation required"]],
+      hours:"수–일 12:00–23:30 (브레이크 16:00–18:00) · 월·화 휴무 / Closed Mon–Tue",
+      addr:"포은로8길 9", q:"베우노 망원 스페인" },
+    { ko:"쑨송", en:"Ssunsong", tag:"태국 음식 · Thai",
+      dKo:"동네 태국 식당.", dEn:"Neighborhood Thai kitchen.",
+      addr:"포은로 63", qn:"쑨송 망원 태국", qg:"쑨송" },
+    { ko:"류진", en:"Ryujin", tag:"라멘 · Jiro-style ramen",
+      dKo:"양 많은 지로계 라멘. 대기가 깁니다.", dEn:"Hefty jiro-style ramen with a serious line.",
+      chips:[["웨이팅","Expect a wait"]],
+      menu:"라멘 13,000–14,000 · Ramen",
+      hours:"평일 12:00–22:00, 주말 11:00–22:00 (브레이크 14:00–17:30)",
+      addr:"월드컵로17길 64, 지하 1층", q:"류진 망원 라멘" },
+    { ko:"홍두깨손칼국수", en:"Hongdukkae Kalguksu", tag:"칼국수 · Hand-cut noodle soup",
+      dKo:"망원시장 안, 홍두깨로 직접 밀어 만드는 칼국수 한 그릇.", dEn:"Inside Mangwon Market — noodles rolled out by hand, a bowl for 5,000 won.",
+      chips:[["줄이 빨리 줄어요","Line moves fast"]],
+      menu:"손칼국수 5,000 · 수제비 5,000 / Kalguksu, sujebi",
+      addr:"망원시장 내 / Inside Mangwon Market",
+      nurl:"https://naver.me/5suyGz8F", q:"홍두깨손칼국수 망원시장" },
+    { ko:"강동원", en:"Gangdongwon", tag:"중식 · Chinese-Korean",
+      dKo:"수기 명단으로 줄 서는 중식당. 오픈 전에 도착하는 게 좋아요.", dEn:"Beloved Chinese-Korean spot with a paper waitlist — arrive before opening.",
+      chips:[["오픈 전 대기","Arrive early"]],
+      menu:"간짜장 9,500 · 안심탕수육 · 고기짬뽕 / Jjajang, sweet-and-sour pork",
+      hours:"11:00–20:00 (브레이크 14:00–16:30) · 월 휴무 / Closed Mon",
+      addr:"망원로 3", q:"강동원 망원 중식" },
+    { ko:"송정", en:"Songjeong", tag:"항정국밥 · Pork soup with rice",
+      dKo:"구운 항정살을 올린 맑은 돼지국밥.", dEn:"Clear pork soup topped with roasted pork jowl.",
+      hours:"11:30–20:30 (브레이크 15:00–17:00 / break)",
+      addr:"월드컵로17길 38", q:"송정 망원 국밥" },
+    { ko:"헤키", en:"Heki", tag:"돈가스 · Tonkatsu",
+      dKo:"웨이팅이 긴 돈가스집. 원격 줄서기를 쓰세요.", dEn:"Popular tonkatsu — join the remote waitlist (CatchTable).",
+      chips:[["웨이팅","Expect a wait"]],
+      menu:"히레카츠 정식 15,500 · Hire-katsu set",
+      hours:"수–일 11:30–20:30 (브레이크 15:00–17:00) · 월·화 휴무 / Closed Mon–Tue",
+      addr:"동교로9길 33", q:"헤키 망원 돈가스" },
+    { ko:"우리바다수산", en:"Uri Bada Susan", tag:"회, 해산물 · Seafood",
+      dKo:"계절 해산물과 회. 겨울에는 대방어를 먹으러 줄을 섭니다.", dEn:"Seasonal seafood and raw fish; in winter the line is for daebang-eo yellowtail.",
+      addr:"월드컵로 102",
+      nurl:"https://naver.me/IFEmG4vy", q:"우리바다수산 망원" },
+    { ko:"만나식당", en:"Manna Sikdang", tag:"만두전골 · Dumpling hot pot",
+      dKo:"이북식 손만두전골. 담백한 국물.", dEn:"North-Korean-style handmade dumpling hot pot in a clean broth.",
+      menu:"손만두전골 2인 26,000 · 만두국 13,000 / Dumpling hot pot, dumpling soup",
+      hours:"11:00–22:00 (브레이크 16:00–17:00) · 일 휴무 / Closed Sun",
+      addr:"월드컵로 142", q:"만나식당 성산 만두전골" },
+    { ko:"행진", en:"Haengjin", tag:"냉동삼겹살 · Retro frozen samgyeopsal",
+      dKo:"레트로 분위기의 냉삼집. 지방 소주가 있습니다.", dEn:"Retro frozen-samgyeopsal joint stocking regional soju.",
+      menu:"냉삼 16,000 · 고추장찌개 / Frozen pork belly, gochujang stew",
+      hours:"11:30–24:00 · 화 휴무 / Closed Tue",
+      addr:"월드컵로 45, 1-2층",
+      nurl:"https://naver.me/xqbSWvv0", q:"행진 망원 냉삼" },
+    { ko:"온랭", en:"Onraeng", tag:"평양냉면 · Pyongyang naengmyeon",
+      dKo:"카운터석만 있는 작은 냉면집. 점심에만 엽니다.", dEn:"A tiny counter-only naengmyeon shop, lunch hours only.",
+      chips:[["웨이팅","Expect a wait"]],
+      menu:"평양냉면 13,000 · 냉제육 / Cold buckwheat noodles",
+      hours:"화–일 11:30–16:00 · 월 휴무 / Closed Mon",
+      addr:"성미산로 33", qn:"온랭", qg:"온랭 망원 평양냉면" },
+    { ko:"일렌토", en:"Il Lento", tag:"파스타 · Pasta & tapas",
+      dKo:"유럽 골목 식당 같은 작은 파스타집.", dEn:"A small pasta place with the feel of a backstreet European trattoria.",
+      addr:"망원동 (지도에서 위치 확인 / see map)", qn:"일렌토", qg:"일렌토(Il Lento)" }
+  ]
+},
+{
+  id: "snack", eyebrow: "Desserts & Snacks", ko: "디저트, 간식",
+  items: [
+    { ko:"크리머리", en:"Kreamery", tag:"위스키 아이스크림 · Whisky ice cream bar",
+      dKo:"주말에만 여는 두 평 남짓 아이스크림 바.", dEn:"A two-pyeong weekend-only bar scooping whisky-infused ice cream.",
+      insta:"kreamery.icecreambar",
+      menu:"버터버번 · Butter Bourbon", hours:"주말 영업 / Weekends — 인스타그램 확인 / check Instagram",
+      addr:"망원동, 한강공원 인근",
+      gurl:"https://maps.app.goo.gl/UpMStaeYSL62uiPU7?g_st=ipc", q:"크리머리 망원 아이스크림" },
+    { ko:"타코야키쿤", en:"Takoyaki-kun", tag:"타코야키 · Takoyaki",
+      dKo:"저녁에 여는 타코야키 전문점.", dEn:"Evening takoyaki stand with garlic-cheese and scallion versions.",
+      menu:"8알 6,000 · 8 pieces",
+      hours:"수–일 17:00–23:00 · 월·화 휴무 / Closed Mon–Tue",
+      addr:"망원로 33", q:"타코야키쿤 망원" },
+    { ko:"바삭마차", en:"Basak Macha", tag:"마시멜로 아이스크림 · Torched marshmallow ice cream",
+      dKo:"토치로 구워주는 마시멜로 아이스크림.", dEn:"Ice cream wrapped in marshmallow, torched to order in front of you.",
+      hours:"11:00–20:00",
+      addr:"월드컵로13길 64", q:"바삭마차 망원" },
+    { ko:"우이락", en:"Wooyirak", tag:"고추튀김, 전 · Fried chili & jeon",
+      dKo:"고추튀김에 막걸리 한잔. 망원시장의 시끌한 쪽.", dEn:"Stuffed fried chilis with makgeolli, on the market's lively side.",
+      menu:"고추튀김, 전, 떡볶이 · Fried chilis, jeon, tteokbokki",
+      hours:"11:00–22:00",
+      addr:"망원시장 내 / Inside Mangwon Market",
+      gurl:"https://maps.app.goo.gl/tnC7kiBUC8gchgpS7?g_st=ic", q:"우이락 망원시장" },
+    { ko:"훈이네빈대떡", en:"Hooni's Bindaetteok", tag:"빈대떡 · Mung-bean pancake",
+      dKo:"망원시장 안, 즉석에서 부치는 빈대떡.", dEn:"Mung-bean pancakes fried to order inside Mangwon Market.",
+      addr:"포은로8길 22 (망원시장 / Mangwon Market)",
+      nurl:"https://naver.me/FdquoIjC", qg:"포은로8길 22", q:"훈이네빈대떡 망원시장" },
+    { ko:"망원수제고로케", en:"Mangwon Croquette", tag:"고로케 · Croquettes",
+      dKo:"시장 입구의 20년 된 고로케집.", dEn:"Twenty years of croquettes at the market entrance.",
+      menu:"고로케 700–1,000 · Croquettes",
+      hours:"09:00–21:00",
+      addr:"망원로 80 (시장 입구 / market entrance)",
+      nurl:"https://naver.me/GAr38b04", q:"망원수제고로케" },
+    { ko:"경기떡집", en:"Gyeonggi Tteok House", tag:"떡 · Rice cakes since 1958",
+      dKo:"1958년부터 이어온 떡집. 오후에는 소진됩니다.", dEn:"Handmade rice cakes since 1958 — sold out by afternoon.",
+      chips:[["이른 방문","Go early"]],
+      menu:"이티떡 2,200–2,500 · E.T. tteok",
+      hours:"07:00–18:00 · 일 휴무 / Closed Sun",
+      addr:"동교로9길 24", q:"경기떡집 망원" }
+  ]
+},
+{
+  id: "bar", eyebrow: "Bars", ko: "술집",
+  items: [
+    { ko:"책바", en:"Chaegbar", tag:"북 바 · A bar for reading",
+      dKo:"책 읽으며 조용히 마시는 바. 소설 제목을 붙인 칵테일.", dEn:"Quiet drinks with a book — cocktails named after novels.",
+      hours:"19:00–1:30 (금·토 18:30–) · 일·월 휴무 / Closed Sun–Mon",
+      addr:"포은로 90, 3층", q:"책바 망원" },
+    { ko:"미자카야", en:"Mizakaya", tag:"이자카야 · Izakaya",
+      dKo:"일본 골목 감성의 이자카야.", dEn:"A back-alley izakaya known for its tuna kimbap.",
+      menu:"진짜참치김밥 31,000 · 치킨난반 / Tuna kimbap, chicken nanban",
+      hours:"18:00–24:00",
+      addr:"포은로8길 5", q:"미자카야 망원" },
+    { ko:"선술집 위군", en:"Wigun", tag:"숙성회 이자카야 · Aged-sashimi izakaya",
+      dKo:"그날의 숙성회를 내는 작은 술집. 혼술하기에도 좋습니다.", dEn:"A small bar serving that day's aged sashimi; good for drinking alone.",
+      chips:[["인스타 DM 예약 권장","Book via Instagram DM"]],
+      addr:"포은로 74", q:"선술집 위군 망원" },
+    { ko:"유진", en:"Yujin", tag:"전통주 한식주점 · Korean pub",
+      dKo:"전통주와 계절 안주. 바 좌석 중심.", dEn:"Traditional Korean liquor with seasonal plates, mostly bar seating.",
+      menu:"육회, 계절 전 · Yukhoe, seasonal jeon",
+      addr:"포은로 146",
+      gurl:"https://maps.app.goo.gl/5p3rYxWt9sBw7nVM9?g_st=ic", q:"유진 망원 한식주점" },
+    { ko:"모우키", en:"Moukee", tag:"중식 안주 · Chinese bites & drinks", walk:"도보 7분 · 7 min",
+      dKo:"중식 안주에 술 한잔.", dEn:"Chinese small plates made for drinking.",
+      insta:"mou___kee", addr:"동교로 42-1",
+      gurl:"https://maps.app.goo.gl/bgWjCDaXdxPiGRGMA?g_st=ic", q:"모우키 망원 동교로" },
+    { ko:"유진", en:"Yujin", tag:"전통주 한식주점 · Korean pub",
+      dKo:"전통주와 계절 안주. 바 좌석 중심.", dEn:"Traditional Korean liquor with seasonal plates, mostly bar seating.",
+      menu:"육회, 계절 전 · Yukhoe, seasonal jeon",
+      addr:"포은로 146",
+      gurl:"https://maps.app.goo.gl/5p3rYxWt9sBw7nVM9?g_st=ic", q:"유진 망원 한식주점" },
+    { ko:"성립", en:"Seongnip", tag:"이자카야 · Izakaya",
+      dKo:"숙성회와 사케, 차분한 분위기.", dEn:"Aged sashimi and sake under low, calm light.",
+      menu:"사시미, 유자 사케 · Sashimi, yuzu sake",
+      hours:"화–금 18:00–24:00, 토·일 17:00–24:00",
+      addr:"성미산로2길 43, 2층",
+      gurl:"https://maps.app.goo.gl/Mjnhbhe93W4AvdRS7?g_st=ic", q:"성립 망원 이자카야" }
+  ]
+},
+{
+  id: "shop", eyebrow: "Shops", ko: "쇼핑",
+  items: [
+    { ko:"해수향당", en:"Haesoohyangdang", tag:"향 · Korean fragrance house", walk:"도보 2분 · 2 min",
+      dKo:"한국적인 향을 만드는 향수 집.", dEn:"A fragrance house built on Korean scents.",
+      menu:"환림목 · Hwanrimmok perfume",
+      addr:"망원로6길 56, B01", q:"해수향당 망원" },
+    { ko:"제로스페이스", en:"Zero Space", tag:"일러스트 문구 · Illustrated stationery",
+      dKo:"디자인 스튜디오 제로퍼제로의 쇼룸. 일러스트 문구와 엽서.", dEn:"Showroom of design studio Zero Per Zero — illustrated stationery and postcards.",
+      hours:"평일 13:00–19:30, 토 12:00–20:00, 일 12:00–19:00",
+      addr:"희우정로16길 32",
+      nurl:"https://naver.me/xjYCUnDY",
+      gurl:"https://maps.app.goo.gl/Dkei2HSwDsnJxttb7?g_st=ic", q:"제로스페이스 망원" },
+    { ko:"에메모가든", en:"Ememo Garden", tag:"패션 · Fashion",
+      dKo:"다양한 패턴의 패션 아이템을 파는 힙한 샵.", dEn:"A hip shop stocked with boldly patterned fashion pieces.",
+      insta:"mmo_garden", addr:"망원로1길 16", q:"에메모가든 망원" },
+    { ko:"무드", en:"Mood", tag:"인테리어 소품 · Home objects",
+      dKo:"인테리어 소품 가게.", dEn:"A small shop of home objects.",
+      insta:"mood_m.won", addr:"포은로8길 16",
+      nurl:"https://naver.me/FuN8t2Hl",
+      gurl:"https://maps.app.goo.gl/RA4HjtgsFYwEnyMB9?g_st=ic", q:"무드 망원 소품샵" },
+    { ko:"프레젠트모먼트", en:"Present Moment", tag:"소품샵 · Objects & ornaments", walk:"도보 7분 · 7 min",
+      dKo:"1년 내내 크리스마스인 소품샵.", dEn:"Where it is Christmas all year round — ornaments, music boxes, postcards.",
+      hours:"13:00–21:00 · 월 휴무 / Closed Mon",
+      addr:"동교로 49-1", q:"프레젠트모먼트 망원" }
+  ]
+},
+{
+  id: "photo", eyebrow: "Photo Booths", ko: "인생네컷",
+  items: [
+    { ko:"하루필름", en:"Haru Film", tag:"네컷 사진 · Four-cut photo booth",
+      dKo:"밝고 쿨톤으로 나오는 부스. 아이돌 프로필 사진 같은 느낌.", dEn:"Bright, cool-toned shots — like an idol's profile photo.",
+      addr:"포은로 87, 1층", q:"하루필름 망원점" },
+    { ko:"포토이즘박스 망원점", en:"Photoism Box", tag:"네컷 사진 · Four-cut photo booth",
+      dKo:"기본에 충실한 네컷 부스. 프레임 선택지가 많습니다.", dEn:"The classic four-cut booth with plenty of frame options.",
+      addr:"포은로 88",
+      nurl:"https://naver.me/5MVzOF42", q:"포토이즘박스 망원점" },
+    { ko:"모노맨션", en:"Mono Mansion", tag:"셀프 스튜디오 · Self-studio",
+      dKo:"자연스러운 인물사진처럼 나오는 셀프 스튜디오. 따뜻하고 포근한 톤.", dEn:"Natural, portrait-like shots in a warm, cozy tone.",
+      addr:"망원동 (지도에서 위치 확인 / see map)",
+      nurl:"https://naver.me/5XJuskrf", q:"모노맨션 망원" },
+    { ko:"포토이즘컬러드 망원점", en:"Photoism Colored", tag:"네컷 사진 · Four-cut photo booth",
+      dKo:"배경 색을 골라 찍는 컬러 컨셉 부스.", dEn:"Pick your backdrop color before you shoot.",
+      addr:"망원동 (지도에서 위치 확인 / see map)",
+      nurl:"https://naver.me/5177VN1i", q:"포토이즘컬러드 망원점" },
+    { ko:"모멘터링", en:"Momentering", tag:"네컷 사진 · Four-cut photo booth",
+      dKo:"흰빛과 회색빛이 섞인 독특한 색감. 감성사진 쪽에 가깝습니다.", dEn:"A distinctive white-gray palette — closer to a mood photo than a booth snap.",
+      addr:"망원동 (지도에서 위치 확인 / see map)",
+      gurl:"https://maps.app.goo.gl/BFwyxbN44dB41cKK6", q:"모멘터링 망원" }
+  ]
+},
+{
+  id: "ess", eyebrow: "Essentials", ko: "편의시설", type: "essential",
+  items: [
+    { ko:"CU 망원로점", en:"Convenience store", note:"규모 아담 · small", q:"CU 망원로점" },
+    { ko:"GS25 망원희망점", en:"Convenience store", note:"규모 큼 · large", q:"GS25 망원희망점" },
+    { ko:"제일약국", en:"Pharmacy", q:"제일약국 망원" },
+    { ko:"영진약국", en:"Pharmacy", q:"영진약국 망원" },
+    { ko:"올리브영 망원역점", en:"Olive Young (drugstore)", q:"올리브영 망원역점" },
+    { ko:"올리브영 망원동점", en:"Olive Young (drugstore)", q:"올리브영 망원동점" },
+    { ko:"망원파출소", en:"Police station", q:"망원파출소" }
+  ]
+},
+{
+  id: "river", eyebrow: "Hangang", ko: "한강, 야경",
+  noteKo: "호스트가 실제로 앉는 자리들입니다.", noteEn: "The spots where your host actually sits.",
+  items: [
+    { ko:"망원초록길 입구", en:"Mangwon Chorok-gil trail", tag:"산책 · Walk", walk:"도보 7분 · 7 min",
+      dKo:"초입은 조금 오르막이지만, 높은 곳에서 한강 야경을 내려다볼 수 있습니다.", dEn:"A short uphill start, then the river at night from above.",
+      addr:"망원초록길",
+      nurl:"https://naver.me/x1uAmW1x", q:"망원초록길" },
+    { ko:"망원한강공원 입구", en:"Mangwon Hangang Park entrance", tag:"한강 진입점 · Gateway to the river", walk:"도보 10분 · 10 min",
+      dKo:"시장에서 간식을 사서 한강으로 가는 길.", dEn:"Pick up snacks at the market and walk to the river.",
+      addr:"망원로2 부근",
+      nurl:"https://naver.me/F7FQ5YsJ",
+      gurl:"https://maps.app.goo.gl/cbqMHXAaP5pqyEKN9?g_st=ic", q:"망원한강공원 입구" },
+    { ko:"야경 스팟, 슬로프", en:"Night-view slope", tag:"야경 · Night view",
+      dKo:"공원 입구 바로 앞. 슬로프 바닥에 앉아 한강 야경을 보기 좋은 자리.", dEn:"Right by the park entrance — sit on the sloped bank and watch the river lights.",
+      addr:"마포나루길 429", q:"마포나루길 429" },
+    { ko:"야경 스팟, 계단", en:"Night-view steps", tag:"야경 · Night view",
+      dKo:"공원 입구에서 도보 20분. 길게 늘어선 계단에 앉아 보는 야경.", dEn:"A 20-minute walk from the entrance — long steps made for sitting with a view.",
+      addr:"상암동 487-334", q:"상암동 487-334" }
+  ]
+}
+];
+
+const nav = document.getElementById("nav");
+const app = document.getElementById("app");
+const esc = s => (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const naver = q => "https://map.naver.com/p/search/" + encodeURIComponent(q);
+const google = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+const naverLink = p => p.nurl || naver(p.qn || p.q);
+const googleLink = p => p.gurl || google(p.qg || p.q);
+
+for (const sec of SECTIONS) {
+  const a = document.createElement("a");
+  a.href = "#" + sec.id;
+  a.textContent = `${sec.ko} ${sec.eyebrow}`;
+  nav.appendChild(a);
+
+  const s = document.createElement("section");
+  s.id = sec.id;
+  let head = `<div class="sec-eyebrow">${esc(sec.eyebrow)}</div><h2>${esc(sec.ko)}</h2>`;
+  if (sec.noteKo) head += `<p class="sec-note">${esc(sec.noteKo)} · ${esc(sec.noteEn)}</p>`;
+  s.innerHTML = head;
+
+  for (const p of sec.items) {
+    const div = document.createElement("div");
+    if (sec.type === "essential") {
+      div.className = "ess";
+      div.innerHTML =
+        `<div><span class="ess-name">${esc(p.ko)}</span>` +
+        `<span class="ess-note">${esc(p.en)}${p.note ? " · " + esc(p.note) : ""}</span></div>` +
+        `<span class="ess-links">` +
+        `<a href="${naverLink(p)}" target="_blank" rel="noopener">Naver Map</a>` +
+        `<a href="${googleLink(p)}" target="_blank" rel="noopener">Google Maps</a></span>`;
+    } else {
+      div.className = "place";
+      let chips = "";
+      if (p.walk) chips += `<span class="chip walk">${esc(p.walk)}</span>`;
+      for (const c of (p.chips || [])) chips += `<span class="chip">${esc(c[0])} · ${esc(c[1])}</span>`;
+      let meta = "";
+      if (p.menu) meta += `<div class="meta-row"><span class="meta-label">메뉴 Menu</span><span class="meta-val">${esc(p.menu)}</span></div>`;
+      if (p.hours) meta += `<div class="meta-row"><span class="meta-label">영업 Hours</span><span class="meta-val">${esc(p.hours)}</span></div>`;
+      if (p.insta) meta += `<div class="meta-row"><span class="meta-label">인스타</span><span class="meta-val">@${esc(p.insta)}</span></div>`;
+      div.innerHTML =
+        `<div class="p-head"><span class="p-name">${esc(p.ko)}</span>` +
+        (p.en ? `<span class="p-en">${esc(p.en)}</span>` : "") + `</div>` +
+        `<div class="p-tag">${esc(p.tag)}</div>` +
+        (p.dKo ? `<p class="p-desc">${esc(p.dKo)}<span class="en">${esc(p.dEn)}</span></p>` : "") +
+        (chips ? `<div class="chips">${chips}</div>` : "") +
+        (meta ? `<div class="meta">${meta}</div>` : "") +
+        `<div class="p-foot"><span class="addr">${esc(p.addr)}</span>` +
+        `<span class="maps"><a href="${naverLink(p)}" target="_blank" rel="noopener">Naver Map</a>` +
+        `<a href="${googleLink(p)}" target="_blank" rel="noopener">Google Maps</a></span></div>`;
+    }
+    s.appendChild(div);
+  }
+  app.appendChild(s);
+}
+</script>
+</body>
+</html>
