@@ -213,9 +213,9 @@
   <main id="app"></main>
 
   <div class="notice">
-    여기 담긴 곳들은 호스트의 취향으로 고른 자리라, 입맛에 꼭 맞지 않을 수도 있어요.
+    여기 담긴 곳들은 호스트의 취향으로 골랐기에, 여러분의 취향과 꼭 맞지 않을 수 있어요.
     여행이 조금 수월해지길 바라는 마음으로 만든 가이드이니 가볍게 참고해 주세요.
-    <span class="en">These are one host's personal picks, so your taste may differ.
+    <span class="en">These are one host's personal picks — they may not suit everyone's preferences.
     This guide was made in the hope of smoothing your trip a little — take it as a friendly reference.</span>
     <span style="display:block; margin-top:10px;">영업시간과 가격은 바뀔 수 있어요. 방문 전에 지도 링크에서 확인해 주세요.</span>
     <span class="en">Hours and prices may change — please check the map links before visiting.</span>
@@ -335,6 +335,9 @@ const SECTIONS = [
     { ko:"쑨송", en:"Ssunsong", tag:"태국 음식 · Thai",
       dKo:"동네 태국 식당.", dEn:"Neighborhood Thai kitchen.",
       addr:"포은로 63", qn:"쑨송 망원 태국", qg:"쑨송" },
+    { ko:"일렌토", en:"Il Lento", tag:"파스타 · Pasta & tapas",
+      dKo:"유럽 골목 식당 같은 작은 파스타집.", dEn:"A small pasta place with the feel of a backstreet European trattoria.",
+      addr:"포은로 52-1", qn:"일렌토", qg:"일렌토(Il Lento)" },
     { ko:"류진", en:"Ryujin", tag:"라멘 · Jiro-style ramen",
       dKo:"양 많은 지로계 라멘. 대기가 깁니다.", dEn:"Hefty jiro-style ramen with a serious line.",
       chips:[["웨이팅","Expect a wait"]],
@@ -345,7 +348,7 @@ const SECTIONS = [
       dKo:"망원시장 안, 홍두깨로 직접 밀어 만드는 칼국수 한 그릇.", dEn:"Inside Mangwon Market — noodles rolled out by hand, a bowl for 5,000 won.",
       chips:[["줄이 빨리 줄어요","Line moves fast"]],
       menu:"손칼국수 5,000 · 수제비 5,000 / Kalguksu, sujebi",
-      addr:"망원시장 내 / Inside Mangwon Market",
+      addr:"망원로8길 29 (망원시장 / Mangwon Market)",
       nurl:"https://naver.me/5suyGz8F", q:"홍두깨손칼국수 망원시장" },
     { ko:"강동원", en:"Gangdongwon", tag:"중식 · Chinese-Korean",
       dKo:"수기 명단으로 줄 서는 중식당. 오픈 전에 도착하는 게 좋아요.", dEn:"Beloved Chinese-Korean spot with a paper waitlist — arrive before opening.",
@@ -383,10 +386,7 @@ const SECTIONS = [
       chips:[["웨이팅","Expect a wait"]],
       menu:"평양냉면 13,000 · 냉제육 / Cold buckwheat noodles",
       hours:"화–일 11:30–16:00 · 월 휴무 / Closed Mon",
-      addr:"성미산로 33", qn:"온랭", qg:"온랭 망원 평양냉면" },
-    { ko:"일렌토", en:"Il Lento", tag:"파스타 · Pasta & tapas",
-      dKo:"유럽 골목 식당 같은 작은 파스타집.", dEn:"A small pasta place with the feel of a backstreet European trattoria.",
-      addr:"망원동 (지도에서 위치 확인 / see map)", qn:"일렌토", qg:"일렌토(Il Lento)" }
+      addr:"성미산로 33", qn:"온랭", qg:"온랭 망원 평양냉면" }
   ]
 },
 {
@@ -396,7 +396,7 @@ const SECTIONS = [
       dKo:"주말에만 여는 두 평 남짓 아이스크림 바.", dEn:"A two-pyeong weekend-only bar scooping whisky-infused ice cream.",
       insta:"kreamery.icecreambar",
       menu:"버터버번 · Butter Bourbon", hours:"주말 영업 / Weekends — 인스타그램 확인 / check Instagram",
-      addr:"망원동, 한강공원 인근",
+      addr:"망원로 55",
       gurl:"https://maps.app.goo.gl/UpMStaeYSL62uiPU7?g_st=ipc", q:"크리머리 망원 아이스크림" },
     { ko:"타코야키쿤", en:"Takoyaki-kun", tag:"타코야키 · Takoyaki",
       dKo:"저녁에 여는 타코야키 전문점.", dEn:"Evening takoyaki stand with garlic-cheese and scallion versions.",
@@ -411,7 +411,7 @@ const SECTIONS = [
       dKo:"고추튀김에 막걸리 한잔. 망원시장의 시끌한 쪽.", dEn:"Stuffed fried chilis with makgeolli, on the market's lively side.",
       menu:"고추튀김, 전, 떡볶이 · Fried chilis, jeon, tteokbokki",
       hours:"11:00–22:00",
-      addr:"망원시장 내 / Inside Mangwon Market",
+      addr:"포은로8길 22 (망원시장 / Mangwon Market)",
       gurl:"https://maps.app.goo.gl/tnC7kiBUC8gchgpS7?g_st=ic", q:"우이락 망원시장" },
     { ko:"훈이네빈대떡", en:"Hooni's Bindaetteok", tag:"빈대떡 · Mung-bean pancake",
       dKo:"망원시장 안, 즉석에서 부치는 빈대떡.", dEn:"Mung-bean pancakes fried to order inside Mangwon Market.",
@@ -421,7 +421,7 @@ const SECTIONS = [
       dKo:"시장 입구의 20년 된 고로케집.", dEn:"Twenty years of croquettes at the market entrance.",
       menu:"고로케 700–1,000 · Croquettes",
       hours:"09:00–21:00",
-      addr:"망원로 80 (시장 입구 / market entrance)",
+      addr:"망원로 80 (망원시장 / Mangwon Market)",
       nurl:"https://naver.me/GAr38b04", q:"망원수제고로케" },
     { ko:"경기떡집", en:"Gyeonggi Tteok House", tag:"떡 · Rice cakes since 1958",
       dKo:"1958년부터 이어온 떡집. 오후에는 소진됩니다.", dEn:"Handmade rice cakes since 1958 — sold out by afternoon.",
@@ -499,25 +499,25 @@ const SECTIONS = [
 {
   id: "photo", eyebrow: "Photo Booths", ko: "인생네컷",
   items: [
-    { ko:"하루필름", en:"Haru Film", tag:"네컷 사진 · Four-cut photo booth",
-      dKo:"밝고 쿨톤으로 나오는 부스. 아이돌 프로필 사진 같은 느낌.", dEn:"Bright, cool-toned shots — like an idol's profile photo.",
-      addr:"포은로 87, 1층", q:"하루필름 망원점" },
+    { ko:"모노맨션", en:"Mono Mansion", tag:"셀프 스튜디오 · Self-studio",
+      dKo:"자연스러운 인물사진처럼 나오는 셀프 스튜디오. 따뜻하고 포근한 톤.", dEn:"Natural, portrait-like shots in a warm, cozy tone.",
+      addr:"포은로 89",
+      nurl:"https://naver.me/5XJuskrf", q:"모노맨션 망원" },
     { ko:"포토이즘박스 망원점", en:"Photoism Box", tag:"네컷 사진 · Four-cut photo booth",
       dKo:"기본에 충실한 네컷 부스. 프레임 선택지가 많습니다.", dEn:"The classic four-cut booth with plenty of frame options.",
       addr:"포은로 88",
       nurl:"https://naver.me/5MVzOF42", q:"포토이즘박스 망원점" },
-    { ko:"모노맨션", en:"Mono Mansion", tag:"셀프 스튜디오 · Self-studio",
-      dKo:"자연스러운 인물사진처럼 나오는 셀프 스튜디오. 따뜻하고 포근한 톤.", dEn:"Natural, portrait-like shots in a warm, cozy tone.",
-      addr:"망원동 (지도에서 위치 확인 / see map)",
-      nurl:"https://naver.me/5XJuskrf", q:"모노맨션 망원" },
-    { ko:"포토이즘컬러드 망원점", en:"Photoism Colored", tag:"네컷 사진 · Four-cut photo booth",
-      dKo:"배경 색을 골라 찍는 컬러 컨셉 부스.", dEn:"Pick your backdrop color before you shoot.",
-      addr:"망원동 (지도에서 위치 확인 / see map)",
-      nurl:"https://naver.me/5177VN1i", q:"포토이즘컬러드 망원점" },
+    { ko:"하루필름", en:"Haru Film", tag:"네컷 사진 · Four-cut photo booth",
+      dKo:"밝고 쿨톤으로 나오는 부스. 아이돌 프로필 사진 같은 느낌.", dEn:"Bright, cool-toned shots — like an idol's profile photo.",
+      addr:"포은로 87, 1층", q:"하루필름 망원점" },
     { ko:"모멘터링", en:"Momentering", tag:"네컷 사진 · Four-cut photo booth",
       dKo:"흰빛과 회색빛이 섞인 독특한 색감. 감성사진 쪽에 가깝습니다.", dEn:"A distinctive white-gray palette — closer to a mood photo than a booth snap.",
-      addr:"망원동 (지도에서 위치 확인 / see map)",
-      gurl:"https://maps.app.goo.gl/BFwyxbN44dB41cKK6", q:"모멘터링 망원" }
+      addr:"포은로 86",
+      gurl:"https://maps.app.goo.gl/BFwyxbN44dB41cKK6", q:"모멘터링 망원" },
+    { ko:"포토이즘컬러드 망원점", en:"Photoism Colored", tag:"네컷 사진 · Four-cut photo booth",
+      dKo:"배경 색을 골라 찍는 컬러 컨셉 부스.", dEn:"Pick your backdrop color before you shoot.",
+      addr:"포은로 95",
+      nurl:"https://naver.me/5177VN1i", q:"포토이즘컬러드 망원점" }
   ]
 },
 {
