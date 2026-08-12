@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>시담 로컬 가이드 — 망원동</title>
+<title>시담 로컬 가이드북</title>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://guide.stay-maker.kr/">
-<meta property="og:title" content="시담 로컬 가이드 — 망원동">
-<meta property="og:description" content="시담에서 걸어서 닿는 곳들을 모았습니다. 바로 옆 카페부터 한강 야경까지.">
+<meta property="og:title" content="시담 로컬 가이드북">
+<meta property="og:description" content="망원동에 사는 호스트가 정말 좋아하는 곳들을 소개합니다.">
 <meta property="og:image" content="https://guide.stay-maker.kr/og-image2.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -26,79 +26,78 @@
     --line: #E5DFD3;
     --accent: #C4622D;
     --accent-soft: #F3E4D8;
-    --serif: "Apple Myungjo", "AppleMyungjo", "Nanum Myeongjo", "Noto Serif KR", Batang, "Times New Roman", serif;
     --sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Segoe UI", sans-serif;
   }
+  /* 언어별 폰트 스택 — 중국어·일본어 글자가 한국어 폰트에 없어 굵기가 섞여 보이는 문제 방지 */
+  html[lang="zh-Hans"] { --sans: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif; }
+  html[lang="zh-Hant"] { --sans: -apple-system, "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif; }
+  html[lang="ja"] { --sans: -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif; }
   @media (prefers-color-scheme: dark) {
     :root {
-      --ground: #211E1A;
-      --surface: #282420;
-      --ink: #EAE4DA;
-      --muted: #A89E92;
-      --faint: #7E766B;
-      --line: #3A352E;
-      --accent: #DE9163;
-      --accent-soft: #3D2E23;
+      --ground: #211E1A; --surface: #282420; --ink: #EAE4DA; --muted: #A89E92;
+      --faint: #7E766B; --line: #3A352E; --accent: #DE9163; --accent-soft: #3D2E23;
     }
   }
   :root[data-theme="dark"] {
-    --ground: #211E1A;
-    --surface: #282420;
-    --ink: #EAE4DA;
-    --muted: #A89E92;
-    --faint: #7E766B;
-    --line: #3A352E;
-    --accent: #DE9163;
-    --accent-soft: #3D2E23;
+    --ground: #211E1A; --surface: #282420; --ink: #EAE4DA; --muted: #A89E92;
+    --faint: #7E766B; --line: #3A352E; --accent: #DE9163; --accent-soft: #3D2E23;
   }
   :root[data-theme="light"] {
-    --ground: #F7F5F0;
-    --surface: #FDFCFA;
-    --ink: #2B2723;
-    --muted: #7A7268;
-    --faint: #A39A8E;
-    --line: #E5DFD3;
-    --accent: #C4622D;
-    --accent-soft: #F3E4D8;
+    --ground: #F7F5F0; --surface: #FDFCFA; --ink: #2B2723; --muted: #7A7268;
+    --faint: #A39A8E; --line: #E5DFD3; --accent: #C4622D; --accent-soft: #F3E4D8;
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0;
-    background: var(--ground);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.65;
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--sans); font-size: 15px; line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
   .wrap { max-width: 620px; margin: 0 auto; padding: 0 20px 80px; }
 
-  /* ---------- header ---------- */
-  header { padding: 56px 0 8px; text-align: center; }
-  .mark {
-    width: 14px; height: 14px; border-radius: 50%;
-    background: var(--accent); margin: 0 auto 20px;
-    position: relative;
+  /* ---------- language bar ---------- */
+  .langbar {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px;
+    max-width: 440px; margin: 0 auto; padding: 22px 0 0;
   }
+  .langbar button {
+    font-family: var(--sans); font-size: 12px; padding: 5px 4px; width: 100%;
+    border: 1px solid var(--line); border-radius: 99px;
+    background: var(--surface); color: var(--muted); cursor: pointer;
+    white-space: nowrap;
+  }
+  .langbar button.on {
+    background: var(--ink); color: var(--ground); border-color: var(--ink); font-weight: 600;
+  }
+  .langbar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- header ---------- */
+  header { padding: 44px 0 8px; text-align: center; }
+  .mark { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); margin: 0 auto 20px; position: relative; }
   .mark::after {
     content: ""; position: absolute; top: -6px; left: 55%;
     width: 6px; height: 7px; border-radius: 60% 40% 60% 40%;
     background: var(--faint); transform: rotate(28deg);
   }
-  h1 {
-    font-family: var(--sans);
-    font-weight: 600;
-    font-size: 26px;
-    letter-spacing: 0.16em;
-    margin: 0 0 4px;
-    text-wrap: balance;
+  h1 { font-weight: 700; font-size: 25px; letter-spacing: 0.1em; margin: 0 0 10px; text-indent: 0.1em; }
+  .tagline { font-size: 15px; color: var(--muted); margin-bottom: 6px; }
+  .sub { font-size: 10.5px; letter-spacing: 0.22em; color: var(--faint); text-transform: uppercase; margin-top: 14px; }
+
+  /* ---------- host letter ---------- */
+  .letter {
+    margin: 34px auto 0; max-width: 480px; text-align: left;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 28px 6px 26px;
   }
-  .sub {
-    font-size: 11px; letter-spacing: 0.22em; color: var(--faint);
-    text-transform: uppercase; margin-bottom: 28px;
+  .letter-eyebrow {
+    font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px; text-align: center;
   }
-  .intro { color: var(--muted); font-size: 14px; margin: 0 auto; max-width: 42ch; }
-  .intro .en { display: block; font-size: 12.5px; color: var(--faint); margin-top: 4px; }
+  .letter p { margin: 0 0 14px; font-size: 14.5px; line-height: 1.85; color: var(--ink); }
+  .letter p:last-of-type { margin-bottom: 0; }
+  .letter .sig { margin-top: 18px; font-size: 13px; color: var(--muted); text-align: right; clear: both; }
+  .letter-art { width: 104px; }
+  .art-tea { float: right; margin: 4px 0 10px 16px; }
+  .art-vanity { float: left; margin: 6px 16px 6px 0; }
 
   /* ---------- nav ---------- */
   nav {
@@ -107,33 +106,22 @@
     backdrop-filter: blur(8px);
     margin: 28px -20px 0; padding: 10px 20px;
     border-bottom: 1px solid var(--line);
-    overflow-x: auto; white-space: nowrap;
-    scrollbar-width: none;
+    overflow-x: auto; white-space: nowrap; scrollbar-width: none;
   }
   nav::-webkit-scrollbar { display: none; }
   nav a {
-    display: inline-block; margin-right: 8px;
-    padding: 5px 13px; border: 1px solid var(--line); border-radius: 99px;
-    color: var(--muted); text-decoration: none; font-size: 12.5px;
-    background: var(--surface);
+    display: inline-block; margin-right: 8px; padding: 5px 13px;
+    border: 1px solid var(--line); border-radius: 99px;
+    color: var(--muted); text-decoration: none; font-size: 12.5px; background: var(--surface);
   }
   nav a:active, nav a:focus-visible { color: var(--accent); border-color: var(--accent); outline: none; }
 
   /* ---------- sections ---------- */
   section { padding-top: 44px; }
-  .sec-eyebrow {
-    font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 6px;
-  }
-  h2 {
-    font-family: var(--sans); font-weight: 300;
-    font-size: 21px; letter-spacing: 0.1em; margin: 0 0 4px;
-  }
-  .hanja {
-    font-family: "PingFang SC", "Hiragino Sans", "Noto Sans KR", var(--sans);
-    font-weight: 600;
-  }
+  .sec-eyebrow { font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  h2 { font-weight: 600; font-size: 21px; letter-spacing: 0.1em; margin: 0 0 4px; }
   .sec-note { font-size: 12.5px; color: var(--faint); margin: 0 0 8px; }
+  .sec-img { width: 100%; border-radius: 12px; margin: 10px 0 4px; display: block; }
 
   /* ---------- place ---------- */
   .place { padding: 20px 0; border-bottom: 1px solid var(--line); }
@@ -143,33 +131,18 @@
   .p-en { color: var(--faint); font-size: 12.5px; }
   .p-tag { font-size: 12px; color: var(--accent); margin-top: 1px; }
   .p-desc { margin-top: 6px; font-size: 14px; }
-  .p-desc .en { display: block; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
-  .chip {
-    font-size: 11.5px; padding: 2px 9px; border-radius: 99px;
-    border: 1px solid var(--line); color: var(--muted); background: var(--surface);
-  }
+  .chip { font-size: 11.5px; padding: 2px 9px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); background: var(--surface); }
   .chip.walk { border-color: transparent; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
   .meta { margin-top: 10px; display: grid; gap: 3px; font-size: 13px; }
-  .meta-row { display: grid; grid-template-columns: 74px 1fr; gap: 10px; }
+  .meta-row { display: grid; grid-template-columns: 92px 1fr; gap: 10px; }
   .meta-label { color: var(--faint); font-size: 11.5px; padding-top: 2px; letter-spacing: 0.04em; }
   .meta-val { color: var(--muted); font-variant-numeric: tabular-nums; }
-  .p-thumb {
-    float: right; width: 88px; height: 88px;
-    object-fit: cover; border-radius: 10px;
-    margin: 2px 0 8px 14px; background: var(--line);
-  }
-  .p-foot {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 10px; margin-top: 12px; flex-wrap: wrap; clear: both;
-  }
+  .p-thumb { float: right; width: 88px; height: 88px; object-fit: cover; border-radius: 10px; margin: 2px 0 8px 14px; background: var(--line); }
+  .p-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; flex-wrap: wrap; clear: both; }
   .addr { font-size: 12px; color: var(--faint); }
   .maps { display: flex; gap: 6px; flex-shrink: 0; }
-  .maps a {
-    font-size: 12px; text-decoration: none; color: var(--accent);
-    border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px;
-    background: var(--surface);
-  }
+  .maps a { font-size: 12px; text-decoration: none; color: var(--accent); border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; background: var(--surface); }
   .maps a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* ---------- essentials ---------- */
@@ -182,386 +155,234 @@
   .ess-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* ---------- footer ---------- */
-  .notice {
-    margin-top: 56px; padding: 16px 18px; border: 1px solid var(--line);
-    border-radius: 10px; font-size: 12.5px; color: var(--muted); background: var(--surface);
-  }
-  .notice .en { display: block; color: var(--faint); margin-top: 3px; font-size: 12px; }
+  .notice { margin-top: 56px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 10px; font-size: 12.5px; color: var(--muted); background: var(--surface); }
+  .emg { margin-top: 12px; padding: 12px 18px; border: 1px solid var(--line); border-radius: 10px; font-size: 12.5px; color: var(--ink); background: var(--surface); text-align: center; }
+  .emg:empty { display: none; }
   footer { text-align: center; padding: 72px 0 0; }
-  .f-name { font-family: var(--sans); font-weight: 600; font-size: 19px; letter-spacing: 0.18em; }
+  .f-name { font-weight: 700; font-size: 19px; letter-spacing: 0.18em; text-indent: 0.18em; }
   .f-line { color: var(--muted); font-size: 13px; margin-top: 6px; }
-  .f-en { color: var(--faint); font-size: 12px; margin-top: 3px; }
   .f-date { color: var(--faint); font-size: 11px; margin-top: 28px; letter-spacing: 0.08em; }
 
-  @media (prefers-reduced-motion: no-preference) {
-    html { scroll-behavior: smooth; }
-  }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 </style>
 
 <div class="wrap">
+  <div class="langbar" id="langbar"></div>
   <header>
     <div class="mark" aria-hidden="true"></div>
-    <h1>시담 <span class="hanja">柿淡</span></h1>
-    <div class="sub">SIDAM Mangwon Local Guide</div>
-    <p class="intro">
-      시담에서 걸어서 닿는 곳들을 모았습니다.<br>바로 옆 카페부터 한강 야경까지, 가까운 순서로.
-      <span class="en">Places within a walk from SIDAM,<br>listed nearest first — from the café next door to the river at night.</span>
-    </p>
+    <h1 id="h-title">시담 로컬 가이드북</h1>
+    <div class="tagline" id="h-tagline"></div>
+    <div class="letter">
+      <div class="letter-eyebrow" id="h-eyebrow"></div>
+      <div id="h-letter"></div>
+      <div class="sig" id="h-sig"></div>
+    </div>
   </header>
 
-  <nav id="nav" aria-label="카테고리"></nav>
+  <nav id="nav" aria-label="categories"></nav>
   <main id="app"></main>
 
-  <div class="notice">
-    여기 담긴 곳들은 호스트의 취향으로 골랐기에, 여러분의 취향과 꼭 맞지 않을 수 있어요.
-    여행이 조금 수월해지길 바라는 마음으로 만든 가이드이니 가볍게 참고해 주세요.
-    <span class="en">These are one host's personal picks — they may not suit everyone's preferences.
-    This guide was made in the hope of smoothing your trip a little — take it as a friendly reference.</span>
-    <span style="display:block; margin-top:10px;">영업시간과 가격은 바뀔 수 있어요. 방문 전에 지도 링크에서 확인해 주세요.</span>
-    <span class="en">Hours and prices may change — please check the map links before visiting.</span>
-  </div>
+  <div class="notice" id="notice"></div>
 
   <footer>
-    <div class="f-name">시담 <span class="hanja">柿淡</span></div>
-    <div class="f-line">감나무 곁, 담백하고 고요한 집</div>
-    <div class="f-en">A quiet, simple house beside a persimmon tree</div>
+    <div class="f-name" id="f-name">시담</div>
+    <div class="f-line" id="f-line"></div>
     <div class="f-date">2026.08 · Mangwon-dong, Seoul</div>
   </footer>
 </div>
 
 <script>
-/*
-  링크 규칙:
-  - nurl / gurl : 문주님이 검증한 바로가기 링크 (최우선)
-  - qn / qg     : 네이버 / 구글 전용 검색어
-  - q           : 공통 검색어 (기본값)
-  정렬: 시담(망원로2길 80, 37.5545, 126.9023) 기준 지오코딩 직선거리 순.
-  2026-08-05 검증. 몽골<윤재윤지네<강동원 상대 순서는 문주님 확인 기준.
-*/
-const SECTIONS = [
-{
-  id: "cafe", eyebrow: "Cafés", ko: "카페",
-  items: [
-    { ko:"포스트 노빌즈", en:"Post No Bills", tag:"카페 · Café", walk:"도보 1분 · 1 min",
-      dKo:"시담 바로 옆. 큰 나무 두 그루가 그늘을 만드는 창가 자리.", dEn:"Right next door — window seats shaded by two tall trees. Dog-friendly.",
-      menu:"체리 히비스커스 아이스티 · Cherry hibiscus iced tea", hours:"12:00–22:00",
-      addr:"망원로2길 82", q:"포스트노빌즈 망원" },
-    { ko:"로트", en:"ROTE", tag:"카페 · Café",
-      dKo:"커피가 좋은 골목 카페. 주 후반에는 밤까지 엽니다.", dEn:"A quiet coffee spot; open late Thursday to Saturday.",
-      hours:"일–수 12:00–19:00, 목–토 12:00–24:00 · 화 휴무 / Closed Tue",
-      addr:"희우정로16길 31", qn:"로트 망원동 카페", qg:"ROTE" },
-    { ko:"M1CT", en:"", tag:"로스터리 · Roastery",
-      dKo:"골목의 작은 로스터리. 테이블 대신 바 좌석.", dEn:"A tiny back-alley roastery with bar seating only.",
-      menu:"오토레세트(연유 밀크커피) · Otto Reset, condensed-milk coffee", hours:"월·화 휴무 / Closed Mon–Tue",
-      addr:"희우정로15길 13", q:"M1CT 망원" },
-    { ko:"올웨이즈 어거스트 로스터스", en:"Always August Roasters", tag:"로스터리 · Roastery",
-      dKo:"주택가 사이의 스웨덴식 로스터리. 망원에서 줄이 가장 긴 카페.", dEn:"A Swedish-style roastery on a residential backstreet — the longest line in Mangwon.",
-      chips:[["웨이팅","Expect a wait"]],
-      hours:"월–토 12:00–22:00, 일 12:00–21:00",
-      addr:"망원로6길 19", q:"올웨이즈어거스트 망원" },
-    { ko:"한강에스프레소", en:"Hangang Espresso", tag:"에스프레소 바 · Espresso & whisky bar",
-      dKo:"에스프레소와 위스키, 칵테일을 함께 내는 아담한 바. 아침엔 커피, 밤엔 한잔.", dEn:"A snug ten-seat bar pouring espresso, whisky and cocktails — coffee by day, a drink by night.",
-      menu:"에스프레소, 봄본, 콘파냐 · Espresso, bombón, con panna",
-      hours:"일–목 08:00–22:00, 금–토 08:00–24:00",
-      addr:"희우정로 97", q:"한강에스프레소 망원" },
-    { ko:"브라운 프론트 도어", en:"Brown Front Door", tag:"카페, 편집샵 · Café & select shop",
-      dKo:"카페와 편집샵, 자수 아틀리에가 한 공간에.", dEn:"A café, select shop and embroidery atelier in one room.",
-      hours:"12:00–22:00 · 월 휴무 / Closed Mon",
-      addr:"포은로 94", q:"브라운프론트도어 망원" },
-    { ko:"우이그", en:"Uig", tag:"카페, 위스키 · Café & whisky",
-      dKo:"스코틀랜드 산장을 옮겨온 듯한 2층 카페. 밤에는 위스키.", dEn:"A two-floor café styled after a Scottish lodge; whisky after dark.",
-      hours:"일–목 11:00–22:30, 금–토 11:00–23:00",
-      addr:"망원로3길 7", q:"Uig 망원 카페" },
-    { ko:"포트레이트커피바", en:"Portrait Coffee Bar", tag:"카페 · Café",
-      dKo:"창작 시그니처 음료를 만드는 스페셜티 바.", dEn:"Specialty coffee with inventive signature drinks.",
-      menu:"코코넛 비엔나 · Coconut Vienna", hours:"매일 11:00–22:00 / Daily",
-      addr:"포은로8길 32", q:"포트레이트커피바 망원" },
-    { ko:"HHSS 하우스", en:"HHSS House", tag:"카페 · Café",
-      dKo:"신발 벗고 올라가는 3층. 통창과 고양이, 혼자 머물기 좋은 곳.", dEn:"A shoes-off third-floor room with big windows and a resident cat. Good for going alone.",
-      menu:"드립커피 6,000 · 쑥 스콘 / Drip coffee, mugwort scone", hours:"월–목 11:00–21:00, 금–일 11:00–22:00",
-      addr:"월드컵로 113, 3층", q:"HHSS HOUSE 망원" },
-    { ko:"히비노", en:"Hibino", tag:"카페 · Café",
-      dKo:"성미산 초입의 카페. 8월은 여름휴가 — 운영 여부는 인스타그램에서 확인해 주세요.", dEn:"A café at the foot of Seongmisan. On summer break through August — check Instagram before visiting.",
-      insta:"cafe.hibino", hours:"12:00–18:00 · 수 휴무 / Closed Wed",
-      addr:"성미산로 20, 2층", q:"카페 히비노 성미산로" }
-  ]
-},
-{
-  id: "bakery", eyebrow: "Bakeries", ko: "빵집",
-  items: [
-    { ko:"밀로밀", en:"Milomil", tag:"베이커리 · Bakery",
-      dKo:"소금빵으로 오전에만 문 여는 집. 소진되면 마감.", dEn:"Open mornings only — famous salt bread, closes when sold out.",
-      chips:[["오전 방문","Go early"]],
-      menu:"소금빵 · Salt bread (1인 6개 제한 / limit 6)", hours:"11:00–14:00 · 일·월 휴무 / Closed Sun–Mon",
-      addr:"희우정로10길 9", q:"밀로밀 망원" },
-    { ko:"어글리베이커리", en:"Ugly Bakery", tag:"베이커리 · Bakery",
-      dKo:"대파빵으로 유명한 웨이팅 빵집. 포장만 가능합니다.", dEn:"Famous for its scallion bread — takeout only, expect a line.",
-      chips:[["웨이팅","Expect a wait"],["포장만","Takeout only"]],
-      menu:"대파빵 · 말차 맘모스 / Scallion bread, matcha mammoth",
-      hours:"12:00–21:00 · 월·화 휴무 / Closed Mon–Tue",
-      addr:"월드컵로13길 73", q:"어글리베이커리 망원" }
-  ]
-},
-{
-  id: "food", eyebrow: "Restaurants", ko: "식당",
-  items: [
-    { ko:"몽골 생소금구이", en:"Mongol Saengsogeum-gui", tag:"돼지 소금구이 · Pork BBQ",
-      dKo:"24년 된 소금구이 노포. 혼자여도 구울 수 있습니다.", dEn:"A 24-year-old salt-grilled pork joint; solo diners welcome.",
-      chips:[["웨이팅","Expect a wait"]],
-      menu:"목살 소금구이 16,000 · 항정살 19,000 / Salt-grilled pork",
-      hours:"화–일 17:00–24:00 · 월 휴무 / Closed Mon",
-      addr:"희우정로 93-1", q:"몽골생소금구이 망원" },
-    { ko:"윤재윤지네 왕십리곱창", en:"Yunjae-yunjine Gopchang", tag:"곱창 · Gopchang",
-      dKo:"저녁에만 여는 곱창집.", dEn:"Evening-only grilled beef and pork intestines.",
-      menu:"야채곱창 14,000 · 소알곱창볶음 20,000 / Stir-fried gopchang",
-      hours:"월–토 17:00–24:00 · 일 휴무 / Closed Sun",
-      addr:"희우정로 76", q:"윤재윤지네왕십리곱창 망원" },
-    { ko:"꽃추장", en:"Kkotchujang", tag:"즉석떡볶이 · Tteokbokki hot pot",
-      dKo:"배추와 깻잎이 들어가는 즉석떡볶이.", dEn:"Table-cooked tteokbokki with cabbage and perilla leaves.",
-      menu:"즉석떡볶이 2인 22,000 · Hot-pot tteokbokki for two",
-      hours:"화–일 12:00–21:00 · 월 휴무 / Closed Mon",
-      addr:"망원로 48", q:"꽃추장 망원" },
-    { ko:"이치젠", en:"Ichizen", tag:"텐동 · Tendon",
-      dKo:"'서울 2대 텐동'으로 불리는 튀김덮밥집.", dEn:"Crisp tempura rice bowls — often called one of Seoul's two best tendon shops.",
-      chips:[["웨이팅","Expect a wait"]],
-      menu:"이치젠텐동 9,000 · 에비텐동 11,000 / Tendon",
-      hours:"화–토 12:00–21:00 (브레이크 15:30–17:30), 일 12:00–17:00 · 월 휴무 / Closed Mon",
-      addr:"포은로 109", q:"이치젠 망원 텐동" },
-    { ko:"베우노", en:"Bueno", tag:"스페인 요리 · Spanish",
-      dKo:"간판 없는 작은 스페인 식당. 문어 요리와 와인.", dEn:"A tiny unmarked Spanish restaurant — octopus and wine.",
-      chips:[["예약 필수","Reservation required"]],
-      hours:"수–일 12:00–23:30 (브레이크 16:00–18:00) · 월·화 휴무 / Closed Mon–Tue",
-      addr:"포은로8길 9", q:"베우노 망원 스페인" },
-    { ko:"쑨송", en:"Ssunsong", tag:"태국 음식 · Thai",
-      dKo:"동네 태국 식당.", dEn:"Neighborhood Thai kitchen.",
-      addr:"포은로 63", qn:"쑨송 망원 태국", qg:"쑨송" },
-    { ko:"일렌토", en:"Il Lento", tag:"파스타 · Pasta & tapas",
-      dKo:"유럽 골목 식당 같은 작은 파스타집.", dEn:"A small pasta place with the feel of a backstreet European trattoria.",
-      addr:"포은로 52-1", qn:"일렌토", qg:"일렌토(Il Lento)" },
-    { ko:"류진", en:"Ryujin", tag:"라멘 · Jiro-style ramen",
-      dKo:"양 많은 지로계 라멘. 대기가 깁니다.", dEn:"Hefty jiro-style ramen with a serious line.",
-      chips:[["웨이팅","Expect a wait"]],
-      menu:"라멘 13,000–14,000 · Ramen",
-      hours:"평일 12:00–22:00, 주말 11:00–22:00 (브레이크 14:00–17:30)",
-      addr:"월드컵로17길 64, 지하 1층", q:"류진 망원 라멘" },
-    { ko:"홍두깨손칼국수", en:"Hongdukkae Kalguksu", tag:"칼국수 · Hand-cut noodle soup",
-      dKo:"망원시장 안, 홍두깨로 직접 밀어 만드는 칼국수 한 그릇.", dEn:"Inside Mangwon Market — noodles rolled out by hand, a bowl for 5,000 won.",
-      chips:[["줄이 빨리 줄어요","Line moves fast"]],
-      menu:"손칼국수 5,000 · 수제비 5,000 / Kalguksu, sujebi",
-      addr:"망원로8길 29 (망원시장 / Mangwon Market)",
-      nurl:"https://naver.me/5suyGz8F", q:"홍두깨손칼국수 망원시장" },
-    { ko:"강동원", en:"Gangdongwon", tag:"중식 · Chinese-Korean",
-      dKo:"수기 명단으로 줄 서는 중식당. 오픈 전에 도착하는 게 좋아요.", dEn:"Beloved Chinese-Korean spot with a paper waitlist — arrive before opening.",
-      chips:[["오픈 전 대기","Arrive early"]],
-      menu:"간짜장 9,500 · 안심탕수육 · 고기짬뽕 / Jjajang, sweet-and-sour pork",
-      hours:"11:00–20:00 (브레이크 14:00–16:30) · 월 휴무 / Closed Mon",
-      addr:"망원로 3", q:"강동원 망원 중식" },
-    { ko:"송정", en:"Songjeong", tag:"항정국밥 · Pork soup with rice",
-      dKo:"구운 항정살을 올린 맑은 돼지국밥.", dEn:"Clear pork soup topped with roasted pork jowl.",
-      hours:"11:30–20:30 (브레이크 15:00–17:00 / break)",
-      addr:"월드컵로17길 38", q:"송정 망원 국밥" },
-    { ko:"헤키", en:"Heki", tag:"돈가스 · Tonkatsu",
-      dKo:"웨이팅이 긴 돈가스집. 원격 줄서기를 쓰세요.", dEn:"Popular tonkatsu — join the remote waitlist (CatchTable).",
-      chips:[["웨이팅","Expect a wait"]],
-      menu:"히레카츠 정식 15,500 · Hire-katsu set",
-      hours:"수–일 11:30–20:30 (브레이크 15:00–17:00) · 월·화 휴무 / Closed Mon–Tue",
-      addr:"동교로9길 33", q:"헤키 망원 돈가스" },
-    { ko:"우리바다수산", en:"Uri Bada Susan", tag:"회, 해산물 · Seafood",
-      dKo:"계절 해산물과 회. 겨울에는 대방어를 먹으러 줄을 섭니다.", dEn:"Seasonal seafood and raw fish; in winter the line is for daebang-eo yellowtail.",
-      addr:"월드컵로 102",
-      nurl:"https://naver.me/IFEmG4vy", q:"우리바다수산 망원" },
-    { ko:"만나식당", en:"Manna Sikdang", tag:"만두전골 · Dumpling hot pot",
-      dKo:"이북식 손만두전골. 담백한 국물.", dEn:"North-Korean-style handmade dumpling hot pot in a clean broth.",
-      menu:"손만두전골 2인 26,000 · 만두국 13,000 / Dumpling hot pot, dumpling soup",
-      hours:"11:00–22:00 (브레이크 16:00–17:00) · 일 휴무 / Closed Sun",
-      addr:"월드컵로 142", q:"만나식당 성산 만두전골" },
-    { ko:"행진", en:"Haengjin", tag:"냉동삼겹살 · Retro frozen samgyeopsal",
-      dKo:"레트로 분위기의 냉삼집. 지방 소주가 있습니다.", dEn:"Retro frozen-samgyeopsal joint stocking regional soju.",
-      menu:"냉삼 16,000 · 고추장찌개 / Frozen pork belly, gochujang stew",
-      hours:"11:30–24:00 · 화 휴무 / Closed Tue",
-      addr:"월드컵로 45, 1-2층",
-      nurl:"https://naver.me/xqbSWvv0", q:"행진 망원 냉삼" },
-    { ko:"온랭", en:"Onraeng", tag:"평양냉면 · Pyongyang naengmyeon",
-      dKo:"카운터석만 있는 작은 냉면집. 점심에만 엽니다.", dEn:"A tiny counter-only naengmyeon shop, lunch hours only.",
-      chips:[["웨이팅","Expect a wait"]],
-      menu:"평양냉면 13,000 · 냉제육 / Cold buckwheat noodles",
-      hours:"화–일 11:30–16:00 · 월 휴무 / Closed Mon",
-      addr:"성미산로 33", qn:"온랭", qg:"온랭 망원 평양냉면" }
-  ]
-},
-{
-  id: "snack", eyebrow: "Desserts & Snacks", ko: "디저트, 간식",
-  items: [
-    { ko:"크리머리", en:"Kreamery", tag:"위스키 아이스크림 · Whisky ice cream bar",
-      dKo:"주말에만 여는 두 평 남짓 아이스크림 바.", dEn:"A two-pyeong weekend-only bar scooping whisky-infused ice cream.",
-      insta:"kreamery.icecreambar",
-      menu:"버터버번 · Butter Bourbon", hours:"주말 영업 / Weekends — 인스타그램 확인 / check Instagram",
-      addr:"망원로 55",
-      gurl:"https://maps.app.goo.gl/UpMStaeYSL62uiPU7?g_st=ipc", q:"크리머리 망원 아이스크림" },
-    { ko:"코코부코", en:"Coco Buko", tag:"코코넛 쉐이크 · Coconut shakes",
-      dKo:"코코넛 쉐이크가 맛있는 집. 작은 의자가 있지만 앉아 마시긴 어려워, 테이크아웃으로 좋아요.", dEn:"Great coconut shakes — a few small stools, but best to grab one to go.",
-      chips:[["테이크아웃 추천","Best for takeout"]],
-      addr:"희우정로 72",
-      nurl:"https://naver.me/G2Ew2JxT",
-      gurl:"https://maps.app.goo.gl/Gp61unFYUtFpA1tL6", q:"코코부코 망원" },
-    { ko:"타코야키쿤", en:"Takoyaki-kun", tag:"타코야키 · Takoyaki",
-      dKo:"저녁에 여는 타코야키 전문점.", dEn:"Evening takoyaki stand with garlic-cheese and scallion versions.",
-      menu:"8알 6,000 · 8 pieces",
-      hours:"수–일 17:00–23:00 · 월·화 휴무 / Closed Mon–Tue",
-      addr:"망원로 33", q:"타코야키쿤 망원" },
-    { ko:"바삭마차", en:"Basak Macha", tag:"마시멜로 아이스크림 · Torched marshmallow ice cream",
-      dKo:"토치로 구워주는 마시멜로 아이스크림.", dEn:"Ice cream wrapped in marshmallow, torched to order in front of you.",
-      hours:"11:00–20:00",
-      addr:"월드컵로13길 64 (망원시장 / Mangwon Market)", q:"바삭마차 망원" },
-    { ko:"우이락", en:"Wooyirak", tag:"고추튀김, 전 · Fried chili & jeon",
-      dKo:"고추튀김에 막걸리 한잔. 망원시장의 시끌한 쪽.", dEn:"Stuffed fried chilis with makgeolli, on the market's lively side.",
-      menu:"고추튀김, 전, 떡볶이 · Fried chilis, jeon, tteokbokki",
-      hours:"11:00–22:00",
-      addr:"포은로8길 22 (망원시장 / Mangwon Market)",
-      gurl:"https://maps.app.goo.gl/tnC7kiBUC8gchgpS7?g_st=ic", q:"우이락 망원시장" },
-    { ko:"훈이네빈대떡", en:"Hooni's Bindaetteok", tag:"빈대떡 · Mung-bean pancake",
-      dKo:"망원시장 안, 즉석에서 부치는 빈대떡.", dEn:"Mung-bean pancakes fried to order inside Mangwon Market.",
-      addr:"포은로8길 22 (망원시장 / Mangwon Market)",
-      nurl:"https://naver.me/FdquoIjC", qg:"포은로8길 22", q:"훈이네빈대떡 망원시장" },
-    { ko:"망원수제고로케", en:"Mangwon Croquette", tag:"고로케 · Croquettes",
-      dKo:"시장 입구의 20년 된 고로케집.", dEn:"Twenty years of croquettes at the market entrance.",
-      menu:"고로케 700–1,000 · Croquettes",
-      hours:"09:00–21:00",
-      addr:"망원로 80 (망원시장 / Mangwon Market)",
-      nurl:"https://naver.me/GAr38b04", q:"망원수제고로케" },
-    { ko:"경기떡집", en:"Gyeonggi Tteok House", tag:"떡 · Rice cakes since 1958",
-      dKo:"1958년부터 이어온 떡집. 오후에는 소진됩니다.", dEn:"Handmade rice cakes since 1958 — sold out by afternoon.",
-      chips:[["이른 방문","Go early"]],
-      menu:"이티떡 2,200–2,500 · E.T. tteok",
-      hours:"07:00–18:00 · 일 휴무 / Closed Sun",
-      addr:"동교로9길 24", q:"경기떡집 망원" }
-  ]
-},
-{
-  id: "bar", eyebrow: "Bars", ko: "술집",
-  items: [
-    { ko:"책바", en:"Chaegbar", tag:"북 바 · A bar for reading",
-      dKo:"책 읽으며 조용히 마시는 바. 소설 제목을 붙인 칵테일.", dEn:"Quiet drinks with a book — cocktails named after novels.",
-      hours:"19:00–1:30 (금·토 18:30–) · 일·월 휴무 / Closed Sun–Mon",
-      addr:"포은로 90, 3층", q:"책바 망원" },
-    { ko:"미자카야", en:"Mizakaya", tag:"이자카야 · Izakaya",
-      dKo:"일본 골목 감성의 이자카야.", dEn:"A back-alley izakaya known for its tuna kimbap.",
-      menu:"진짜참치김밥 31,000 · 치킨난반 / Tuna kimbap, chicken nanban",
-      hours:"18:00–24:00",
-      addr:"포은로8길 5", q:"미자카야 망원" },
-    { ko:"선술집 위군", en:"Wigun", tag:"숙성회 이자카야 · Aged-sashimi izakaya",
-      dKo:"그날의 숙성회를 내는 작은 술집. 혼술하기에도 좋습니다.", dEn:"A small bar serving that day's aged sashimi; good for drinking alone.",
-      chips:[["인스타 DM 예약 권장","Book via Instagram DM"]],
-      addr:"포은로 74", q:"선술집 위군 망원" },
-    { ko:"유진", en:"Yujin", tag:"전통주 한식주점 · Korean pub",
-      dKo:"전통주와 계절 안주. 바 좌석 중심.", dEn:"Traditional Korean liquor with seasonal plates, mostly bar seating.",
-      menu:"육회, 계절 전 · Yukhoe, seasonal jeon",
-      addr:"포은로 146",
-      gurl:"https://maps.app.goo.gl/5p3rYxWt9sBw7nVM9?g_st=ic", q:"유진 망원 한식주점" },
-    { ko:"모우키", en:"Moukee", tag:"중식 안주 · Chinese bites & drinks", walk:"도보 7분 · 7 min",
-      dKo:"중식 안주에 술 한잔.", dEn:"Chinese small plates made for drinking.",
-      insta:"mou___kee", addr:"동교로 42-1",
-      gurl:"https://maps.app.goo.gl/bgWjCDaXdxPiGRGMA?g_st=ic", q:"모우키 망원 동교로" },
-    { ko:"유진", en:"Yujin", tag:"전통주 한식주점 · Korean pub",
-      dKo:"전통주와 계절 안주. 바 좌석 중심.", dEn:"Traditional Korean liquor with seasonal plates, mostly bar seating.",
-      menu:"육회, 계절 전 · Yukhoe, seasonal jeon",
-      addr:"포은로 146",
-      gurl:"https://maps.app.goo.gl/5p3rYxWt9sBw7nVM9?g_st=ic", q:"유진 망원 한식주점" },
-    { ko:"성립", en:"Seongnip", tag:"이자카야 · Izakaya",
-      dKo:"숙성회와 사케, 차분한 분위기.", dEn:"Aged sashimi and sake under low, calm light.",
-      menu:"사시미, 유자 사케 · Sashimi, yuzu sake",
-      hours:"화–금 18:00–24:00, 토·일 17:00–24:00",
-      addr:"성미산로2길 43, 2층",
-      gurl:"https://maps.app.goo.gl/Mjnhbhe93W4AvdRS7?g_st=ic", q:"성립 망원 이자카야" }
-  ]
-},
-{
-  id: "shop", eyebrow: "Shops", ko: "쇼핑",
-  items: [
-    { ko:"해수향당", en:"Haesoohyangdang", tag:"향 · Korean fragrance house", walk:"도보 2분 · 2 min",
-      dKo:"한국적인 향을 만드는 향수 집.", dEn:"A fragrance house built on Korean scents.",
-      menu:"환림목 · Hwanrimmok perfume",
-      addr:"망원로6길 56, B01", q:"해수향당 망원" },
-    { ko:"제로스페이스", en:"Zero Space", tag:"일러스트 문구 · Illustrated stationery",
-      dKo:"디자인 스튜디오 제로퍼제로의 쇼룸. 일러스트 문구와 엽서.", dEn:"Showroom of design studio Zero Per Zero — illustrated stationery and postcards.",
-      hours:"평일 13:00–19:30, 토 12:00–20:00, 일 12:00–19:00",
-      addr:"희우정로16길 32",
-      nurl:"https://naver.me/xjYCUnDY",
-      gurl:"https://maps.app.goo.gl/Dkei2HSwDsnJxttb7?g_st=ic", q:"제로스페이스 망원" },
-    { ko:"에메모가든", en:"Ememo Garden", tag:"패션 · Fashion",
-      dKo:"다양한 패턴의 패션 아이템을 파는 힙한 샵.", dEn:"A hip shop stocked with boldly patterned fashion pieces.",
-      insta:"mmo_garden", addr:"망원로1길 16", q:"에메모가든 망원" },
-    { ko:"무드", en:"Mood", tag:"인테리어 소품 · Home objects",
-      dKo:"인테리어 소품 가게.", dEn:"A small shop of home objects.",
-      insta:"mood_m.won", addr:"포은로8길 16",
-      nurl:"https://naver.me/FuN8t2Hl",
-      gurl:"https://maps.app.goo.gl/RA4HjtgsFYwEnyMB9?g_st=ic", q:"무드 망원 소품샵" },
-    { ko:"프레젠트모먼트", en:"Present Moment", tag:"소품샵 · Objects & ornaments", walk:"도보 7분 · 7 min",
-      dKo:"1년 내내 크리스마스인 소품샵.", dEn:"Where it is Christmas all year round — ornaments, music boxes, postcards.",
-      hours:"13:00–21:00 · 월 휴무 / Closed Mon",
-      addr:"동교로 49-1", q:"프레젠트모먼트 망원" }
-  ]
-},
-{
-  id: "photo", eyebrow: "Photo Booths", ko: "인생네컷",
-  items: [
-    { ko:"모노맨션", en:"Mono Mansion", tag:"셀프 스튜디오 · Self-studio",
-      dKo:"자연스러운 인물사진처럼 나오는 셀프 스튜디오. 따뜻하고 포근한 톤.", dEn:"Natural, portrait-like shots in a warm, cozy tone.",
-      addr:"포은로 89",
-      nurl:"https://naver.me/5XJuskrf", q:"모노맨션 망원" },
-    { ko:"포토이즘박스 망원점", en:"Photoism Box", tag:"네컷 사진 · Four-cut photo booth",
-      dKo:"기본에 충실한 네컷 부스. 프레임 선택지가 많습니다.", dEn:"The classic four-cut booth with plenty of frame options.",
-      addr:"포은로 88",
-      nurl:"https://naver.me/5MVzOF42", q:"포토이즘박스 망원점" },
-    { ko:"하루필름", en:"Haru Film", tag:"네컷 사진 · Four-cut photo booth",
-      dKo:"밝고 쿨톤으로 나오는 부스. 아이돌 프로필 사진 같은 느낌.", dEn:"Bright, cool-toned shots — like an idol's profile photo.",
-      addr:"포은로 87, 1층", q:"하루필름 망원점" },
-    { ko:"모멘터링", en:"Momentering", tag:"네컷 사진 · Four-cut photo booth",
-      dKo:"흰빛과 회색빛이 섞인 독특한 색감. 감성사진 쪽에 가깝습니다.", dEn:"A distinctive white-gray palette — closer to a mood photo than a booth snap.",
-      addr:"포은로 86",
-      gurl:"https://maps.app.goo.gl/BFwyxbN44dB41cKK6", q:"모멘터링 망원" },
-    { ko:"포토이즘컬러드 망원점", en:"Photoism Colored", tag:"네컷 사진 · Four-cut photo booth",
-      dKo:"배경 색을 골라 찍는 컬러 컨셉 부스.", dEn:"Pick your backdrop color before you shoot.",
-      addr:"포은로 95",
-      nurl:"https://naver.me/5177VN1i", q:"포토이즘컬러드 망원점" }
-  ]
-},
-{
-  id: "ess", eyebrow: "Essentials", ko: "편의시설", type: "essential",
-  items: [
-    { ko:"CU 망원로점", en:"Convenience store", note:"규모 아담 · small", q:"CU 망원로점" },
-    { ko:"GS25 망원희망점", en:"Convenience store", note:"규모 큼 · large", q:"GS25 망원희망점" },
-    { ko:"제일약국", en:"Pharmacy", q:"제일약국 망원" },
-    { ko:"영진약국", en:"Pharmacy", q:"영진약국 망원" },
-    { ko:"올리브영 망원역점", en:"Olive Young (drugstore)", q:"올리브영 망원역점" },
-    { ko:"올리브영 망원동점", en:"Olive Young (drugstore)", q:"올리브영 망원동점" },
-    { ko:"망원파출소", en:"Police station", q:"망원파출소" }
-  ]
-},
-{
-  id: "river", eyebrow: "Hangang", ko: "한강, 야경",
-  noteKo: "호스트가 실제로 앉는 자리들입니다.", noteEn: "The spots where your host actually sits.",
-  items: [
-    { ko:"망원초록길 입구", en:"Mangwon Chorok-gil trail", tag:"산책 · Walk", walk:"도보 7분 · 7 min",
-      dKo:"초입은 조금 오르막이지만, 높은 곳에서 한강 야경을 내려다볼 수 있습니다.", dEn:"A short uphill start, then the river at night from above.",
-      addr:"망원초록길",
-      nurl:"https://naver.me/x1uAmW1x", q:"망원초록길" },
-    { ko:"망원한강공원 입구", en:"Mangwon Hangang Park entrance", tag:"한강 진입점 · Gateway to the river", walk:"도보 10분 · 10 min",
-      dKo:"시장에서 간식을 사서 한강으로 가는 길.", dEn:"Pick up snacks at the market and walk to the river.",
-      addr:"망원로2 부근",
-      nurl:"https://naver.me/F7FQ5YsJ",
-      gurl:"https://maps.app.goo.gl/cbqMHXAaP5pqyEKN9?g_st=ic", q:"망원한강공원 입구" },
-    { ko:"야경 스팟, 슬로프", en:"Night-view slope", tag:"야경 · Night view",
-      dKo:"공원 입구 바로 앞. 슬로프 바닥에 앉아 한강 야경을 보기 좋은 자리.", dEn:"Right by the park entrance — sit on the sloped bank and watch the river lights.",
-      addr:"마포나루길 429", q:"마포나루길 429" },
-    { ko:"야경 스팟, 계단", en:"Night-view steps", tag:"야경 · Night view",
-      dKo:"공원 입구에서 도보 20분. 길게 늘어선 계단에 앉아 보는 야경.", dEn:"A 20-minute walk from the entrance — long steps made for sitting with a view.",
-      addr:"상암동 487-334", q:"상암동 487-334" }
-  ]
-}
-];
+/* ============================================================
+   다국어 구조
+   - 언어 순서(모든 배열 공통): [ko, en, zh(간체), tw(번체), ja, es, fr, de]
+   - 장소명: 한글 고정 + 영문 병기. 한국어 탭에선 한글이 크게,
+     그 외 언어 탭에선 영문/로마자가 크게 나오고 한글이 작게 붙는다
+     (간판을 알아보려면 한글이 필요해서 항상 함께 보여준다)
+   - menu(대표 메뉴)는 음식 고유명사라 전 언어 공통(한·영 병기)으로 둔다
+   - hours는 한국어 원문을 규칙 치환으로 언어별 변환한다
+   ============================================================ */
+const LANG_KEYS = ["ko","en","zh","tw","ja","es","fr","de"];
+const LANG_LABELS = ["한국어","English","简体中文","繁體中文","日本語","Español","Français","Deutsch"];
+let LANG = 0;
+try { const s = localStorage.getItem("sidam-lang"); if (s && LANG_KEYS.indexOf(s) >= 0) LANG = LANG_KEYS.indexOf(s); } catch (e) {}
 
-/* 장소별 사진 파일명. images/{값}.jpg 파일을 올리면 자동으로 썸네일 표시, 없으면 숨김 */
+const UI = {
+  brand: ["시담","SIDAM","SIDAM","SIDAM","SIDAM","SIDAM","SIDAM","SIDAM"],
+  title: ["시담 로컬 가이드북","SIDAM Local Guidebook","柿淡本地指南","柿淡在地指南","シダム ローカルガイドブック","Guía local de SIDAM","Guide local de SIDAM","SIDAM Lokalguide"],
+  tagline: [
+    "감나무 곁, 고요하고 담백한 집",
+    "A quiet, simple home beside a persimmon tree",
+    "柿子树旁，简约而宁静的家",
+    "柿子樹旁，簡約而寧靜的家",
+    "柿の木のそば、素朴で静かな家",
+    "Una casa serena y sencilla junto a un caqui",
+    "Une maison simple et paisible près d'un plaqueminier",
+    "Ein stilles, schlichtes Zuhause neben einem Kakibaum"
+  ],
+  eyebrow: ["호스트의 편지","A letter from your host","房东的信","房東的信","ホストからの手紙","Carta de tu anfitriona","Lettre de votre hôte","Ein Brief Ihrer Gastgeberin"],
+  letter: [
+`안녕하세요, 시담의 호스트입니다.
+마포구의 여러 동네에서 살아봤지만, 저에게는 망원동이 가장 사랑스러운 동네입니다. 주말이면 놀러 온 사람들로 붐비지만 시끄럽지 않고, 밤늦게 돌아와도 거리에 사람이 아주 없지는 않아서 마음이 놓이는 동네예요.
+한국에는 아파트가 많지만, 망원동에는 아직 옛 건물들이 남아 있습니다. 그 아래층마다 작은 상점과 식당, 카페가 저마다의 매력으로 자리를 지키고 있어요. 그래서 망원에서는 지도를 접어두고 골목을 헤매보셔도 좋습니다. 아무것도 없을 것 같던 골목에서 문득 만나는 가게 하나가 선물처럼 느껴질 거예요.
+이 골목들의 아기자기함과 망원시장의 정겨움을, 여기 사는 제가 정말 좋아하는 자리들로 소개하고 싶어 이 가이드북을 만들었습니다. 시담이 있는 망원동의 소소한 즐거움을 함께 느껴보시길 바랍니다.`,
+`Hello — I'm your host at SIDAM.
+I've lived in several neighborhoods across Mapo, but Mangwon is the one I've come to love most. On weekends it fills with visitors yet never feels loud, and even walking home late at night the streets are never quite empty, which always puts me at ease.
+Korea is full of apartment towers, but Mangwon still keeps its old low-rise buildings, and beneath them small shops, restaurants and cafés each hold their own charm. So here, feel free to put the map away and wander. A little shop you stumble upon in an alley that seemed to hold nothing — it feels like a gift.
+I made this guidebook to share the places I truly love as someone who lives here: these winding alleys, and the warmth of Mangwon Market. I hope you enjoy the small pleasures of Mangwon-dong, the neighborhood SIDAM calls home.`,
+`您好，我是柿淡的房东。
+我在麻浦区的好几个街区生活过，但最让我喜爱的还是望远洞。周末虽然游人不少，却并不喧闹；深夜回家时，街上也总有些行人，让人安心。
+韩国到处是公寓楼，而望远洞还保留着许多老建筑，每栋楼下都有小店、餐厅和咖啡馆，各有各的魅力。所以在望远，不妨收起地图，随意走走。在看似什么都没有的小巷里忽然遇见一家小店，就像收到一份礼物。
+我把住在这里的自己真心喜爱的地方整理成了这本指南——这些曲折的小巷，还有望远市场的人情味。希望您也能感受到柿淡所在的望远洞的小小乐趣。`,
+`您好，我是柿淡的房東。
+我在麻浦區的好幾個街區生活過，但最讓我喜愛的還是望遠洞。週末雖然遊人不少，卻並不喧鬧；深夜回家時，街上也總有些行人，讓人安心。
+韓國到處是公寓大樓，而望遠洞還保留著許多老建築，每棟樓下都有小店、餐廳和咖啡館，各有各的魅力。所以在望遠，不妨收起地圖，隨意走走。在看似什麼都沒有的小巷裡忽然遇見一家小店，就像收到一份禮物。
+我把住在這裡的自己真心喜愛的地方整理成了這本指南——這些曲折的小巷，還有望遠市場的人情味。希望您也能感受到柿淡所在的望遠洞的小小樂趣。`,
+`こんにちは、シダムのホストです。
+麻浦区のいくつかの街に住んできましたが、いちばん愛おしく感じるのは望遠洞（マンウォンドン）です。週末は遊びに来た人で賑わいますが、うるさくはなく、夜遅く帰っても通りに人けが絶えないので、どこか安心できる街です。
+韓国はアパートの多い国ですが、望遠洞にはまだ古い建物が残っていて、その一階ごとに小さなお店や食堂、カフェがそれぞれの魅力で佇んでいます。だからこの街では、地図をしまって路地を歩いてみてください。何もなさそうな路地でふいに出会う一軒のお店は、贈り物のように感じられるはずです。
+ここに住む私が心から好きな場所を紹介したくて、このガイドブックを作りました。曲がりくねった路地と、望遠市場のあたたかさ。シダムのある望遠洞のささやかな楽しみを、一緒に感じていただけたら嬉しいです。`,
+`Hola, soy tu anfitriona en SIDAM.
+He vivido en varios barrios de Mapo, pero Mangwon es el que más he llegado a querer. Los fines de semana se llena de visitantes sin volverse ruidoso, y hasta volviendo a casa de noche las calles nunca están del todo vacías, lo que siempre me tranquiliza.
+Corea está llena de torres de apartamentos, pero Mangwon aún conserva sus edificios bajos de antes, y debajo de cada uno hay pequeñas tiendas, restaurantes y cafés con su propio encanto. Así que aquí, guarda el mapa y déjate llevar. Esa tiendita que aparece en un callejón donde no parecía haber nada se siente como un regalo.
+Hice esta guía para compartir los lugares que de verdad amo como alguien que vive aquí: estos callejones y la calidez del mercado de Mangwon. Espero que disfrutes los pequeños placeres de Mangwon-dong, el barrio de SIDAM.`,
+`Bonjour, je suis votre hôte à SIDAM.
+J'ai vécu dans plusieurs quartiers de Mapo, mais c'est Mangwon que j'ai fini par aimer le plus. Le week-end, il se remplit de visiteurs sans jamais devenir bruyant, et même en rentrant tard le soir, les rues ne sont jamais tout à fait vides — cela me rassure toujours.
+La Corée est couverte de tours d'appartements, mais Mangwon garde encore ses vieux immeubles bas, et sous chacun d'eux, petites boutiques, restaurants et cafés cultivent leur propre charme. Alors ici, rangez la carte et laissez-vous porter. Une petite boutique croisée dans une ruelle qui semblait vide — c'est comme un cadeau.
+J'ai créé ce guide pour partager les lieux que j'aime vraiment, en habitante du quartier : ces ruelles sinueuses et la chaleur du marché de Mangwon. J'espère que vous goûterez aux petits plaisirs de Mangwon-dong, le quartier de SIDAM.`,
+`Hallo, ich bin Ihre Gastgeberin im SIDAM.
+Ich habe in mehreren Vierteln von Mapo gelebt, aber Mangwon ist das, das ich am meisten liebgewonnen habe. Am Wochenende füllt es sich mit Besuchern, ohne je laut zu werden, und selbst spät nachts sind die Straßen nie ganz leer — das beruhigt mich immer.
+Korea ist voller Wohnhochhäuser, doch Mangwon bewahrt noch seine alten, niedrigen Häuser, und unter jedem von ihnen pflegen kleine Läden, Restaurants und Cafés ihren eigenen Charme. Stecken Sie hier also ruhig die Karte weg und lassen Sie sich treiben. Ein kleiner Laden in einer Gasse, in der scheinbar nichts war — das fühlt sich an wie ein Geschenk.
+Diesen Guide habe ich gemacht, um die Orte zu teilen, die ich als Bewohnerin wirklich liebe: diese verwinkelten Gassen und die Wärme des Mangwon-Markts. Ich wünsche Ihnen viel Freude an den kleinen Vergnügen von Mangwon-dong, dem Viertel von SIDAM.`
+  ],
+  sig: [
+    "— 망원동에서, 시담 호스트 드림","— From Mangwon-dong, your host at SIDAM","— 来自望远洞，柿淡房东","— 來自望遠洞，柿淡房東",
+    "— 望遠洞より、シダムのホスト","— Desde Mangwon-dong, tu anfitriona de SIDAM","— Depuis Mangwon-dong, votre hôte de SIDAM","— Aus Mangwon-dong, Ihre Gastgeberin vom SIDAM"
+  ],
+  menuL: ["메뉴","Menu","菜单","菜單","メニュー","Menú","Menu","Menü"],
+  hoursL: ["영업","Hours","营业时间","營業時間","営業時間","Horario","Horaires","Zeiten"],
+  notice: [
+    "여기 담긴 곳들은 호스트의 취향으로 골랐기에, 여러분의 취향과 꼭 맞지 않을 수 있어요. 여행이 조금 수월해지길 바라는 마음으로 만든 가이드이니 가볍게 참고해 주세요. 영업시간과 가격은 바뀔 수 있으니 방문 전에 지도 링크에서 확인해 주세요.",
+    "These places are one host's personal picks, so they may not suit every taste. This guide was made in the hope of smoothing your trip a little — take it as a friendly reference. Hours and prices can change, so please check the map links before visiting.",
+    "这些地方都是房东按个人喜好挑选的，未必符合每个人的口味。做这本指南只是希望您的旅行更顺利一些，轻松参考即可。营业时间和价格可能变动，出发前请通过地图链接确认。",
+    "這些地方都是房東按個人喜好挑選的，未必符合每個人的口味。做這本指南只是希望您的旅行更順利一些，輕鬆參考即可。營業時間和價格可能變動，出發前請透過地圖連結確認。",
+    "ここに載せた場所はホストの好みで選んだものなので、皆さまの好みに合わないこともあるかもしれません。旅が少しでもスムーズになればと作ったガイドですので、気軽に参考にしてください。営業時間や価格は変わることがあります。訪問前に地図リンクでご確認ください。",
+    "Estos lugares son elecciones personales de la anfitriona, así que puede que no coincidan con todos los gustos. Esta guía se hizo para facilitar un poco tu viaje — tómala como una referencia amistosa. Los horarios y precios pueden cambiar; compruébalos en los enlaces del mapa antes de ir.",
+    "Ces adresses sont les choix personnels de votre hôte et ne conviendront peut-être pas à tous les goûts. Ce guide a été conçu pour faciliter un peu votre voyage — consultez-le en toute simplicité. Horaires et prix peuvent changer : vérifiez les liens cartes avant de vous déplacer.",
+    "Diese Orte sind persönliche Empfehlungen der Gastgeberin und treffen vielleicht nicht jeden Geschmack. Dieser Guide soll Ihre Reise ein wenig erleichtern — nehmen Sie ihn als freundliche Orientierung. Öffnungszeiten und Preise können sich ändern; prüfen Sie vor dem Besuch die Kartenlinks."
+  ],
+  emergency: [
+    "",
+    "Emergency (fire / ambulance) +82-119 · Police +82-112",
+    "急救 / 火警 +82-119 · 报警 +82-112",
+    "急救 / 火警 +82-119 · 報警 +82-112",
+    "救急・消防 +82-119 · 警察 +82-112",
+    "Emergencias (bomberos / ambulancia) +82-119 · Policía +82-112",
+    "Urgences (pompiers / ambulance) +82-119 · Police +82-112",
+    "Notruf (Feuerwehr / Rettung) +82-119 · Polizei +82-112"
+  ],
+  photoNote: [
+    "한국에서 유행하는 인생네컷입니다. 친구를 만나면 오늘을 기념하며 네컷 사진을 찍어 나눠 갖곤 해요. 기계마다 다르지만, 출력된 사진 하단의 작은 QR을 스캔하면 촬영 순간의 GIF를 확인하고 내려받을 수 있습니다. 친구와 함께든 혼자든, 오늘의 추억을 남기기 좋아요.",
+    "These four-cut photo booths are a beloved Korean ritual — friends mark the day by taking a strip of four photos together. On most machines, scanning the small QR code at the bottom of your print lets you view and download a GIF of the moment. With friends or on your own, it's a lovely way to keep today.",
+    "\u201c人生四格\u201d是韩国流行的拍照文化——朋友见面时拍上一条四格照片，纪念今天。大多数机器在照片下方印有小小的二维码，扫一扫就能查看并下载拍摄瞬间的GIF。无论和朋友还是独自一人，都很适合留下今天的回忆。",
+    "「人生四格」是韓國流行的拍照文化——朋友見面時拍上一條四格照片，紀念今天。大多數機器在照片下方印有小小的QR碼，掃一掃就能查看並下載拍攝瞬間的GIF。無論和朋友還是獨自一人，都很適合留下今天的回憶。",
+    "「人生4カット」は韓国で人気のフォト文化。友達と会った記念に4カット写真を撮って分け合います。多くの機械では、プリント下部の小さなQRコードを読み取ると撮影時のGIFを確認・ダウンロードできます。友達とでも、ひとりでも、今日の思い出を残すのにぴったりです。",
+    "Los fotomatones de cuatro cortes son toda una tradición en Corea: los amigos celebran el día haciéndose una tira de cuatro fotos. En la mayoría de máquinas, al escanear el pequeño QR de la parte inferior puedes ver y descargar un GIF del momento. Con amigos o en solitario, es una bonita forma de guardar el día.",
+    "Le photomaton à quatre poses est un rituel très populaire en Corée : entre amis, on immortalise la journée avec une bande de quatre photos. Sur la plupart des machines, le petit QR code en bas du tirage permet de voir et télécharger un GIF du moment. À deux ou en solo, c'est une jolie façon de garder une trace du jour.",
+    "Die Vier-Bilder-Automaten sind in Korea ein beliebtes Ritual: Freunde halten den Tag mit einem Fotostreifen fest. Bei den meisten Automaten lässt sich über den kleinen QR-Code am unteren Rand ein GIF des Moments ansehen und herunterladen. Ob mit Freunden oder allein — eine schöne Erinnerung an heute."
+  ],
+  riverNote: [
+    "시담에 오셨다면 날씨 좋은 날 망원한강공원에 한번쯤 가보길 추천합니다. 걸어서 갈 수 있고, 한강을 즐기기에 최적의 장소예요. 제가 좋아하는 스팟을 몇 군데 알려드릴게요.",
+    "If you're staying at SIDAM, I recommend visiting Mangwon Hangang Park at least once on a fine day. It's within walking distance and the perfect place to enjoy the river. Let me share a few spots I love.",
+    "住在柿淡的话，推荐挑个好天气去一次望远汉江公园。走路就能到，是享受汉江的最佳去处。下面介绍几个我喜欢的位置。",
+    "住在柿淡的話，推薦挑個好天氣去一次望遠漢江公園。走路就能到，是享受漢江的最佳去處。下面介紹幾個我喜歡的位置。",
+    "シダムに来たら、天気のいい日に一度は望遠漢江公園へ行ってみてください。歩いて行けて、漢江を楽しむのに最高の場所です。私の好きなスポットをいくつかご紹介します。",
+    "Si te alojas en SIDAM, te recomiendo ir al parque Hangang de Mangwon al menos una vez en un día despejado. Se llega andando y es el lugar perfecto para disfrutar del río. Te cuento algunos de mis rincones favoritos.",
+    "Si vous séjournez à SIDAM, je vous recommande d'aller au moins une fois au parc Hangang de Mangwon par beau temps. On y va à pied, et c'est l'endroit idéal pour profiter du fleuve. Voici quelques-uns de mes coins préférés.",
+    "Wenn Sie im SIDAM wohnen, empfehle ich, an einem schönen Tag mindestens einmal zum Mangwon-Hangang-Park zu gehen. Er ist zu Fuß erreichbar und der perfekte Ort, den Fluss zu genießen. Hier ein paar meiner Lieblingsplätze."
+  ],
+  seeMap: ["지도에서 위치 확인","see map","见地图","見地圖","地図で確認","ver mapa","voir la carte","siehe Karte"],
+  market: ["망원시장","Mangwon Market","望远市场","望遠市場","望遠市場","Mercado Mangwon","Marché Mangwon","Mangwon-Markt"]
+};
+
+/* 칩(짧은 안내 태그) — 전 언어 */
+const CHIP = {
+  wait: ["웨이팅","Expect a wait","需排队","需排隊","行列あり","Suele haber cola","File d'attente","Wartezeit"],
+  reserve: ["예약 필수","Reservation required","需预约","需預約","要予約","Reserva necesaria","Réservation requise","Reservierung nötig"],
+  morning: ["오전 방문","Morning only","建议上午前往","建議上午前往","午前中に","Solo por la mañana","Le matin","Nur vormittags"],
+  takeoutOnly: ["포장만","Takeout only","仅外带","僅外帶","テイクアウトのみ","Solo para llevar","À emporter uniquement","Nur zum Mitnehmen"],
+  goEarly: ["이른 방문","Go early","建议早去","建議早去","お早めに","Ve temprano","Venez tôt","Früh kommen"],
+  dm: ["인스타 DM 예약 권장","Book via Instagram DM","请通过Instagram私信预约","請透過Instagram私訊預約","InstagramのDMで予約","Reserva por DM de Instagram","Réservation par DM Instagram","Reservierung per Instagram-DM"],
+  early: ["오픈 전 대기","Arrive before opening","建议开门前到","建議開門前到","開店前に並ぶ","Llega antes de abrir","Arrivez avant l'ouverture","Vor Öffnung kommen"],
+  lineFast: ["줄이 빨리 줄어요","Line moves fast","排队很快","排隊很快","回転が速い","La cola avanza rápido","La file avance vite","Geht schnell voran"],
+  takeoutBest: ["테이크아웃 추천","Best for takeout","推荐外带","推薦外帶","テイクアウト推奨","Mejor para llevar","Idéal à emporter","Am besten zum Mitnehmen"]
+};
+
+/* 도보 시간 표기 */
+function walkFmt(n) {
+  return ["도보 "+n+"분", n+" min walk", "步行"+n+"分钟", "步行"+n+"分鐘", "徒歩"+n+"分", "a "+n+" min a pie", "à "+n+" min à pied", n+" Min. zu Fuß"][LANG];
+}
+
+/* 영업시간: 한국어 원문 -> 언어별 치환 */
+const H_WORDS = [
+  ["소진 시 마감", ["소진 시 마감","until sold out","售完即止","售完為止","売り切れ次第終了","hasta agotar","jusqu'à épuisement","bis ausverkauft"]],
+  ["인스타그램 확인", ["인스타그램 확인","check Instagram","请查看Instagram","請查看Instagram","Instagramで確認","ver Instagram","voir Instagram","siehe Instagram"]],
+  ["주말 영업", ["주말 영업","weekends only","仅周末营业","僅週末營業","週末のみ営業","solo fines de semana","week-ends seulement","nur am Wochenende"]],
+  ["브레이크", ["브레이크","break","中间休息","中間休息","休憩","descanso","pause","Pause"]],
+  ["휴무", ["휴무","closed","休息","公休","定休","cerrado","fermé","geschlossen"]],
+  ["매일", ["매일","daily","每天","每天","毎日","todos los días","tous les jours","täglich"]],
+  ["평일", ["평일","weekdays","工作日","平日","平日","entre semana","en semaine","wochentags"]],
+  ["주말", ["주말","weekends","周末","週末","週末","fines de semana","week-end","Wochenende"]]
+];
+const H_DAYS = {
+  "월": ["월","Mon","周一","週一","月","lun","lun","Mo"],
+  "화": ["화","Tue","周二","週二","火","mar","mar","Di"],
+  "수": ["수","Wed","周三","週三","水","mié","mer","Mi"],
+  "목": ["목","Thu","周四","週四","木","jue","jeu","Do"],
+  "금": ["금","Fri","周五","週五","金","vie","ven","Fr"],
+  "토": ["토","Sat","周六","週六","土","sáb","sam","Sa"],
+  "일": ["일","Sun","周日","週日","日","dom","dim","So"]
+};
+function hoursFmt(s) {
+  if (!s || LANG === 0) return s;
+  let out = s;
+  for (const [k, arr] of H_WORDS) out = out.split(k).join(arr[LANG]);
+  out = out.replace(/[월화수목금토일](?=[\s·,)–.·]|$)/g, ch => H_DAYS[ch] ? H_DAYS[ch][LANG] : ch);
+  return out;
+}
+/* 도로명 로마자 표기 (긴 이름 먼저 매칭) */
+const ROADS = [
+  ["망원초록길","Mangwon Chorok-gil"],
+  ["동교로9길","Donggyo-ro 9-gil"], ["동교로","Donggyo-ro"],
+  ["마포나루길","Maponaru-gil"],
+  ["망원로1길","Mangwon-ro 1-gil"], ["망원로2길","Mangwon-ro 2-gil"],
+  ["망원로6길","Mangwon-ro 6-gil"], ["망원로8길","Mangwon-ro 8-gil"], ["망원로","Mangwon-ro"],
+  ["성미산로","Seongmisan-ro"],
+  ["월드컵로13길","World Cup-ro 13-gil"], ["월드컵로17길","World Cup-ro 17-gil"], ["월드컵로","World Cup-ro"],
+  ["포은로8길","Poeun-ro 8-gil"], ["포은로","Poeun-ro"],
+  ["희우정로10길","Huiujeong-ro 10-gil"], ["희우정로15길","Huiujeong-ro 15-gil"],
+  ["희우정로16길","Huiujeong-ro 16-gil"], ["희우정로","Huiujeong-ro"]
+];
+const NEAR = ["부근","near","附近","附近","付近","cerca de","près de","Nähe"];
+const FLOOR = ["층","F","层","樓","階","º piso","e ét.",". OG"];
+function addrFmt(s) {
+  if (!s || LANG === 0) return s;
+  let out = s.split("망원시장").join(UI.market[LANG]);
+  for (const [k, v] of ROADS) {
+    if (out.indexOf(k) === 0) {
+      const rest = out.slice(k.length);
+      out = v + (/^\d/.test(rest) ? " " : "") + rest;
+      break;
+    }
+  }
+  out = out.replace(/(\d+(?:-\d+)?)층/g, (m, n) => n + FLOOR[LANG]);
+  if (out.indexOf(" 부근") >= 0) {
+    const base = out.replace(" 부근", "");
+    out = (LANG === 2 || LANG === 3 || LANG === 4) ? base + NEAR[LANG] : NEAR[LANG] + " " + base;
+  }
+  return out;
+}
+
+/* 장소별 사진 파일명. images/{값}.jpg 파일을 올리면 자동 썸네일, 없으면 숨김 */
 const IMG = {
   "포스트 노빌즈":"postnobills","로트":"rote","M1CT":"m1ct","올웨이즈 어거스트 로스터스":"alwaysaugust",
   "한강에스프레소":"hangang-espresso","브라운 프론트 도어":"brownfrontdoor","우이그":"uig",
@@ -571,72 +392,661 @@ const IMG = {
   "베우노":"bueno","쑨송":"ssunsong","류진":"ryujin","홍두깨손칼국수":"hongdukkae","강동원":"gangdongwon",
   "송정":"songjeong","헤키":"heki","우리바다수산":"uribada","만나식당":"manna","행진":"haengjin",
   "온랭":"onraeng","일렌토":"illento",
-  "크리머리":"kreamery","타코야키쿤":"takoyakikun","바삭마차":"basakmacha","우이락":"wooyirak",
+  "크리머리":"kreamery","코코부코":"cocobuko","타코야키쿤":"takoyakikun","바삭마차":"basakmacha","우이락":"wooyirak",
   "훈이네빈대떡":"hooni","망원수제고로케":"croquette","경기떡집":"gyeonggi-tteok",
   "책바":"chaegbar","미자카야":"mizakaya","선술집 위군":"wigun","유진":"yujin","성립":"seongnip","모우키":"moukee",
   "해수향당":"haesoo","에메모가든":"ememo","무드":"mood","제로스페이스":"zerospace","프레젠트모먼트":"presentmoment",
   "하루필름":"harufilm","포토이즘박스 망원점":"photoism-box","모노맨션":"monomansion",
   "포토이즘컬러드 망원점":"photoism-colored","모멘터링":"momentering",
   "망원초록길 입구":"chorokgil","망원한강공원 입구":"hangang-entrance",
-  "야경 스팟, 슬로프":"night-slope","야경 스팟, 계단":"night-steps"
+  "야경 스팟 1, 슬로프":"night-slope","야경 스팟 2, 계단":"night-steps"
 };
 
-const nav = document.getElementById("nav");
-const app = document.getElementById("app");
+/* ============================================================
+   장소 데이터 — tag / d 는 [ko,en,zh,tw,ja,es,fr,de]
+   정렬은 시담(망원로2길 80) 기준 가까운 순
+   ============================================================ */
+const SECTIONS = [
+{
+  id: "river",
+  title: ["한강, 야경","Hangang & Night Views","汉江夜景","漢江夜景","漢江・夜景","Río Han de noche","Hangang la nuit","Hangang & Nachtblick"],
+  noteKey: "riverNote",
+  items: [
+    { ko:"망원초록길 입구", en:"Mangwon Chorok-gil trail", walk:7,
+      tag:["산책","Walk","散步路线","散步路線","散歩道","Paseo","Balade","Spazierweg"],
+      d:["숙소에서 가장 가까운 한강 입구입니다. 초입은 조금 오르막이지만, 올라서면 조금 높은 곳에서 펼쳐지는 한강 뷰에 가슴이 탁 트여요. 속이 답답하거나 더 넓게 한강을 내려다보고 싶을 때 가는 저의 스팟입니다. 바로 앞에 넓은 계단이 있어서, 멀리 갈 것 없이 계단에 앉아 조용히 야경을 즐기기 좋아요. 사람이 붐비는 곳은 아니고, 가끔 계단 앞 광장에서 배드민턴을 치거나 킥보드를 타는 사람들을 구경하는 재미도 있습니다.",
+         "The closest Hangang entrance to the house. The start is slightly uphill, but at the top the river opens wide below you — the view clears your chest. This is my spot for days when I need air and a bigger sky. Broad steps sit right there, so you can simply sit and take in the night view without going far. It's never crowded; sometimes you watch people playing badminton or riding kickboards on the plaza below.",
+         "离住处最近的汉江入口。入口有段小上坡，但登上去后，从高处铺展开的江景让人心胸开阔。心里憋闷、想俯瞰更辽阔的汉江时，我就来这里。眼前就有宽阔的台阶，不必走远，坐下便能安静地欣赏夜景。这里不算拥挤，有时看看台阶前广场上打羽毛球、玩滑板车的人，也别有乐趣。",
+         "離住處最近的漢江入口。入口有段小上坡，但登上去後，從高處鋪展開的江景讓人心胸開闊。心裡憋悶、想俯瞰更遼闊的漢江時，我就來這裡。眼前就有寬闊的台階，不必走遠，坐下便能安靜地欣賞夜景。這裡不算擁擠，有時看看台階前廣場上打羽毛球、玩滑板車的人，也別有樂趣。",
+         "宿からいちばん近い漢江への入口。入口は少し上り坂ですが、上りきると高台から漢江が広がり、胸がすっと開きます。気分が塞いだ日や、広い川を見下ろしたい日に行く私のスポット。目の前に広い階段があるので、遠くまで行かずとも腰かけて静かに夜景を楽しめます。混み合う場所ではなく、階段前の広場でバドミントンやキックボードをする人を眺めるのも一興です。",
+         "La entrada al Hangang más cercana a la casa. El inicio sube un poco, pero arriba el río se abre ancho a tus pies — la vista despeja el pecho. Es mi rincón para los días que piden aire y cielo. Hay escalones amplios justo ahí: siéntate y disfruta la noche sin ir más lejos. Nunca está lleno; a veces entretiene ver a la gente jugar al bádminton o patinar en la plaza.",
+         "L'accès au Hangang le plus proche de la maison. Le début grimpe un peu, mais en haut le fleuve se déploie sous vos yeux — la vue dégage la poitrine. C'est mon coin pour les jours où il faut de l'air et du large. De larges marches sont juste là : asseyez-vous et savourez la nuit sans aller plus loin. Jamais bondé ; on s'amuse parfois à regarder badminton et trottinettes sur l'esplanade.",
+         "Der nächste Hangang-Zugang vom Haus. Der Anfang steigt leicht an, doch oben breitet sich der Fluss unter Ihnen aus — der Blick macht die Brust weit. Mein Ort für Tage, die Luft und Weite brauchen. Breite Stufen liegen direkt davor: einfach hinsetzen und den Abend genießen. Nie überlaufen; manchmal schaut man den Leuten beim Badminton oder Rollerfahren auf dem Platz zu."],
+      addr:"망원초록길",
+      nurl:"https://naver.me/x1uAmW1x", q:"망원초록길" },
+    { ko:"망원한강공원 입구", en:"Mangwon Hangang Park entrance", walk:10,
+      tag:["한강 진입점","Gateway to the river","汉江入口","漢江入口","漢江への入口","Entrada al río","Accès au fleuve","Zugang zum Fluss"],
+      d:["숙소에서 한강으로 들어가는 메인 입구로, 로컬들과 한강을 찾아온 사람들이 가장 많이 모이는 곳입니다. 배달 음식을 시키거나 포장해 와서 돗자리나 캠핑 의자를 펴고 한강을 즐기는 사람이 많아요. 입구에 들어가기 전에는 돗자리 등을 빌려주는 렌탈 가게가 두 곳 있습니다. 날씨가 좋아 오래 머물 계획이라면 돗자리를 빌리는 걸 추천해요. 입구에 들어서면 바로 앞에 편의점이 있는데, 한강에 왔다면 여기서 '한강라면'도 경험해 보세요. 봉지라면을 사면 그릇을 함께 주고(날계란 추가는 취향), 밖의 라면 기계에 면과 스프를 넣고 작동하면 자동으로 끓여줍니다. 집에서 먹는 라면보다 한강에서 먹는 라면이 더 맛있습니다.",
+         "The main gateway from the house into Hangang Park — where locals and day-trippers gather most. People order delivery or bring takeout, roll out picnic mats and camp chairs, and settle in by the river. Before you enter, two rental shops just outside the gate lend out mats and gear — worth it if the weather invites a long stay. Once inside, a convenience store sits right in front of you, and this is where to try 'Hangang ramyeon': buy a packet and they hand you a bowl (raw egg optional); at the machine outside, tear everything into the bowl, press start, and it cooks itself. Ramyeon by the river simply tastes better than at home. If the machine puzzles you, just ask a Korean nearby — anyone will gladly help.",
+         "从住处进入汉江公园的主入口，也是本地人和游客聚集最多的地方。很多人点外卖或打包食物，铺上野餐垫、支起露营椅，在江边消磨时光。进入口之前，门外有两家出租野餐垫等用品的小店——天气好、打算久待的话，建议租一张垫子。走进入口，正前方就是便利店，“汉江拉面”就在这里体验：买袋装拉面，店里会给你碗（生鸡蛋看个人喜好）；到外面的煮面机前，把面、汤料都放进碗里，按下开关，机器会自动煮好。江边吃的拉面，就是比家里的香。如果不会操作机器，向旁边的韩国人求助就好——谁都会乐意帮你。",
+         "從住處進入漢江公園的主入口，也是在地人和遊客聚集最多的地方。很多人點外送或打包食物，鋪上野餐墊、支起露營椅，在江邊消磨時光。進入口之前，門外有兩家出租野餐墊等用品的小店——天氣好、打算久待的話，建議租一張墊子。走進入口，正前方就是便利商店，「漢江拉麵」就在這裡體驗：買袋裝拉麵，店裡會給你碗（生雞蛋看個人喜好）；到外面的煮麵機前，把麵、湯料都放進碗裡，按下開關，機器會自動煮好。江邊吃的拉麵，就是比家裡的香。如果不會操作機器，向旁邊的韓國人求助就好——誰都會樂意幫你。",
+         "宿から漢江公園へ入るメインゲートで、地元の人も遊びに来た人もいちばん集まる場所。デリバリーやテイクアウトを持ち込み、レジャーシートやキャンプチェアを広げて川辺で過ごす人が多いです。入口に入る前、外側にシートなどを貸すレンタル店が2軒あります。天気が良く長居するならレンタルがおすすめ。入口を入るとすぐ目の前にコンビニがあり、「漢江ラーメン」はここで体験できます。袋麺を買うと器をくれます（生卵はお好みで）。外の調理マシンに麺とスープを入れてスタートすれば自動で煮えます。家で食べるラーメンより、漢江で食べるラーメンのほうがおいしいんです。マシンの操作に迷ったら、近くの韓国人に声をかけてみてください。誰でも喜んで助けてくれます。",
+         "La puerta principal al parque Hangang desde la casa — donde más se reúnen locales y visitantes. La gente pide comida o la trae, extiende esterillas y sillas de camping y se instala junto al río. Antes de entrar, justo fuera de la puerta hay dos locales que alquilan esterillas — si hace bueno y piensas quedarte, alquila una. Ya dentro, una tienda 24h queda justo enfrente, y ahí se vive el 'ramyeon del Hangang': compra un paquete y te dan un bol (huevo crudo opcional); en la máquina de fuera, vierte todo en el bol, pulsa y se cocina solo. El ramyeon junto al río sabe mejor que en casa. Si la máquina te desconcierta, pide ayuda a cualquier coreano cercano — todos te echarán una mano encantados.",
+         "La porte principale vers le parc Hangang depuis la maison — là où locaux et visiteurs se retrouvent le plus. On commande en livraison ou on apporte à manger, on déroule nattes et chaises de camping, et on s'installe au bord du fleuve. Avant d'entrer, juste devant la porte, deux boutiques louent nattes et équipement — à prendre si le beau temps promet une longue pause. Une fois entré, une supérette se trouve droit devant, et c'est là que se vit le « ramyeon du Hangang » : achetez un sachet, on vous remet un bol (œuf cru en option) ; à la machine dehors, versez tout dans le bol, lancez, et ça cuit tout seul. Le ramyeon au bord du fleuve a meilleur goût qu'à la maison. Si la machine vous résiste, demandez à un Coréen à côté — chacun vous aidera avec plaisir.",
+         "Das Haupttor vom Haus in den Hangang-Park — hier versammeln sich Einheimische und Ausflügler am liebsten. Man bestellt Essen oder bringt es mit, rollt Picknickmatten aus, stellt Campingstühle auf und lässt sich am Fluss nieder. Vor dem Eingang verleihen zwei Läden Matten und Zubehör — bei gutem Wetter lohnt sich das Ausleihen. Direkt hinter dem Eingang liegt ein Minimarkt, und dort erlebt man 'Hangang-Ramyeon': Tütennudeln kaufen, eine Schüssel gibt es dazu (rohes Ei nach Geschmack); an der Maschine draußen alles in die Schüssel geben, starten, fertig kocht es von selbst. Ramyeon am Fluss schmeckt einfach besser als zu Hause. Falls die Maschine Rätsel aufgibt: Fragen Sie einfach jemanden — jeder hilft gern."],
+      addr:"망원로2 부근",
+      nurl:"https://naver.me/F7FQ5YsJ",
+      gurl:"https://maps.app.goo.gl/cbqMHXAaP5pqyEKN9?g_st=ic", q:"망원한강공원 입구" },
+    { ko:"야경 스팟 1, 슬로프", walk:10, en:"Night-view spot 1 — Slope",
+      tag:["망원한강공원, 야경","Hangang Park, night view","汉江公园夜景","漢江公園夜景","漢江公園・夜景","Parque Hangang, vista nocturna","Parc Hangang, vue de nuit","Hangang-Park, Nachtblick"],
+      d:["망원한강공원 입구로 들어서서 한강 바로 앞까지 직진하면 정면에 슬로프가 있습니다. 돗자리를 펴고 먹거리를 즐기거나, 슬로프에 걸터앉아 한강 바로 앞에서 야경을 볼 수 있어요. 요즘은 많이 알려져서 늦은 시간엔 자리를 잡기 어렵습니다. 날씨 좋은 날엔 조금 서둘러 가세요. 로컬들과 북적북적한 활기를 느끼고 싶다면 이곳입니다.",
+         "Walk straight in from the Mangwon park entrance until you reach the water, and the slope is right in front of you. Spread a mat and snack, or perch on the edge with the river at your feet. It's well known these days — late in the evening spots go fast, so on fine days come a little early. For lively energy among the locals, this is the one.",
+         "从望远汉江公园入口一直直走到江边，正前方就是斜坡。可以铺开垫子吃点东西，或坐在坡沿上，江水就在脚下，夜景就在眼前。这里如今名气不小，晚了很难占到位子，天气好的日子建议早点去。想感受本地人熙熙攘攘的活力，就来这里。",
+         "從望遠漢江公園入口一直直走到江邊，正前方就是斜坡。可以鋪開墊子吃點東西，或坐在坡沿上，江水就在腳下，夜景就在眼前。這裡如今名氣不小，晚了很難佔到位子，天氣好的日子建議早點去。想感受在地人熙熙攘攘的活力，就來這裡。",
+         "望遠漢江公園の入口からまっすぐ川辺まで進むと、正面にスロープがあります。シートを広げて食べものを楽しむもよし、縁に腰かけて目の前の夜景を眺めるもよし。最近は有名になり、遅い時間は場所取りが難しいほど。天気のいい日は少し早めにどうぞ。地元の人たちの賑わいを感じたいならここです。",
+         "Entra recto desde la puerta del parque hasta llegar al agua: la pendiente está justo enfrente. Extiende una esterilla y picotea, o siéntate en el borde con el río a tus pies. Hoy es muy conocida — de noche los sitios vuelan; si hace bueno, llega pronto. Para sentir el bullicio local, este es el lugar.",
+         "Depuis l'entrée du parc, avancez tout droit jusqu'à l'eau : la pente est juste devant. Déroulez une natte pour grignoter, ou asseyez-vous sur le rebord, le fleuve aux pieds. L'endroit est devenu couru — le soir, les places partent vite ; par beau temps, venez tôt. Pour l'effervescence locale, c'est ici.",
+         "Vom Parkeingang geradeaus bis ans Wasser — die Böschung liegt direkt vor Ihnen. Matte ausbreiten und snacken, oder am Rand sitzen, den Fluss zu Füßen. Inzwischen bekannt — abends sind Plätze schnell weg; an schönen Tagen früh kommen. Wer das lebhafte Treiben der Locals sucht, ist hier richtig."],
+      addr:"마포나루길 429", q:"마포나루길 429" },
+    { ko:"야경 스팟 2, 계단", walk:30, en:"Night-view spot 2 — Steps",
+      tag:["망원한강공원, 야경","Hangang Park, night view","汉江公园夜景","漢江公園夜景","漢江公園・夜景","Parque Hangang, vista nocturna","Parc Hangang, vue de nuit","Hangang-Park, Nachtblick"],
+      d:["슬로프 앞에서 한강을 바라보고 오른쪽으로 길을 따라 20분쯤 걸으면, 넓고 긴 계단이 나옵니다. 계단에 앉아 월드컵대교의 야경과 맞은편 불빛을 바라보며 멍때리기 좋아요. 저는 가끔 러닝을 하고 이 계단에 앉아 야경을 즐기다 갑니다. 사람이 몰리지 않는 곳이라, 한적하게 야경을 즐기고 싶을 때 가는 스팟입니다.",
+         "From the slope, face the river and follow the path to the right for about twenty minutes until wide, long steps appear. Sit and let your mind drift over the lights of Worldcup Bridge and the far bank. I sometimes end a run here, sitting with the view for a while. Few people come this far — this is the spot for a quiet night view.",
+         "在斜坡前面向汉江，沿右手边的路走约20分钟，就会看到又宽又长的台阶。坐在台阶上，望着世界杯大桥的夜景和对岸的灯火发发呆，很是惬意。我有时跑完步，会在这里坐一会儿看夜景。这里人不多——想安安静静看江景时，就来这儿。",
+         "在斜坡前面向漢江，沿右手邊的路走約20分鐘，就會看到又寬又長的台階。坐在台階上，望著世界盃大橋的夜景和對岸的燈火發發呆，很是愜意。我有時跑完步，會在這裡坐一會兒看夜景。這裡人不多——想安安靜靜看江景時，就來這兒。",
+         "スロープの前で川に向かって右へ、道なりに20分ほど歩くと、幅広く長い階段が現れます。腰かけてワールドカップ大橋の夜景と対岸の灯りをぼんやり眺めるのに最高。私はランニングの締めにここに座って夜景を楽しむことも。ここまで来る人は少ないので、静かに夜景を味わいたいときのスポットです。",
+         "Desde la pendiente, mira al río y sigue el camino a la derecha unos veinte minutos hasta unos escalones anchos y largos. Siéntate y deja la mente vagar sobre las luces del puente Worldcup y la otra orilla. A veces termino aquí mis carreras, sentada un rato con la vista. Poca gente llega hasta aquí — es el sitio para una noche tranquila.",
+         "Depuis la pente, face au fleuve, suivez le chemin à droite une vingtaine de minutes jusqu'à de larges et longues marches. Asseyez-vous et laissez filer le regard sur le pont Worldcup illuminé et la rive d'en face. Je finis parfois mes courses à pied ici, assise un moment devant la vue. Peu de monde vient jusque-là — c'est le coin des soirées tranquilles.",
+         "Von der Böschung aus mit Blick zum Fluss dem Weg nach rechts etwa zwanzig Minuten folgen, bis breite, lange Stufen auftauchen. Sitzen, den Blick über die Lichter der Worldcup-Brücke und das andere Ufer treiben lassen. Manchmal beende ich hier meinen Lauf und bleibe eine Weile sitzen. Kaum jemand kommt so weit — der Ort für einen stillen Abendblick."],
+      addr:"마포나루길 256", q:"마포나루길 256" }
+  ]
+},
+{
+  id: "photo",
+  title: ["인생네컷","Photo Booths","自拍照相馆","自拍照相館","フォトブース","Fotomatones","Photomatons","Fotoautomaten"],
+  noteKey: "photoNote", img: "insaeng-necut",
+  items: [
+    { ko:"모노맨션", walk:5, en:"Mono Mansion",
+      tag:["셀프 스튜디오","Self-studio","自助写真馆","自助寫真館","セルフスタジオ","Autoestudio","Studio en libre-service","Selbststudio"],
+      d:["자연스러운 인물사진처럼 나오는 셀프 스튜디오. 따뜻하고 포근한 톤.",
+         "Natural, portrait-like shots in a warm, cozy tone.",
+         "拍出自然人像感的自助写真馆，色调温暖。",
+         "拍出自然人像感的自助寫真館，色調溫暖。",
+         "自然なポートレートのように撮れるセルフスタジオ。あたたかいトーン。",
+         "Fotos naturales tipo retrato, en tonos cálidos.",
+         "Des clichés naturels façon portrait, aux tons chauds.",
+         "Natürliche, porträtartige Fotos in warmen Tönen."],
+      addr:"포은로 89",
+      nurl:"https://naver.me/5XJuskrf", q:"모노맨션 망원" },
+    { ko:"포토이즘박스 망원점", walk:5, en:"Photoism Box",
+      tag:["네컷 사진","Four-cut photo booth","四格照相亭","四格照相亭","4カットフォト","Fotomatón de 4 cortes","Photomaton 4 poses","4-Bilder-Automat"],
+      d:["기본에 충실한 네컷 부스. 프레임 선택지가 많습니다.",
+         "The classic four-cut booth with plenty of frame options.",
+         "经典的四格照相亭，相框选择很多。",
+         "經典的四格照相亭，相框選擇很多。",
+         "定番の4カットブース。フレームの種類が豊富。",
+         "El fotomatón clásico de cuatro cortes, con muchos marcos.",
+         "Le photomaton classique à quatre poses, avec de nombreux cadres.",
+         "Der klassische 4-Bilder-Automat mit vielen Rahmen."],
+      addr:"포은로 88",
+      nurl:"https://naver.me/5MVzOF42", q:"포토이즘박스 망원점" },
+    { ko:"하루필름", walk:5, en:"Haru Film",
+      tag:["네컷 사진","Four-cut photo booth","四格照相亭","四格照相亭","4カットフォト","Fotomatón de 4 cortes","Photomaton 4 poses","4-Bilder-Automat"],
+      d:["밝고 쿨톤으로 나오는 부스. 아이돌 프로필 사진 같은 느낌.",
+         "Bright, cool-toned shots — like an idol's profile photo.",
+         "亮白冷色调，拍出偶像写真的感觉。",
+         "亮白冷色調，拍出偶像寫真的感覺。",
+         "明るくクールトーンに写るブース。アイドルの宣材写真風。",
+         "Fotos claras de tono frío — como el book de un idol.",
+         "Clichés lumineux aux tons froids — comme un portrait d'idole.",
+         "Helle, kühle Aufnahmen — wie ein Idol-Profilfoto."],
+      addr:"포은로 87, 1층", q:"하루필름 망원점" },
+    { ko:"모멘터링", walk:5, en:"Momentering",
+      tag:["네컷 사진","Four-cut photo booth","四格照相亭","四格照相亭","4カットフォト","Fotomatón de 4 cortes","Photomaton 4 poses","4-Bilder-Automat"],
+      d:["흰빛과 회색빛이 섞인 독특한 색감. 감성사진 쪽에 가깝습니다.",
+         "A distinctive white-gray palette — closer to a mood photo than a booth snap.",
+         "白灰交织的独特色调，更接近氛围感写真。",
+         "白灰交織的獨特色調，更接近氛圍感寫真。",
+         "白とグレーの独特な色味。エモい写真に近い仕上がり。",
+         "Una paleta única en blancos y grises — más foto de autor que de fotomatón.",
+         "Une palette singulière de blancs et de gris — plus photo d'ambiance que photomaton.",
+         "Eine eigene Weiß-Grau-Palette — eher Stimmungsfoto als Automat."],
+      addr:"포은로 86",
+      gurl:"https://maps.app.goo.gl/BFwyxbN44dB41cKK6", q:"모멘터링 망원" },
+    { ko:"포토이즘컬러드 망원점", walk:6, en:"Photoism Colored",
+      tag:["네컷 사진","Four-cut photo booth","四格照相亭","四格照相亭","4カットフォト","Fotomatón de 4 cortes","Photomaton 4 poses","4-Bilder-Automat"],
+      d:["배경 색을 골라 찍는 컬러 컨셉 부스.",
+         "Pick your backdrop color before you shoot.",
+         "可以自选背景颜色的彩色主题照相亭。",
+         "可以自選背景顏色的彩色主題照相亭。",
+         "背景色を選んで撮るカラーコンセプトのブース。",
+         "Elige el color de fondo antes de disparar.",
+         "Choisissez la couleur du fond avant de shooter.",
+         "Wählen Sie die Hintergrundfarbe vor dem Foto."],
+      addr:"포은로 95",
+      nurl:"https://naver.me/5177VN1i", q:"포토이즘컬러드 망원점" }
+  ]
+},
+{
+  id: "ess",
+  title: ["편의시설","Essentials","便利设施","便利設施","生活情報","Servicios","Essentiels","Praktisches"],
+  type: "essential",
+  items: [
+    { ko:"CU 망원로점", nm:["CU 망원로점","CU (Mangwon-ro)","CU便利店(望远路店)","CU便利商店(望遠路店)","CU(マンウォンロ店)","CU (Mangwon-ro)","CU (Mangwon-ro)","CU (Mangwon-ro)"],
+      typ:["편의점","Convenience store","便利店","便利商店","コンビニ","Tienda 24h","Supérette","Minimarkt"],
+      note:["규모 아담","small","较小","較小","小さめ","pequeña","petite","klein"], q:"CU 망원로점" },
+    { ko:"GS25 망원희망점", nm:["GS25 망원희망점","GS25 (Mangwon)","GS25(望远店)","GS25(望遠店)","GS25(マンウォン店)","GS25 (Mangwon)","GS25 (Mangwon)","GS25 (Mangwon)"],
+      typ:["편의점","Convenience store","便利店","便利商店","コンビニ","Tienda 24h","Supérette","Minimarkt"],
+      note:["규모 큼","large","较大","較大","大きめ","grande","grande","groß"], q:"GS25 망원희망점" },
+    { ko:"제일약국", nm:["제일약국","Jeil Pharmacy","Jeil药房","Jeil藥局","チェイル薬局","Farmacia Jeil","Pharmacie Jeil","Jeil-Apotheke"],
+      typ:["약국","Pharmacy","药店","藥局","薬局","Farmacia","Pharmacie","Apotheke"], q:"제일약국 망원" },
+    { ko:"영진약국", nm:["영진약국","Yeongjin Pharmacy","Yeongjin药房","Yeongjin藥局","ヨンジン薬局","Farmacia Yeongjin","Pharmacie Yeongjin","Yeongjin-Apotheke"],
+      typ:["약국","Pharmacy","药店","藥局","薬局","Farmacia","Pharmacie","Apotheke"], q:"영진약국 망원" },
+    { ko:"올리브영 망원역점", nm:["올리브영 망원역점","Olive Young (Mangwon Stn.)","Olive Young(望远站店)","Olive Young(望遠站店)","オリーブヤング(望遠駅店)","Olive Young (Mangwon Stn.)","Olive Young (Mangwon Stn.)","Olive Young (Mangwon Stn.)"],
+      typ:["헬스&뷰티","Health & beauty","美妆店","美妝店","コスメショップ","Cosmética y salud","Beauté et parapharmacie","Drogerie"], q:"올리브영 망원역점" },
+    { ko:"올리브영 망원동점", nm:["올리브영 망원동점","Olive Young (Mangwon-dong)","Olive Young(望远洞店)","Olive Young(望遠洞店)","オリーブヤング(望遠洞店)","Olive Young (Mangwon-dong)","Olive Young (Mangwon-dong)","Olive Young (Mangwon-dong)"],
+      typ:["헬스&뷰티","Health & beauty","美妆店","美妝店","コスメショップ","Cosmética y salud","Beauté et parapharmacie","Drogerie"], q:"올리브영 망원동점" },
+    { ko:"망원파출소", nm:["망원파출소","Mangwon Police Substation","望远派出所","望遠派出所","望遠派出所","Comisaría de Mangwon","Poste de police de Mangwon","Polizeiwache Mangwon"],
+      typ:["파출소","Police station","派出所","派出所","交番","Comisaría","Poste de police","Polizeiwache"], q:"망원파출소" },
+    { ko:"신촌 세브란스병원", nm:["신촌 세브란스병원","Severance Hospital (Sinchon)","新村世福兰斯医院","新村世福蘭斯醫院","新村セブランス病院","Hospital Severance (Sinchon)","Hôpital Severance (Sinchon)","Severance-Krankenhaus (Sinchon)"],
+      typ:["응급실 24시간","24h emergency room","24小时急诊","24小時急診","救急室24時間","Urgencias 24 h","Urgences 24h/24","Notaufnahme rund um die Uhr"],
+      note:["택시 약 15분 · 응급 시 119","about 15 min by taxi · in an emergency, call 119","打车约15分钟 · 紧急情况请拨119","搭計程車約15分鐘 · 緊急情況請撥119","タクシーで約15分 · 緊急時は119へ","unos 15 min en taxi · en emergencia, llame al 119","env. 15 min en taxi · en urgence, appelez le 119","ca. 15 Min. mit dem Taxi · im Notfall 119 anrufen"],
+      qn:"신촌 세브란스병원 응급진료센터", qg:"Severance Hospital emergency room Seodaemun-gu", q:"신촌 세브란스병원 응급진료센터" }
+  ]
+},
+{
+  id: "food",
+  title: ["식당","Restaurants","餐厅","餐廳","レストラン","Restaurantes","Restaurants","Restaurants"],
+  items: [
+    { ko:"몽골 생소금구이", walk:4, en:"Mongol Saengsogeum-gui", chips:["wait"],
+      tag:["돼지 소금구이","Pork BBQ","烤猪肉","烤豬肉","豚の塩焼き","Cerdo a la parrilla","Porc grillé","Schweine-BBQ"],
+      d:["24년 된 소금구이 노포입니다. 혼자여도 고기를 구워 먹을 수 있고, 항정살이 정말 맛있어요. 늦은 시간까지 사람이 붐비는 로컬의 찐 맛집입니다. 참고로 한국에서는 고깃집에서 인당 1인분만 주문하지 않아요. 보통 둘이 가면 3인분, 많이 먹는 날은 4인분쯤 먹습니다. 여기엔 부추비빔밥이 있는데 항정살과 잘 어울리니, 고기와 함께 주문해 보세요.",
+         "A 24-year-old salt-grill institution — solo grilling is welcome, and the pork jowl is outstanding. It stays packed with locals late into the night. A tip: in Korea, one portion per person is never quite enough — two people usually order three, big eaters four. The chive bibimbap pairs beautifully with the jowl, so order it alongside the meat.",
+         "有24年历史的盐烤老店，一个人也能烤肉，猪颈肉尤其好吃，直到深夜都挤满本地客人。小提示：在韩国烤肉店，每人只点一份是不够的——两个人通常点三份，胃口大就点四份。这里的韭菜拌饭和猪颈肉是绝配，记得一起点。",
+         "有24年歷史的鹽烤老店，一個人也能烤肉，豬頸肉尤其好吃，直到深夜都擠滿在地客人。小提示：在韓國烤肉店，每人只點一份是不夠的——兩個人通常點三份，胃口大就點四份。這裡的韭菜拌飯和豬頸肉是絕配，記得一起點。",
+         "創業24年の塩焼き老舗。ひとり焼肉も歓迎で、豚トロが絶品です。夜遅くまで地元客で賑わう本物の人気店。ちなみに韓国の焼肉店では1人前ずつは頼みません。2人なら3人前、よく食べる日は4人前が普通です。ニラビビンバが豚トロとよく合うので、お肉と一緒にどうぞ。",
+         "Asador de cerdo con 24 años de historia — se puede ir solo, y la papada es excepcional. Se llena de vecinos hasta tarde. Un apunte: en Corea nunca se pide una ración por persona; dos personas suelen pedir tres, los comilones cuatro. Su bibimbap de cebollino marida de maravilla con la papada: pídelo junto a la carne.",
+         "Institution du porc grillé au sel depuis 24 ans — on peut y aller seul, et la gorge de porc est remarquable. Bondé de locaux jusque tard. À savoir : en Corée, on ne commande jamais une portion par personne — à deux, on en prend trois, les gourmands quatre. Leur bibimbap à la ciboule s'accorde à merveille avec la viande : commandez-le en même temps.",
+         "Seit 24 Jahren eine Institution für Salzgrill — auch alleine willkommen, die Schweinebacke ist herausragend. Bis spät voller Einheimischer. Übrigens: In Korea bestellt man nie eine Portion pro Person — zu zweit nimmt man drei, mit großem Hunger vier. Das Schnittlauch-Bibimbap passt wunderbar zur Backe: gleich mitbestellen."],
+      menu:["항정살, 목살 소금구이, 부추비빔밥","Pork jowl & neck (salt-grilled), chive bibimbap"],
+      hours:"화–일 17:00–24:00 · 월 휴무",
+      addr:"희우정로 93-1", q:"몽골생소금구이 망원" },
+    { ko:"윤재윤지네 왕십리곱창", walk:5, en:"Yunjae-yunjine Gopchang",
+      tag:["곱창","Gopchang (grilled intestines)","烤肠","烤腸","ホルモン焼き","Gopchang","Gopchang","Gopchang"],
+      d:["제가 가장 좋아하는 식당입니다. 돼지와 소의 곱창, 막창을 소금구이나 양념구이로 고를 수 있어요. 저의 추천은 소막창구이(2인분부터 주문 가능)와 소알곱창볶음. 친구와 둘이 가면 보통 소막창구이 2인분에 소알곱창볶음 하나, 볶음밥 하나를 먹습니다. 볶음밥도 맛있으니 꼭 함께 드셔보세요. 기본으로 나오는 콩나물국이 칼칼하니 정말 맛있는데 한 번은 리필이 되니, 살짝 느끼해질 때쯤 곁들이면 좋습니다.",
+         "My favorite restaurant of all. Beef and pork intestines come salt-grilled or marinated — my picks are the grilled beef makchang (orders start at two portions) and the stir-fried beef al-gopchang. With a friend I'll usually have two portions of makchang, one al-gopchang, and fried rice — don't skip the fried rice. The spicy bean-sprout soup that comes free is wonderful, with one refill: perfect when the richness needs cutting.",
+         "这是我最喜欢的餐厅。牛、猪的肥肠和皱胃可选盐烤或调味烤。我的推荐是烤牛皱胃（两份起点）和炒牛小肠。和朋友两个人通常点两份牛皱胃、一份炒牛小肠，再加一份炒饭——炒饭也很好吃，一定要试。免费的豆芽汤辣得过瘾，可以续一次，吃腻了来一口正好解腻。",
+         "這是我最喜歡的餐廳。牛、豬的肥腸和皺胃可選鹽烤或調味烤。我的推薦是烤牛皺胃（兩份起點）和炒牛小腸。和朋友兩個人通常點兩份牛皺胃、一份炒牛小腸，再加一份炒飯——炒飯也很好吃，一定要試。免費的豆芽湯辣得過癮，可以續一次，吃膩了來一口正好解膩。",
+         "私のいちばん好きな食堂です。牛と豚のホルモンを塩焼きかタレ焼きで選べます。おすすめは牛マクチャン焼き（2人前から）と牛アルコプチャン炒め。友達と二人ならマクチャン2人前にアルコプチャン炒め、締めのチャーハンが定番。チャーハンもおいしいのでぜひ。無料の豆もやしスープはピリ辛で絶品、一度だけおかわりできます。脂がくどくなってきた頃にどうぞ。",
+         "Mi restaurante favorito. Los intestinos de vacuno y cerdo se piden a la sal o marinados — mis elegidos son el makchang de ternera a la parrilla (mínimo dos raciones) y el salteado de al-gopchang. Entre dos solemos pedir dos de makchang, un salteado y un arroz frito — no te saltes el arroz. La sopa picante de brotes de soja que dan gratis está riquísima y se puede repetir una vez: perfecta para cortar la grasa.",
+         "Mon restaurant préféré. Tripes de bœuf et de porc, grillées au sel ou marinées — mes choix : le makchang de bœuf grillé (deux portions minimum) et le sauté d'al-gopchang. À deux, on prend deux portions de makchang, un sauté et un riz frit — ne faites pas l'impasse sur le riz. La soupe pimentée aux pousses de soja offerte est délicieuse, resservie une fois : parfaite quand le gras se fait sentir.",
+         "Mein Lieblingsrestaurant. Rinder- und Schweineinnereien gibt es salzgegrillt oder mariniert — meine Wahl: gegrilltes Rinder-Makchang (ab zwei Portionen) und gebratenes Al-Gopchang. Zu zweit nehmen wir meist zwei Portionen Makchang, ein Al-Gopchang und gebratenen Reis — den nicht auslassen. Die scharfe Sojasprossensuppe gibt es gratis mit einmal Nachschlag: perfekt, wenn es zu deftig wird."],
+      menu:["소막창구이 (2인분부터), 소알곱창볶음, 볶음밥","Grilled beef makchang (min. 2), stir-fried al-gopchang, fried rice"],
+      hours:"월–토 17:00–24:00 · 일 휴무",
+      addr:"희우정로 76", q:"윤재윤지네왕십리곱창 망원" },
+    { ko:"일렌토", walk:7, en:"Il Lento",
+      tag:["파스타","Pasta & tapas","意面小馆","義大利麵小館","パスタ","Pasta y tapas","Pâtes et tapas","Pasta & Tapas"],
+      d:["합정으로 가는 길목, 유럽의 골목 식당 같은 정말 작은 파스타집입니다. 파스타가 먹고 싶을 때 가는 곳이에요. 저는 알리오 올리오를 추천하지만 다른 메뉴도 모두 맛있어서 취향대로 골라도 됩니다. 저녁 8시 이후에 가면 타파스도 곁들일 수 있어요.",
+         "A truly tiny pasta place on the way toward Hapjeong, like a backstreet trattoria in Europe. This is where I go when pasta calls. My pick is the aglio e olio, but everything on the menu is good. After 8 pm, tapas join the table too.",
+         "在去合井的路上，一家像欧洲小巷餐馆的迷你意面店。想吃意面时就会来这里。我推荐蒜香橄榄油意面，其他菜也都好吃，按口味挑就行。晚上8点以后还可以搭配塔帕斯小食。",
+         "在去合井的路上，一家像歐洲小巷餐館的迷你義大利麵店。想吃義大利麵時就會來這裡。我推薦蒜香橄欖油麵，其他菜也都好吃，按口味挑就行。晚上8點以後還可以搭配塔帕斯小食。",
+         "合井へ向かう道にある、ヨーロッパの路地裏食堂のような本当に小さなパスタ店。パスタが食べたくなったら行く店です。おすすめはアーリオ・オーリオですが、どのメニューもおいしいのでお好みでどうぞ。夜8時以降はタパスも一緒に楽しめます。",
+         "Un local de pasta diminuto camino de Hapjeong, como una trattoria de callejón europea. Aquí vengo cuando el cuerpo pide pasta. Recomiendo el aglio e olio, aunque todo está bueno. A partir de las 20:00 también sirven tapas.",
+         "Une minuscule table à pâtes vers Hapjeong, comme une trattoria de ruelle en Europe. C'est là que je vais quand l'envie de pâtes me prend. Je conseille l'aglio e olio, mais tout y est bon. Après 20 h, des tapas s'invitent à table.",
+         "Ein winziges Pasta-Lokal Richtung Hapjeong, wie eine Gassen-Trattoria in Europa. Hierhin gehe ich, wenn es Pasta sein muss. Mein Tipp: Aglio e Olio — aber alles ist gut. Ab 20 Uhr gibt es auch Tapas dazu."],
+      menu:["알리오 올리오 (저녁 8시 이후 타파스)","Aglio e olio (tapas after 8 pm)"],
+      addr:"포은로 52-1", qn:"일렌토", qg:"일렌토(Il Lento)" },
+    { ko:"홍두깨손칼국수", walk:8, en:"Hongdukkae Kalguksu", chips:["lineFast"],
+      tag:["칼국수","Hand-cut noodle soup","手擀刀削面","手擀刀切麵","手打ちカルグクス","Sopa de fideos","Soupe de nouilles","Nudelsuppe"],
+      d:["망원시장 안의 유명한 칼국수집입니다. 평일에도 점심시간엔 늘 웨이팅이 있어요. 홍두깨로 직접 면을 밀어 만드는 집이라 면이 찰지고 맛있습니다. 칼국수 면으로 만든 옛날손짜장도 별미예요.",
+         "A famous noodle house inside Mangwon Market — even weekday lunchtimes bring a line. The noodles are rolled out by hand with a wooden pin, chewy and good. The old-style jjajang made with the same noodles is a treat too.",
+         "望远市场里有名的刀切面店，平日午餐时间也总要排队。面条用木擀面杖手工擀制，劲道好吃。用同款面条做的老式炸酱面也是一绝。",
+         "望遠市場裡有名的刀切麵店，平日午餐時間也總要排隊。麵條用木擀麵杖手工擀製，勁道好吃。用同款麵條做的老式炸醬麵也是一絕。",
+         "望遠市場の中の有名なカルグクス店。平日でも昼時は行列ができます。麺棒で手打ちする麺はもちもちで美味。同じ麺で作る昔ながらのチャジャン麺も絶品です。",
+         "Casa de fideos famosa dentro del mercado Mangwon — hay cola incluso entre semana al mediodía. La masa se estira a mano con rodillo: fideos tersos y sabrosos. El jjajang a la antigua hecho con los mismos fideos también es una delicia.",
+         "Célèbre maison de nouilles du marché Mangwon — il y a la queue même en semaine à midi. La pâte est étalée au rouleau : nouilles élastiques et savoureuses. Le jjajang à l'ancienne, fait avec les mêmes nouilles, vaut aussi le détour.",
+         "Berühmtes Nudelhaus im Mangwon-Markt — selbst wochentags steht man mittags an. Die Nudeln werden mit dem Holzroller von Hand ausgerollt: bissfest und gut. Auch das altmodische Jjajang mit denselben Nudeln ist ein Genuss."],
+      menu:["손칼국수 5,000, 옛날손짜장","Kalguksu 5,000, old-style jjajang noodles"],
+      addr:"망원로8길 29 (망원시장)",
+      nurl:"https://naver.me/5suyGz8F", q:"홍두깨손칼국수 망원시장" },
+    { ko:"송정", walk:9, en:"Songjeong",
+      tag:["항정국밥","Pork soup with rice","猪肉汤饭","豬肉湯飯","豚クッパ","Sopa de cerdo con arroz","Soupe de porc au riz","Schweinesuppe mit Reis"],
+      d:["제가 정말 좋아하는 항정국밥 집입니다. 메뉴는 항정국밥 하나뿐이고 맵기와 양만 고르면 돼요. 함께 나오는 새우젓 양념장을 조금씩 얹어 먹으면 별미입니다. 시원하고 깔끔한 국밥 한 그릇을 비우고 나면 속이 든든해요. 식사 시간엔 웨이팅이 있는 편인데, 가게 앞 태블릿에 이름을 걸어두고 망원시장을 구경하다가 연락이 오면 돌아오면 됩니다.",
+         "A pork-jowl gukbap house I truly love. There's only one dish — you just choose spice level and size. Spoon on a little of the salted-shrimp sauce as you go; it makes the bowl. Clean, warming, satisfying. There's usually a line at mealtimes: put your name on the tablet out front, wander Mangwon Market, and come back when they call.",
+         "我非常喜欢的猪颈肉汤饭店。菜单只有一种，只需选辣度和分量。舀一点随餐的虾酱调味料放进去，风味更佳。汤头清爽干净，一碗下肚很满足。用餐时间常要排队：在店门口的平板上登记，先去逛逛望远市场，收到通知再回来即可。",
+         "我非常喜歡的豬頸肉湯飯店。菜單只有一種，只需選辣度和分量。舀一點隨餐的蝦醬調味料放進去，風味更佳。湯頭清爽乾淨，一碗下肚很滿足。用餐時間常要排隊：在店門口的平板上登記，先去逛逛望遠市場，收到通知再回來即可。",
+         "私の大好きな豚トロクッパの店。メニューはクッパ一つだけで、辛さと量を選ぶだけ。添えられたアミの塩辛ダレを少しずつのせて食べると絶品です。すっきり澄んだ一杯でお腹も満たされます。食事時は行列がち。店頭のタブレットに名前を登録して、望遠市場を見て回り、呼ばれたら戻りましょう。",
+         "Una casa de gukbap de papada que adoro. Solo hay un plato: eliges picante y tamaño. Ve añadiendo poco a poco la salsa de camarones salados — transforma el bol. Limpio, reconfortante, saciante. Suele haber cola a las horas de comer: apunta tu nombre en la tablet de la entrada, pasea por el mercado y vuelve cuando te avisen.",
+         "Une maison de gukbap à la gorge de porc que j'adore. Un seul plat au menu : on choisit juste le piquant et la taille. Ajoutez peu à peu le condiment aux crevettes salées — c'est lui qui fait le bol. Net, réconfortant, nourrissant. File fréquente aux heures des repas : inscrivez-vous sur la tablette à l'entrée, flânez au marché, revenez à l'appel.",
+         "Ein Gukbap-Haus, das ich sehr liebe. Es gibt nur ein Gericht — man wählt nur Schärfe und Größe. Nach und nach etwas Salzgarnelen-Sauce darübergeben: Sie macht die Schüssel aus. Klar, wärmend, sättigend. Zu Essenszeiten meist Schlange: Namen am Tablet vor der Tür eintragen, über den Markt bummeln, auf den Aufruf zurückkommen."],
+      menu:["항정국밥 (맵기, 양 선택)","Pork-jowl gukbap (choose spice & size)"],
+      hours:"11:30–20:30 (브레이크 15:00–17:00)",
+      addr:"월드컵로17길 38", q:"송정 망원 국밥" },
+    { ko:"헤키", walk:11, en:"Heki", chips:["wait"],
+      tag:["돈가스","Tonkatsu","日式炸猪排","日式炸豬排","とんかつ","Tonkatsu","Tonkatsu","Tonkatsu"],
+      d:["이 돈가스를 먹으러 망원동에 오는 사람이 있을 정도로 유명한 집입니다. 히레카츠가 촉촉하고, 레몬냉우동과 함께 먹으면 더 맛있어요. 다만 웨이팅이 정말 긴 곳이라, 기다림에 강한 분만 도전하세요.",
+         "So famous that people come to Mangwon just for this tonkatsu. The hire-katsu is remarkably tender, and even better alongside the cold lemon udon. Fair warning: the wait is serious — for patient souls only.",
+         "有人专程为这份炸猪排来望远洞，就是这么有名。菲力猪排湿润软嫩，配柠檬冷乌冬更美味。但排队真的很长——耐心强者再来挑战。",
+         "有人專程為這份炸豬排來望遠洞，就是這麼有名。菲力豬排濕潤軟嫩，配檸檬冷烏龍更美味。但排隊真的很長——耐心強者再來挑戰。",
+         "このとんかつのために望遠洞へ来る人がいるほどの有名店。ヒレカツはしっとり柔らか、レモン冷やしうどんと合わせるとさらに美味。ただし行列は本気です。待つ覚悟のある方だけどうぞ。",
+         "Tan famoso que hay quien viene a Mangwon solo por este tonkatsu. El hire-katsu es jugosísimo, y con el udon frío al limón aún mejor. Aviso: la espera es seria — solo para pacientes.",
+         "Si réputé que certains viennent à Mangwon rien que pour ce tonkatsu. Le hire-katsu est fondant, encore meilleur avec l'udon froid au citron. Avertissement : l'attente est sérieuse — réservée aux patients.",
+         "So berühmt, dass manche nur für dieses Tonkatsu nach Mangwon kommen. Das Hire-Katsu ist herrlich zart, mit dem kalten Zitronen-Udon noch besser. Aber: Die Wartezeit ist ernst — nur für Geduldige."],
+      menu:["히레카츠 정식 15,500, 레몬냉우동","Hire-katsu set 15,500, cold lemon udon"],
+      hours:"수–일 11:30–20:30 (브레이크 15:00–17:00) · 월·화 휴무",
+      addr:"동교로9길 33", q:"헤키 망원 돈가스" },
+    { ko:"행진", walk:15, en:"Haengjin",
+      tag:["냉동삼겹살","Retro frozen samgyeopsal","冷冻五花肉","冷凍五花肉","冷凍サムギョプサル","Panceta congelada retro","Poitrine surgelée rétro","Retro-Samgyeopsal"],
+      d:["냉동삼겹살, 줄여서 '냉삼' 맛집입니다. 예전부터 냉삼으로 유명했던 노포인데, 최근 내부 공사를 해서 예전의 노포 느낌은 줄었어요. 그래도 냉삼은 여전히 맛있고, 더운 여름에도 시원한 실내에서 고기를 구울 수 있습니다. 망원과 합정 사이에 있어요. 고추장찌개도 맛있으니 함께 즐겨보세요.",
+         "A house of frozen samgyeopsal — 'naengsam' for short. Long famous for it; a recent renovation traded the old-shop feel for comfort, but the pork is as good as ever, and in summer you grill in blissful air-conditioning. Between Mangwon and Hapjeong. The gochujang stew is worth ordering too.",
+         "冷冻五花肉（简称“冷三”）名店。很早就以冷三出名，最近重新装修，老店的气氛淡了些，但味道依旧，夏天也能在凉爽的店里烤肉。位于望远和合井之间。辣椒酱汤也好吃，一起点吧。",
+         "冷凍五花肉（簡稱「冷三」）名店。很早就以冷三出名，最近重新裝修，老店的氣氛淡了些，但味道依舊，夏天也能在涼爽的店裡烤肉。位於望遠和合井之間。辣椒醬湯也好吃，一起點吧。",
+         "冷凍サムギョプサル、略して「ネンサム」の人気店。昔から有名な老舗でしたが、最近改装して昔の趣は薄れました。それでも味は健在で、暑い夏も涼しい店内で焼けます。望遠と合井の間。コチュジャンチゲも美味しいのでぜひ一緒に。",
+         "Templo de la panceta congelada — 'naengsam'. Famoso desde hace años; una reforma reciente le quitó el aire de local antiguo, pero la carne sigue igual de buena, y en verano se asa con aire acondicionado. Entre Mangwon y Hapjeong. El guiso de gochujang también merece.",
+         "Le temple de la poitrine surgelée — « naengsam ». Réputé de longue date ; une rénovation récente a effacé le charme d'antan, mais la viande reste excellente, et l'été on grille au frais. Entre Mangwon et Hapjeong. Le ragoût de gochujang vaut aussi la commande.",
+         "Ein Haus für gefrorenes Samgyeopsal — kurz 'Naengsam'. Seit Langem dafür bekannt; die jüngste Renovierung nahm etwas vom alten Charme, doch das Fleisch ist so gut wie eh, und im Sommer grillt man angenehm kühl. Zwischen Mangwon und Hapjeong. Auch der Gochujang-Eintopf lohnt sich."],
+      menu:["냉삼 16,000, 고추장찌개","Frozen pork belly 16,000, gochujang stew"],
+      hours:"11:30–24:00 · 화 휴무",
+      addr:"월드컵로 45, 1-2층",
+      nurl:"https://naver.me/xqbSWvv0", q:"행진 망원 냉삼" },
+    { ko:"온랭", walk:17, en:"Onraeng", chips:["wait"],
+      tag:["평양냉면","Pyongyang naengmyeon","平壤冷面","平壤冷麵","平壌冷麺","Naengmyeon de Pyongyang","Naengmyeon de Pyongyang","Pyongyang-Naengmyeon"],
+      d:["저를 평양냉면의 길로 안내한 곳입니다. 슴슴한 맛을 즐길 줄 모르던 제가 여기서 평양냉면을 경험한 뒤로는 온랭의 냉면만 먹어요. 다른 곳과 달리 고기 육수가 진해서 자꾸 생각나는 맛입니다. 여름엔 냉국수, 겨울엔 온국수를 팔고, 냉제육과 들기름 막국수도 맛있어요. 면 양이 꽤 많은 편인데 대식가라면 면을 많이 달라고 하세요. 추가 비용 없이 넉넉히 주십니다. 11시 30분 오픈 전부터 줄이 서는 집이라 오픈런을 추천하지만, 회전이 빠르고 주변에 구경할 가게가 많아 기다림이 지루하진 않습니다.",
+         "This is the place that led me down the Pyongyang naengmyeon path. I never understood its famously subtle taste — until here. Unlike others, the meat broth runs deep, the kind of flavor that keeps calling you back. Cold noodles in summer, warm in winter; the cold pork and perilla-oil noodles are lovely too. Portions are generous — big eaters can ask for extra noodles, free of charge. People line up before the 11:30 opening, so go early; turnover is quick and the nearby shops make the wait pass easily.",
+         "把我领进平壤冷面世界的店。我本来不懂那种清淡的味道，在这里吃过之后，只认Onraeng的冷面。和别家不同，肉汤浓郁，是会让人惦记的味道。夏天卖冷面，冬天卖温面；冷猪肉片和紫苏油荞麦面也好吃。面量偏多，大胃王可以要求加面，免费给得很足。11:30开门前就有人排队，建议早点去；不过翻台快，周边又有不少小店可逛，等待不算无聊。",
+         "把我領進平壤冷麵世界的店。我本來不懂那種清淡的味道，在這裡吃過之後，只認Onraeng的冷麵。和別家不同，肉湯濃郁，是會讓人惦記的味道。夏天賣冷麵，冬天賣溫麵；冷豬肉片和紫蘇油蕎麥麵也好吃。麵量偏多，大胃王可以要求加麵，免費給得很足。11:30開門前就有人排隊，建議早點去；不過翻桌快，周邊又有不少小店可逛，等待不算無聊。",
+         "私を平壌冷麺の道へ導いた店。あの淡い味の良さが分からなかった私が、ここで食べてからはオンレンの冷麺一筋です。他店と違って肉出汁が濃く、ふと思い出す味。夏は冷たい麺、冬は温かい麺。冷製豚肉やエゴマ油のマッククスも美味。麺は多めで、大食いの方は増量を頼めば無料でたっぷり。11時半の開店前から並ぶ店なので早めが狙い目ですが、回転が速く周りに見て回れる店も多いので、待ち時間も退屈しません。",
+         "El lugar que me inició en el naengmyeon de Pyongyang. Nunca entendí su famoso sabor sutil — hasta aquí. A diferencia de otros, su caldo de carne es profundo, de los que te llaman de vuelta. Fideos fríos en verano, calientes en invierno; el cerdo frío y los fideos al aceite de perilla también son estupendos. Las raciones son generosas y puedes pedir más fideos gratis. La cola empieza antes de abrir (11:30): madruga — aunque la rotación es rápida y hay tiendas que curiosear cerca.",
+         "L'adresse qui m'a convertie au naengmyeon de Pyongyang. Je ne comprenais pas ce goût réputé subtil — jusqu'ici. Contrairement aux autres, le bouillon de viande est profond, de ceux qui vous rappellent. Nouilles froides l'été, chaudes l'hiver ; le porc froid et les nouilles à l'huile de périlla sont aussi très bons. Portions généreuses — supplément de nouilles gratuit sur demande. On fait la queue avant l'ouverture à 11 h 30 : venez tôt, mais ça tourne vite et les boutiques voisines occupent l'attente.",
+         "Der Ort, der mich zum Pyongyang-Naengmyeon bekehrt hat. Den berühmt-subtilen Geschmack verstand ich nie — bis hier. Anders als anderswo ist die Fleischbrühe tief, ein Geschmack, der einen wieder herruft. Kalte Nudeln im Sommer, warme im Winter; auch das kalte Schweinefleisch und die Perillaöl-Nudeln sind fein. Große Portionen — Nudel-Nachschlag gratis auf Nachfrage. Schon vor der Öffnung um 11:30 bildet sich eine Schlange: früh kommen — es geht aber zügig, und die Läden ringsum verkürzen das Warten."],
+      menu:["평양냉면 13,000, 냉제육, 들기름 막국수","Pyongyang naengmyeon 13,000, cold pork, perilla-oil noodles"],
+      hours:"화–일 11:30–16:00 · 월 휴무",
+      addr:"성미산로 33", qn:"온랭", qg:"온랭 망원 평양냉면" }
+  ]
+},
+{
+  id: "cafe",
+  title: ["카페","Cafés","咖啡馆","咖啡廳","カフェ","Cafés","Cafés","Cafés"],
+  items: [
+    { ko:"포스트 노빌즈", en:"Post No Bills", walk:1, insta:"postnobills_official",
+      tag:["카페","Café","咖啡馆","咖啡廳","カフェ","Café","Café","Café"],
+      d:["골목 끝에서 이 카페의 간판이 멀리 보이면, 집에 다 왔다는 뜻입니다. 시담 바로 옆이자 제가 가장 좋아하는 카페예요. 날이 좋으면 유리창을 모두 열어 안과 밖이 하나로 이어집니다. 그런 날엔 창가나 바깥 자리에 앉아 지나가는 사람들을 구경해 보세요. 커피도 맛있어서, 오래 걸을 예정이라면 한 잔 테이크아웃해서 산책을 떠나도 좋습니다. 반려동물도 함께 들어올 수 있는 곳이라, 강아지가 어려운 분은 참고해 주세요.",
+         "When you spot this café's sign at the end of the alley, it means you're almost home. It sits right next to SIDAM, and it's my favorite café of all. On fine days they open up all the glass, and inside and outside become one — take a seat by the window or outdoors and watch people drift by. The coffee is good too; if a long walk is ahead, take a cup to go. Dogs are welcome here as well — worth knowing if you're not comfortable around them.",
+         "在小巷尽头远远望见这家咖啡馆的招牌，就说明快到家了。它就在柿淡隔壁，也是我最喜欢的咖啡馆。天气好的时候玻璃窗会全部敞开，室内外连成一片——坐在窗边或室外座位，看看来往的行人吧。咖啡也很好喝，要走远路的话，不妨外带一杯出发。这里也欢迎宠物入内——怕狗的朋友请留意。",
+         "在小巷盡頭遠遠望見這家咖啡館的招牌，就說明快到家了。它就在柿淡隔壁，也是我最喜歡的咖啡館。天氣好的時候玻璃窗會全部敞開，室內外連成一片——坐在窗邊或室外座位，看看來往的行人吧。咖啡也很好喝，要走遠路的話，不妨外帶一杯出發。這裡也歡迎寵物入內——怕狗的朋友請留意。",
+         "路地の先にこのカフェの看板が見えてきたら、もう家に着いたようなもの。シダムのすぐ隣にある、私のいちばん好きなカフェです。天気のいい日はガラス窓を全部開け放ち、外と中がひとつにつながります。そんな日は窓辺か外の席で、行き交う人を眺めてみてください。コーヒーもおいしいので、長く歩く日はテイクアウトして散歩に出るのもおすすめです。ペット同伴も可能なお店なので、犬が苦手な方はご参考に。",
+         "Cuando ves el cartel de este café al final del callejón, ya casi estás en casa. Está justo al lado de SIDAM y es mi café favorito. En los días buenos abren todas las cristaleras y dentro y fuera se vuelven uno — siéntate junto a la ventana o fuera y mira pasar a la gente. El café además está muy bueno; si te espera una caminata larga, llévate un vaso. También admiten mascotas — tenlo en cuenta si los perros no son lo tuyo.",
+         "Quand l'enseigne de ce café apparaît au bout de la ruelle, c'est que vous êtes presque chez vous. Juste à côté de SIDAM, c'est mon café préféré. Par beau temps, toutes les vitres s'ouvrent et l'intérieur et l'extérieur ne font plus qu'un — installez-vous près de la vitre ou dehors et regardez passer les gens. Le café y est très bon ; avant une longue marche, prenez-en un à emporter. Les animaux y sont admis — bon à savoir si les chiens vous intimident.",
+         "Wenn am Ende der Gasse das Schild dieses Cafés auftaucht, sind Sie fast zu Hause. Es liegt direkt neben SIDAM und ist mein liebstes Café. An schönen Tagen werden alle Glasfronten geöffnet, und innen und außen werden eins — setzen Sie sich ans Fenster oder nach draußen und schauen Sie den Menschen zu. Der Kaffee ist ebenfalls sehr gut; vor einem langen Spaziergang lohnt ein Becher zum Mitnehmen. Auch Hunde sind willkommen — gut zu wissen, falls Sie ihnen lieber ausweichen."],
+      menu:["아메리카노 · 논카페인은 체리 히비스커스 아이스티","Americano; cherry hibiscus iced tea (caffeine-free)"], hours:"12:00–22:00",
+      addr:"망원로2길 82", q:"포스트노빌즈 망원" },
+    { ko:"로트", walk:2, en:"ROTE", insta:"rote_seoul",
+      tag:["카페","Café","咖啡馆","咖啡廳","カフェ","Café","Café","Café"],
+      d:["망원동 골목을 걷다 보면, 오래된 전원주택의 겉모습에 현대적인 감각을 더한 카페를 만납니다. 커피와 위스키를 함께 즐길 수 있는 곳이에요. 핸드드립 커피와 페어링된 플래터를 즐겨보세요.",
+         "Walking Mangwon's alleys, you come across this café — the shell of an old country house with a modern sensibility inside. Coffee and whisky share the menu here. Try a hand-drip coffee with the paired platter.",
+         "走在望远洞的小巷里，会遇见这家咖啡馆——老式独栋住宅的外形，里面却透着现代感。在这里咖啡和威士忌可以一起享用。试试手冲咖啡配搭配拼盘吧。",
+         "走在望遠洞的小巷裡，會遇見這家咖啡館——老式獨棟住宅的外形，裡面卻透著現代感。在這裡咖啡和威士忌可以一起享用。試試手沖咖啡配搭配拼盤吧。",
+         "望遠洞の路地を歩いていると、古い一軒家の佇まいにモダンな感覚を宿したカフェに出会います。コーヒーとウイスキーを一緒に楽しめる場所。ハンドドリップとペアリングのプレートをどうぞ。",
+         "Paseando por los callejones de Mangwon aparece este café: el aspecto de una casa antigua con un aire moderno dentro. Aquí conviven el café y el whisky. Prueba un café de filtro con su tabla maridada.",
+         "Au fil des ruelles de Mangwon, on tombe sur ce café : l'allure d'une vieille maison, un esprit résolument moderne. Café et whisky y font bon ménage. Essayez un café filtre avec son plateau en accord.",
+         "Beim Bummel durch Mangwons Gassen stößt man auf dieses Café: außen ein altes Wohnhaus, innen modernes Gespür. Kaffee und Whisky teilen sich hier die Karte. Probieren Sie Handfilterkaffee mit passender Platte."],
+      menu:["핸드드립 커피, 페어링 플래터","Hand-drip coffee, paired platter"],
+      hours:"일–수 12:00–19:00, 목–토 12:00–24:00 · 화 휴무",
+      addr:"희우정로16길 31", qn:"로트 망원동 카페", qg:"ROTE" },
+    { ko:"M1CT", walk:2, en:"", insta:"m1ct.coffee",
+      tag:["로스터리","Roastery","烘焙咖啡馆","烘焙咖啡館","ロースタリー","Tostador","Torréfacteur","Rösterei"],
+      d:["망원 한강공원 쪽으로 가는 조용한 골목, 전면 유리창의 아담한 카페입니다. 바리스타 부부가 운영하는 망원 로컬의 숨은 맛집이에요. 드립커피를 즐겨보세요. 원두 선택지가 다양하고, M1 블렌드와 CT 블렌드가 인기가 많습니다. 반려동물도 함께 들어올 수 있어요.",
+         "A snug café behind a full glass front, on a quiet lane toward Mangwon Hangang Park. Run by a barista couple, it's one of Mangwon's hidden local favorites. Try the drip coffee — the bean list is wide, and the M1 and CT blends are the most loved. Dogs are welcome too.",
+         "在通往望远汉江公园的安静小巷里，有这家全玻璃立面的小咖啡馆。由咖啡师夫妇经营，是望远本地人的隐藏爱店。请试试手冲咖啡——豆子选择很多，M1和CT拼配最受欢迎。宠物也可同行。",
+         "在通往望遠漢江公園的安靜小巷裡，有這家全玻璃立面的小咖啡館。由咖啡師夫婦經營，是望遠在地人的隱藏愛店。請試試手沖咖啡——豆子選擇很多，M1和CT配方最受歡迎。寵物也可同行。",
+         "望遠漢江公園へ向かう静かな路地にある、全面ガラス張りの小さなカフェ。バリスタ夫婦が営む、望遠ローカルの隠れた名店です。ドリップコーヒーをぜひ。豆の選択肢が豊富で、M1ブレンドとCTブレンドが人気。ペット同伴も可。",
+         "Un café diminuto tras una fachada de cristal, en una calle tranquila hacia el parque Hangang. Lo lleva una pareja de baristas y es uno de los favoritos ocultos del barrio. Prueba el café de filtro: hay muchos granos para elegir y los blends M1 y CT son los más queridos. Admiten mascotas.",
+         "Un petit café tout en verre, dans une ruelle calme menant au parc Hangang de Mangwon. Tenu par un couple de baristas, c'est une adresse locale bien gardée. Essayez le café filtre : large choix de grains, les blends M1 et CT sont les chouchous. Animaux bienvenus.",
+         "Ein kleines Café hinter einer Glasfront, in einer ruhigen Gasse Richtung Mangwon-Hangang-Park. Geführt von einem Barista-Paar — ein verborgener Liebling der Nachbarschaft. Probieren Sie den Filterkaffee: große Bohnenauswahl, die Blends M1 und CT sind am beliebtesten. Hunde willkommen."],
+      menu:["드립커피 (M1 블렌드, CT 블렌드)","Drip coffee (M1 & CT blends)"], hours:"월·화 휴무",
+      addr:"희우정로15길 13", q:"M1CT 망원" },
+    { ko:"한강에스프레소", walk:4, en:"Hangang Espresso", insta:"hangang_espresso",
+      tag:["에스프레소 바","Espresso & whisky bar","意式咖啡吧","義式咖啡吧","エスプレッソバー","Bar de espresso","Bar à espresso","Espressobar"],
+      d:["한강 가는 길, 건물 모퉁이에 자리한 작은 카페 겸 바입니다. 바 자리와 창가 테이블이 전부인 아담한 공간에서 에스프레소와 위스키를 즐길 수 있어요. 둘을 섞은 메뉴보다는 각각 따로 즐기는 쪽이 더 맛있습니다. 시즌 메뉴가 꾸준히 나와서, 새 메뉴를 맛보는 즐거움이 있는 곳이에요.",
+         "A tiny corner café-bar on the way to the river — just a counter and a few window seats. Espresso and whisky are both poured here; I'd enjoy them separately rather than mixed. Seasonal specials keep appearing, so there's always something new to try.",
+         "在去汉江的路上，位于建筑转角的小小咖啡吧。只有吧台和几个窗边座位，可以同时享用意式咖啡和威士忌。比起两者混合的特调，分开品尝更好喝。店里不断推出季节限定，总有新口味可以尝试。",
+         "在去漢江的路上，位於建築轉角的小小咖啡吧。只有吧台和幾個窗邊座位，可以同時享用義式咖啡和威士忌。比起兩者混合的特調，分開品嘗更好喝。店裡不斷推出季節限定，總有新口味可以嘗試。",
+         "漢江へ向かう道すがら、建物の角にある小さなカフェ兼バー。カウンターと窓際の席だけの空間で、エスプレッソとウイスキーが楽しめます。二つを混ぜたメニューより、別々に味わうのがおすすめ。季節メニューが次々と出るので、新しい一杯に出会う楽しみがあります。",
+         "Un diminuto café-bar en una esquina, camino del río: solo una barra y unas mesas junto a la ventana. Sirven espresso y whisky; mejor disfrutarlos por separado que mezclados. Van sacando especiales de temporada, así que siempre hay algo nuevo que probar.",
+         "Un minuscule café-bar à l'angle d'un immeuble, sur le chemin du fleuve : un comptoir et quelques tables en vitrine. Espresso et whisky s'y côtoient ; je les préfère séparés plutôt que mélangés. Les créations de saison se succèdent — il y a toujours une nouveauté à goûter.",
+         "Eine winzige Eck-Café-Bar auf dem Weg zum Fluss — nur ein Tresen und ein paar Fensterplätze. Es gibt Espresso und Whisky; getrennt schmecken sie besser als gemischt. Ständig neue Saison-Specials — es gibt immer etwas zu entdecken."],
+      menu:["에스프레소, 위스키, 시즌 메뉴","Espresso, whisky, seasonal specials"],
+      hours:"일–목 08:00–22:00, 금–토 08:00–24:00",
+      addr:"희우정로 97", q:"한강에스프레소 망원" },
+]
+},
+{
+  id: "bakery",
+  title: ["빵집","Bakeries","面包店","麵包店","ベーカリー","Panaderías","Boulangeries","Bäckereien"],
+  items: [
+    { ko:"밀로밀", walk:5, en:"Milomil", chips:["morning"],
+      tag:["베이커리","Bakery","面包店","麵包店","ベーカリー","Panadería","Boulangerie","Bäckerei"],
+      d:["소금빵과 치아바타가 정말 맛있는 집입니다. 소금빵 중에서도 바게트 소금빵이 색다른 메뉴예요. 운영 시간이 짧고 빵이 소진되면 문을 닫으니, 빵을 좋아하신다면 오전 오픈 시간에 가서 다양한 빵을 맛보시길 바랍니다.",
+         "The salt bread and ciabatta here are truly good — the baguette salt bread is the one you won't find elsewhere. Hours are short and they close once sold out, so if you love bread, go right at opening.",
+         "这里的盐面包和恰巴塔真的很好吃，其中法棍盐面包最为特别。营业时间短，卖完就关门——爱吃面包的话，请在上午开门时去，能尝到最多种类。",
+         "這裡的鹽麵包和恰巴塔真的很好吃，其中法棍鹽麵包最為特別。營業時間短，賣完就關門——愛吃麵包的話，請在上午開門時去，能嚐到最多種類。",
+         "塩パンとチャバタが本当においしい店。中でもバゲット塩パンはここならではの一品です。営業時間が短く売り切れ次第閉店なので、パン好きの方は開店直後にどうぞ。",
+         "El pan de sal y la chapata son buenísimos — el pan de sal tipo baguette es el más especial. El horario es corto y cierran al agotarse: si te gusta el pan, ve justo a la apertura.",
+         "Le pain au sel et la ciabatta y sont excellents — la version baguette du pain au sel est la plus singulière. Horaires courts, fermeture dès épuisement : les amoureux du pain viendront dès l'ouverture.",
+         "Salzbrot und Ciabatta sind hier wirklich gut — das Baguette-Salzbrot ist das Besondere. Kurze Öffnungszeiten, geschlossen sobald ausverkauft: Brotliebhaber kommen gleich zur Öffnung."],
+      menu:["소금빵, 바게트 소금빵, 치아바타 (1인 6개 제한)","Salt bread, baguette salt bread, ciabatta (limit 6)"],
+      hours:"11:00–14:00 (소진 시 마감) · 일·월 휴무",
+      addr:"희우정로10길 9", q:"밀로밀 망원" },
+    { ko:"어글리베이커리", walk:6, en:"Ugly Bakery", chips:["wait","takeoutOnly"],
+      tag:["베이커리","Bakery","面包店","麵包店","ベーカリー","Panadería","Boulangerie","Bäckerei"],
+      d:["대파빵으로 유명한 빵집입니다. 주말에는 늘 웨이팅이 길게 서 있어요. 포장만 가능하고, 대파빵 외에도 작고 다양한 맛의 치아바타, 맘모스빵 등이 있어서 좋아하는 빵을 고르는 재미가 있습니다.",
+         "Famous for its scallion bread — on weekends the line is always long. Takeout only, and beyond the scallion bread there are small ciabattas in many flavors and mammoth bread, so picking favorites is half the fun.",
+         "以大葱面包闻名的面包店，周末总是排着长队。只能外带；除了大葱面包，还有各种口味的小恰巴塔和猛犸面包，挑选的过程本身就很有乐趣。",
+         "以大蔥麵包聞名的麵包店，週末總是排著長隊。只能外帶；除了大蔥麵包，還有各種口味的小恰巴塔和猛獁麵包，挑選的過程本身就很有樂趣。",
+         "ネギパンで有名なパン屋。週末はいつも長い行列です。テイクアウトのみ。ネギパンのほかにも味いろいろの小さなチャバタやマンモスパンがあり、選ぶ楽しさがあります。",
+         "Famosa por su pan de cebolleta — los fines de semana la cola es larga. Solo para llevar; además hay chapatitas de muchos sabores y pan mamut, así que elegir es parte de la gracia.",
+         "Célèbre pour son pain à la ciboule — longue file chaque week-end. À emporter uniquement ; il y a aussi de petites ciabattas de tous parfums et le pain mammouth : choisir fait partie du plaisir.",
+         "Berühmt für das Lauchzwiebel-Brot — am Wochenende ist die Schlange lang. Nur zum Mitnehmen; daneben gibt es kleine Ciabattas in vielen Sorten und Mammutbrot — das Aussuchen macht Spaß."],
+      menu:["대파빵, 말차 맘모스","Scallion bread, matcha mammoth"],
+      hours:"12:00–21:00 · 월·화 휴무",
+      addr:"월드컵로13길 73", q:"어글리베이커리 망원" }
+  ]
+},
+{
+  id: "snack",
+  title: ["디저트, 간식","Desserts & Snacks","甜点小吃","甜點小吃","スイーツ・軽食","Postres y antojos","Desserts et en-cas","Desserts & Snacks"],
+  items: [
+    { ko:"크리머리", walk:4, en:"Kreamery", insta:"kreamery.icecreambar",
+      tag:["위스키 아이스크림","Whisky ice cream bar","威士忌冰淇淋","威士忌冰淇淋","ウイスキーアイス","Helado con whisky","Glace au whisky","Whisky-Eis"],
+      d:["주말에만 문을 여는 위스키 아이스크림 가게입니다. 망원동을 걷다가 가게 앞 벤치에 잠시 앉아 쉬어 가기 좋아요. 논알콜과 알콜 중 고를 수 있으니, 위스키를 좋아하신다면 위스키와 아이스크림이 섞인 '아이술크림'을 즐겨보세요.",
+         "A weekend-only whisky ice cream shop. Mid-stroll through Mangwon, the bench out front makes a perfect pause. You can go non-alcoholic or boozy — whisky lovers should try their signature spiked scoop.",
+         "只在周末营业的威士忌冰淇淋店。逛望远洞逛累了，坐在店门前的长椅上歇歇脚正好。可选无酒精或含酒精版本——喜欢威士忌的话，试试他们的招牌“酒香冰淇淋”。",
+         "只在週末營業的威士忌冰淇淋店。逛望遠洞逛累了，坐在店門前的長椅上歇歇腳正好。可選無酒精或含酒精版本——喜歡威士忌的話，試試他們的招牌「酒香冰淇淋」。",
+         "週末だけ開くウイスキーアイスの店。望遠洞の散策の途中、店先のベンチでひと休みするのにちょうどいい場所です。ノンアルとアル入りが選べるので、ウイスキー好きはウイスキー入りの一品をぜひ。",
+         "Heladería de whisky que solo abre los fines de semana. En plena caminata por Mangwon, el banco de la entrada es la pausa perfecta. Hay versión sin alcohol y con alcohol — si te va el whisky, prueba su bola 'con chispa'.",
+         "Un glacier au whisky ouvert le week-end seulement. En pleine balade dans Mangwon, le banc devant la boutique offre la pause idéale. Version sans ou avec alcool — les amateurs de whisky essaieront la boule corsée.",
+         "Ein Whisky-Eisladen, nur am Wochenende geöffnet. Mitten im Mangwon-Spaziergang ist die Bank vor dem Laden die perfekte Pause. Mit oder ohne Alkohol — Whisky-Fans probieren die 'beschwipste' Kugel."],
+      menu:["버터버번","Butter Bourbon"], hours:"주말 영업 · 인스타그램 확인",
+      addr:"망원로 55",
+      gurl:"https://maps.app.goo.gl/UpMStaeYSL62uiPU7?g_st=ipc", q:"크리머리 망원 아이스크림" },
+    { ko:"코코부코", walk:4, en:"Coco Buko", chips:["takeoutBest"],
+      tag:["코코넛 쉐이크","Coconut shakes","椰子冰沙","椰子冰沙","ココナッツシェイク","Batidos de coco","Milkshakes coco","Kokos-Shakes"],
+      d:["코코넛 쉐이크를 생수병에 빨대와 함께 담아 주는 집입니다. 가게에 앉아 마시기보다는 망원동 투어 중 간식으로 들고 다니기 좋아요. 동네를 걷다 보면 코코부코 병을 들고 다니는 사람들을 심심치 않게 만납니다. 기본 코코넛 쉐이크를 추천해요. 코코넛과 얼음을 함께 갈아 슬러시 같은 음료입니다.",
+         "Coconut shakes served in a water bottle with a straw — made for carrying, not sitting. Walk around Mangwon and you'll keep spotting people holding one. Get the original: coconut blended with ice into a slushy, drinkable treat.",
+         "把椰子冰沙装进矿泉水瓶、插上吸管递给你的店。与其坐在店里，不如边逛望远洞边喝。走在街上，你会不时看到拿着Coco Buko瓶子的人。推荐原味：椰子和冰一起打成的沙冰饮品。",
+         "把椰子冰沙裝進礦泉水瓶、插上吸管遞給你的店。與其坐在店裡，不如邊逛望遠洞邊喝。走在街上，你會不時看到拿著Coco Buko瓶子的人。推薦原味：椰子和冰一起打成的沙冰飲品。",
+         "ココナッツシェイクをペットボトルにストローを挿して渡してくれる店。店内で飲むより、望遠洞散策のお供にぴったり。街を歩けばこのボトルを持つ人によく出会います。おすすめは基本のココナッツシェイク。ココナッツと氷を一緒に砕いたスラッシュ風ドリンクです。",
+         "Batidos de coco servidos en botella de agua con pajita — hechos para llevar, no para sentarse. Pasea por Mangwon y verás a más de uno con su botella. Pide el original: coco batido con hielo, como un granizado bebible.",
+         "Des milkshakes coco servis en bouteille d'eau avec une paille — faits pour marcher, pas pour s'asseoir. En vous baladant dans Mangwon, vous croiserez souvent quelqu'un avec sa bouteille. Prenez l'original : coco mixée avec de la glace, façon granité à boire.",
+         "Kokos-Shakes in der Wasserflasche mit Strohhalm — zum Mitnehmen gedacht, nicht zum Sitzen. Beim Bummel durch Mangwon sieht man ständig jemanden mit so einer Flasche. Nehmen Sie das Original: Kokos mit Eis gemixt, wie ein trinkbarer Slush."],
+      addr:"희우정로 72",
+      nurl:"https://naver.me/G2Ew2JxT",
+      gurl:"https://maps.app.goo.gl/Gp61unFYUtFpA1tL6", q:"코코부코 망원" },
+    { ko:"타코야키쿤", walk:5, en:"Takoyaki-kun",
+      tag:["타코야키","Takoyaki","章鱼小丸子","章魚小丸子","たこ焼き","Takoyaki","Takoyaki","Takoyaki"],
+      d:["타코야키 전문점입니다. 오리지널과 대파송송 맛을 추천하고, 반반 타코가 있어 두 가지 맛을 함께 즐길 수 있어요. 안에 작은 바 자리도 있지만 저는 보통 포장해 와서 집에서 먹습니다. 술안주로도, 가벼운 간식으로도 좋아요.",
+         "A takoyaki specialist. My picks are the original and the scallion-topped, and the half-and-half lets you try both. There's a small bar inside, but I usually take mine home. Great as a drinking snack or a light bite.",
+         "章鱼小丸子专门店。推荐原味和大葱味，还有双拼可以一次尝两种。店里有小小的吧台座，不过我通常打包回家吃。下酒或当小食都很合适。",
+         "章魚小丸子專門店。推薦原味和大蔥味，還有雙拼可以一次嚐兩種。店裡有小小的吧台座，不過我通常打包回家吃。下酒或當小食都很合適。",
+         "たこ焼き専門店。おすすめはオリジナルとネギたっぷり。ハーフ&ハーフなら二つの味を一度に楽しめます。店内に小さなカウンターもありますが、私はたいてい持ち帰って家で。お酒のお供にも軽食にもぴったり。",
+         "Especialistas en takoyaki. Recomiendo el original y el de cebolleta; el mitad y mitad permite probar ambos. Hay una pequeña barra dentro, pero yo suelo llevármelo a casa. Ideal para picar con una copa o como tentempié.",
+         "Spécialiste du takoyaki. Je recommande l'original et celui à la ciboule ; le moitié-moitié permet de goûter les deux. Petit comptoir à l'intérieur, mais je repars souvent avec les miens. Parfait à l'apéro ou en en-cas.",
+         "Takoyaki-Spezialist. Meine Tipps: Original und mit Lauchzwiebeln; halb-halb geht auch. Drinnen gibt es eine kleine Theke, ich nehme meine aber meist mit. Prima zum Drink oder als Snack."],
+      menu:["오리지널, 대파송송, 반반 타코 (8알 6,000)","Original, scallion, or half-and-half (8 pcs 6,000)"],
+      hours:"수–일 17:00–23:00 · 월·화 휴무",
+      addr:"망원로 33", q:"타코야키쿤 망원" },
+    { ko:"우이락", walk:7, en:"Wooyirak",
+      tag:["고추튀김, 전","Fried chili & jeon","炸辣椒煎饼","炸辣椒煎餅","唐辛子揚げ・チヂミ","Chiles fritos y jeon","Piments frits et jeon","Frittierte Chilis & Jeon"],
+      d:["망원시장 안의 유명한 고추튀김집입니다. 안에 앉을 자리도 있고 포장도 편리해요. 오픈 전부터 줄이 서 있는 날이 종종 있습니다. 굉장히 두꺼운 고추 속에 육즙 가득한 다진 고기가 들어 있어서, 하나만 먹어도 배가 약간 부를 정도예요. 안주로도, 간식으로도, 반찬 삼아 밥과 곁들여도 좋습니다.",
+         "Mangwon Market's famous stuffed-chili shop — seats inside, easy takeout, and often a line before opening. The chilis are remarkably thick, packed with juicy minced pork; one alone nearly fills you up. Works as a drinking snack, a bite on the go, or a side with rice.",
+         "望远市场里有名的炸辣椒店。店内有座位，打包也方便，开门前就排队的日子不少。辣椒特别厚实，里面塞满多汁的肉馅，吃一个就有些饱了。可以下酒、当小吃，也可以配饭吃。",
+         "望遠市場裡有名的炸辣椒店。店內有座位，打包也方便，開門前就排隊的日子不少。辣椒特別厚實，裡面塞滿多汁的肉餡，吃一個就有些飽了。可以下酒、當小吃，也可以配飯吃。",
+         "望遠市場の名物、唐辛子揚げの店。店内席もあり持ち帰りも便利。開店前から行列の日もしばしば。肉厚の唐辛子にジューシーなひき肉がぎっしりで、一つでも軽くお腹にたまります。おつまみにも、間食にも、ご飯のおかずにも。",
+         "La famosa tienda de chiles rellenos del mercado Mangwon — asientos dentro, fácil para llevar, y a menudo cola antes de abrir. Los chiles son gruesos, repletos de carne jugosa; con uno casi te llenas. Sirve de tapa, de tentempié o de guarnición con arroz.",
+         "La célèbre échoppe de piments farcis du marché Mangwon — places assises, vente à emporter, et souvent la queue avant l'ouverture. Les piments sont épais, garnis de viande hachée juteuse ; un seul cale déjà. À l'apéro, en en-cas, ou avec un bol de riz.",
+         "Der berühmte Laden für gefüllte Chilis im Mangwon-Markt — Sitzplätze drinnen, einfaches Mitnehmen, oft Schlange vor Öffnung. Die Chilis sind dick und voller saftigem Hackfleisch; einer macht fast satt. Als Snack, zum Drink oder als Beilage zu Reis."],
+      menu:["고추튀김, 전, 떡볶이","Fried chilis, jeon, tteokbokki"],
+      hours:"11:00–22:00",
+      addr:"포은로8길 22 (망원시장)",
+      gurl:"https://maps.app.goo.gl/tnC7kiBUC8gchgpS7?g_st=ic", q:"우이락 망원시장" },
+    { ko:"경기떡집", walk:11, en:"Gyeonggi Tteok House", chips:["goEarly"],
+      tag:["떡","Rice cakes since 1958","年糕老店","年糕老店","餅（トック）","Pasteles de arroz desde 1958","Gâteaux de riz depuis 1958","Reiskuchen seit 1958"],
+      d:["망원역 부근, 1958년부터 이어온 떡집입니다. 이티떡이 맛있어요. 낱개로 포장되어 가볍게 먹기 좋고, 흰·쑥·흑임자 세 가지 맛이 있습니다. 당일 판매 수량이 정해져 있어 늦은 오후엔 이티떡이 없을 때가 많으니, 헛걸음하지 않게 이른 시간에 가시길 추천해요.",
+         "Near Mangwon Station, making rice cakes since 1958. The E.T. tteok is the one to try — individually wrapped for easy snacking, in plain, mugwort and black sesame. Daily quantities are fixed and it often sells out by late afternoon, so go early to avoid a wasted trip.",
+         "在望远站附近、1958年开业至今的年糕店。E.T.年糕很好吃——单个包装方便随手吃，有原味、艾草、黑芝麻三种。每天限量销售，傍晚常常已经卖完，建议早点去，免得白跑一趟。",
+         "在望遠站附近、1958年開業至今的年糕店。E.T.年糕很好吃——單個包裝方便隨手吃，有原味、艾草、黑芝麻三種。每天限量銷售，傍晚常常已經賣完，建議早點去，免得白跑一趟。",
+         "望遠駅の近く、1958年から続く餅屋。名物はE.T.トック。一つずつ包装されていて食べやすく、プレーン・よもぎ・黒ごまの三種があります。一日の販売数が決まっていて夕方には売り切れがち。無駄足にならないよう早めの時間にどうぞ。",
+         "Cerca de la estación de Mangwon, haciendo pasteles de arroz desde 1958. El E.T. tteok es el imprescindible — envuelto por unidades, en natural, artemisa y sésamo negro. La cantidad diaria es limitada y suele agotarse por la tarde: ve temprano para no ir en balde.",
+         "Près de la station Mangwon, des gâteaux de riz depuis 1958. Le E.T. tteok est l'incontournable — emballé à l'unité, nature, armoise ou sésame noir. Quantités journalières limitées, souvent épuisées en fin d'après-midi : venez tôt pour ne pas repartir bredouille.",
+         "Nahe der Station Mangwon, Reiskuchen seit 1958. Der E.T. Tteok ist das Muss — einzeln verpackt, in Natur, Beifuß und Schwarzsesam. Die Tagesmenge ist begrenzt und oft am Nachmittag weg: früh hingehen, sonst war der Weg umsonst."],
+      menu:["이티떡 2,200–2,500 (흰, 쑥, 흑임자)","E.T. tteok 2,200–2,500 (plain, mugwort, black sesame)"],
+      hours:"07:00–18:00 · 일 휴무",
+      addr:"동교로9길 24", q:"경기떡집 망원" }
+  ]
+},
+{
+  id: "bar",
+  title: ["술집","Bars","酒馆","酒館","バー・居酒屋","Bares","Bars","Bars"],
+  items: [
+    { ko:"책바", walk:5, en:"Chaegbar",
+      tag:["북 바","A bar for reading","读书酒吧","讀書酒吧","本のバー","Bar para leer","Bar à lecture","Lese-Bar"],
+      d:["책을 읽으며 조용히 술을 마시는 바입니다. 시끄러운 술집과 달리 대화는 아껴두고, 책 한 권 챙겨 가 고즈넉한 분위기를 즐기는 곳이에요. 칵테일 이름을 소설 제목에서 따와 고르는 재미가 있습니다. 바 자리와 테이블이 있고, 넓은 테이블은 합석으로 쓰기도 해요. 비치된 책을 골라 읽는 재미도 있는데 모두 한국어 책이니, 외국인 게스트는 읽을 책을 챙겨 가세요.",
+         "A bar for reading — unlike a noisy pub, conversation stays low; bring a book and settle into the hush. The cocktails borrow their names from novels, which makes choosing half the fun. Bar seats and tables (the large table is shared). There are shelves of books to browse, though note: they're all in Korean — bring your own.",
+         "一间可以边读书边安静喝酒的吧。和喧闹的酒馆不同，这里大家都压低声音，带上一本书就能享受静谧的氛围。鸡尾酒以小说名命名，点单本身就很有趣。有吧台和桌位，大桌有时会拼桌。店内备有可自取阅读的书，但都是韩文书——外国朋友请自带读物。",
+         "一間可以邊讀書邊安靜喝酒的吧。和喧鬧的酒館不同，這裡大家都壓低聲音，帶上一本書就能享受靜謐的氛圍。雞尾酒以小說名命名，點單本身就很有趣。有吧台和桌位，大桌有時會拼桌。店內備有可自取閱讀的書，但都是韓文書——外國朋友請自帶讀物。",
+         "本を読みながら静かに飲むバー。騒がしい店とは違い会話は控えめに、一冊持って行って落ち着いた空気を楽しむ場所です。カクテルの名前は小説のタイトルから取られていて、選ぶのも一興。カウンターとテーブル席があり、大きなテーブルは相席になることも。備え付けの本を選んで読む楽しみもありますが、すべて韓国語の本なので、海外からのお客さまはご自分の一冊をどうぞ。",
+         "Un bar para leer — a diferencia de un pub ruidoso, aquí la conversación se guarda; trae un libro y acomódate en el silencio. Los cócteles toman sus nombres de novelas, y elegir es parte del encanto. Barra y mesas (la grande se comparte). Hay estanterías con libros para hojear, pero ojo: todos en coreano — trae el tuyo.",
+         "Un bar pour lire — contrairement aux pubs bruyants, on y parle bas ; apportez un livre et installez-vous dans le calme. Les cocktails empruntent leurs noms à des romans, et choisir fait partie du plaisir. Comptoir et tables (la grande se partage). Des étagères de livres à feuilleter — tous en coréen : pensez au vôtre.",
+         "Eine Bar zum Lesen — anders als im lauten Pub bleibt es leise; bringen Sie ein Buch mit und genießen Sie die Stille. Die Cocktails tragen Romannamen, das Aussuchen macht Freude. Theke und Tische (der große wird geteilt). Regale voller Bücher laden zum Stöbern — alle auf Koreanisch: eigenes Buch mitbringen."],
+      hours:"19:00–1:30 (금·토 18:30–) · 일·월 휴무",
+      addr:"포은로 90, 3층", q:"책바 망원" },
+    { ko:"미자카야", walk:6, en:"Mizakaya",
+      tag:["이자카야","Izakaya","居酒屋","居酒屋","居酒屋","Izakaya","Izakaya","Izakaya"],
+      d:["일본 골목 감성의 작은 선술집으로, 바 테이블만 있습니다. 안주 양은 적지만 하나하나 다 맛있어서 이것저것 시켜 먹기 좋아요. '진짜참치김밥'은 이름 그대로 생참치가 들어간 김밥으로, 일본의 후토마키와 비슷합니다. 기본으로 나오는 양배추 샐러드가 맛있는데 추가 비용을 내면 리필됩니다. 저는 갈 때마다 여러 번 리필해요. 하이볼과 우유가 들어간 술도 있습니다. 가격대는 조금 높은 편이에요.",
+         "A tiny counter-only izakaya with back-alley-Japan charm. Portions are small but everything is delicious — perfect for ordering a bit of everything. The 'real tuna kimbap' is exactly that: raw tuna rolled like a Japanese futomaki. The free cabbage salad is great and refillable for a small fee — I refill it several times every visit. Highballs and milky liquors too. Prices run a little high.",
+         "日式小巷风情的小酒馆，只有吧台座。下酒菜分量不大，但样样好吃，适合多点几样慢慢尝。“真金枪鱼紫菜包饭”名副其实，卷着生金枪鱼，类似日本的太卷。随餐的卷心菜沙拉很好吃，加一点费用可以续，我每次去都要续好几次。也有高球酒和加了牛奶的酒。价位偏高一些。",
+         "日式小巷風情的小酒館，只有吧台座。下酒菜分量不大，但樣樣好吃，適合多點幾樣慢慢嚐。「真鮪魚紫菜飯捲」名副其實，捲著生鮪魚，類似日本的太捲。隨餐的高麗菜沙拉很好吃，加一點費用可以續，我每次去都要續好幾次。也有Highball和加了牛奶的酒。價位偏高一些。",
+         "日本の路地裏のような小さな居酒屋で、カウンター席のみ。つまみは小ぶりですがどれもおいしく、あれこれ頼むのが楽しい店です。「本マグロキンパ」はその名の通り生マグロ入りで、太巻きに近い一品。お通しのキャベツサラダが美味で、少額でおかわり可能。私は毎回何度もおかわりします。ハイボールやミルク入りのお酒も。価格はやや高めです。",
+         "Una izakaya diminuta solo de barra, con encanto de callejón japonés. Las raciones son pequeñas pero todo está rico — perfecto para pedir de todo un poco. El 'kimbap de atún de verdad' es justo eso: atún crudo enrollado como un futomaki. La ensalada de col gratuita es buenísima y se rellena por poco dinero — yo repito varias veces. También highballs y licores con leche. Los precios son algo altos.",
+         "Une minuscule izakaya tout en comptoir, au charme de ruelle japonaise. Les portions sont petites mais tout est bon — parfait pour picorer de tout. Le « vrai kimbap au thon » porte bien son nom : thon cru roulé façon futomaki. La salade de chou offerte est délicieuse et resservie pour une somme modique — j'en reprends plusieurs fois. Highballs et alcools lactés aussi. Les prix sont un peu élevés.",
+         "Eine winzige Izakaya nur mit Theke, im Charme japanischer Gassen. Die Häppchen sind klein, aber alles schmeckt — ideal, um sich durchzuprobieren. Das 'echte Thunfisch-Kimbap' trägt seinen Namen zu Recht: roher Thunfisch, gerollt wie Futomaki. Der gratis Krautsalat ist köstlich und gegen kleinen Aufpreis nachfüllbar — ich fülle jedes Mal mehrfach nach. Auch Highballs und milchige Liköre. Preislich etwas gehoben."],
+      menu:["진짜참치김밥 31,000, 치킨난반, 하이볼","Real tuna kimbap 31,000, chicken nanban, highballs"],
+      hours:"18:00–24:00",
+      addr:"포은로8길 5", q:"미자카야 망원" },
+    { ko:"유진", walk:10, en:"Yujin",
+      tag:["전통주 한식주점","Korean pub","传统酒韩食酒馆","傳統酒韓食酒館","伝統酒の韓国居酒屋","Taberna coreana","Taverne coréenne","Koreanische Schenke"],
+      d:["전통주와 계절 안주를 즐길 수 있는 한식 주점입니다. 한식 안주에 전통주를 곁들이고 싶다면 추천해요. 참소라무침과 전이 특히 좋습니다. 막걸리 종류가 다양해서 골라 마시는 재미가 있어요.",
+         "A Korean pub for traditional liquors and seasonal dishes. If you want Korean plates with Korean drinks, this is the one — the sea-snail salad and the jeon are especially good. The makgeolli list is long, and choosing is half the fun.",
+         "可以享用传统酒和时令下酒菜的韩式酒馆。想用韩食下酒菜配传统酒的话，就来这里。凉拌海螺和煎饼尤其出色。米酒种类繁多，挑选的过程也很有乐趣。",
+         "可以享用傳統酒和時令下酒菜的韓式酒館。想用韓食下酒菜配傳統酒的話，就來這裡。涼拌海螺和煎餅尤其出色。米酒種類繁多，挑選的過程也很有樂趣。",
+         "伝統酒と季節のつまみが楽しめる韓国式の酒場。韓国のつまみに伝統酒を合わせたいならここへ。つぶ貝の和え物とチヂミが特におすすめ。マッコリの種類も豊富で、選ぶ楽しみがあります。",
+         "Una taberna coreana de licores tradicionales y platos de temporada. Si buscas comida coreana con bebida coreana, es aquí — la ensalada de caracol de mar y el jeon destacan. La carta de makgeolli es larga: elegir es parte del plan.",
+         "Une taverne coréenne d'alcools traditionnels et d'assiettes de saison. Pour des mets coréens avec des alcools coréens, c'est ici — la salade de bulots et le jeon sortent du lot. La carte des makgeolli est longue : choisir fait partie du plaisir.",
+         "Eine koreanische Schenke für traditionelle Getränke und Saisonteller. Wer koreanische Häppchen mit koreanischem Alkohol will, ist hier richtig — der Meeresschnecken-Salat und die Jeon stechen hervor. Die Makgeolli-Karte ist lang: Aussuchen gehört dazu."],
+      menu:["참소라무침, 전, 막걸리","Sea-snail salad, jeon, makgeolli"],
+      addr:"포은로 146",
+      gurl:"https://maps.app.goo.gl/5p3rYxWt9sBw7nVM9?g_st=ic", q:"유진 망원 한식주점" },
+]
+},
+{
+  id: "shop",
+  title: ["쇼핑","Shops","商店","商店","ショップ","Tiendas","Boutiques","Läden"],
+  items: [
+    { ko:"해수향당", en:"Haesoohyangdang", walk:2,
+      tag:["향","Korean fragrance house","韩式香氛","韓式香氛","韓国の香りの店","Perfumería coreana","Maison de parfum coréenne","Koreanisches Dufthaus"],
+      d:["자연의 향을 담아 조향하는 향수 브랜드입니다. 다양한 향을 시향해 보고 취향을 고를 수 있어요. 저는 여행할 때 그 지역에서 향수를 하나 사곤 합니다. 나중에 그 향수를 뿌리면 여행지의 기억이 향에 담겨 떠오르거든요. 저처럼 여행을 향으로 기억하고 싶은 분께, 망원을 추억할 향수 가게로 추천합니다.",
+         "A perfume house that composes with scents drawn from nature — plenty of testers to find your own. When I travel, I buy one perfume in that place; later, a single spray brings the whole trip back. For those who keep memories in scent the way I do, this is where to bottle your Mangwon.",
+         "以自然气息调香的香水品牌，可以试闻各种香味，找到自己的所爱。我旅行时习惯在当地买一瓶香水——日后喷起，旅途的记忆便随香气涌回。如果你也想用香味记住旅行，就来这里，把望远装进瓶子里吧。",
+         "以自然氣息調香的香水品牌，可以試聞各種香味，找到自己的所愛。我旅行時習慣在當地買一瓶香水——日後噴起，旅途的記憶便隨香氣湧回。如果你也想用香味記住旅行，就來這裡，把望遠裝進瓶子裡吧。",
+         "自然の香りを描く調香ブランド。さまざまな香りを試して、好みを見つけられます。私は旅先でその土地の香水をひとつ買うことにしています。あとでその香りをまとうと、旅の記憶がふっと蘇るから。香りで旅を記憶したい方に、望遠を思い出すための一本をどうぞ。",
+         "Una casa de perfumes que compone con aromas de la naturaleza — hay muchos probadores para encontrar el tuyo. Cuando viajo, compro un perfume en cada lugar; después, una sola pulverización me devuelve el viaje entero. Si tú también guardas recuerdos en aromas, aquí puedes embotellar tu Mangwon.",
+         "Une maison de parfum qui compose avec les senteurs de la nature — de nombreux testeurs pour trouver la vôtre. En voyage, j'achète toujours un parfum sur place ; plus tard, une seule vaporisation fait revenir tout le voyage. Si vous gardez vos souvenirs en parfum comme moi, voici où mettre Mangwon en flacon.",
+         "Ein Parfümhaus, das mit Düften der Natur komponiert — viele Tester, um den eigenen zu finden. Auf Reisen kaufe ich mir an jedem Ort ein Parfüm; später bringt ein einziger Sprühstoß die ganze Reise zurück. Wer Erinnerungen wie ich in Düften aufbewahrt, kann hier sein Mangwon in eine Flasche füllen."],
+      insta:"heasoohyangdang",
+      addr:"망원로6길 56, B01", q:"해수향당 망원" },
+    { ko:"제로스페이스", walk:2, en:"Zero Space",
+      tag:["일러스트 문구","Illustrated stationery","插画文具","插畫文具","イラスト文具","Papelería ilustrada","Papeterie illustrée","Illustrierte Papeterie"],
+      d:["디자인 스튜디오 제로퍼제로의 쇼룸으로, 귀여운 일러스트 포스터와 문구류를 파는 곳입니다. 미피 캐릭터 굿즈 공간도 작게 따로 있어요. 소소하게 쇼핑하기 좋고, 꼭 사지 않아도 구경하는 재미가 쏠쏠합니다.",
+         "The showroom of design studio Zero Per Zero — charming illustrated posters and stationery, plus a little corner of Miffy goods. Perfect for small souvenirs, and even empty-handed browsing is a joy.",
+         "设计工作室Zero Per Zero的展厅，卖可爱的插画海报和文具，还有一个小小的米菲周边角落。适合买点小纪念品，就算什么都不买，逛逛也很开心。",
+         "設計工作室Zero Per Zero的展廳，賣可愛的插畫海報和文具，還有一個小小的米菲週邊角落。適合買點小紀念品，就算什麼都不買，逛逛也很開心。",
+         "デザインスタジオZero Per Zeroのショールーム。かわいいイラストポスターや文具が並び、ミッフィーグッズの小さなコーナーも。ちょっとした買い物にぴったりで、買わなくても眺めるだけで楽しい場所です。",
+         "El showroom del estudio Zero Per Zero — pósteres ilustrados y papelería con encanto, más un rinconcito de artículos de Miffy. Perfecto para pequeños recuerdos; incluso mirar sin comprar es un gusto.",
+         "Le showroom du studio Zero Per Zero — affiches illustrées et papeterie pleines de charme, plus un petit coin d'objets Miffy. Parfait pour de petits souvenirs ; même sans rien acheter, flâner est un plaisir.",
+         "Der Showroom des Studios Zero Per Zero — charmante illustrierte Poster und Papeterie, dazu eine kleine Miffy-Ecke. Perfekt für kleine Mitbringsel; auch ohne Kauf macht das Stöbern Freude."],
+      hours:"평일 13:00–19:30, 토 12:00–20:00, 일 12:00–19:00",
+      addr:"희우정로16길 32",
+      nurl:"https://naver.me/xjYCUnDY",
+      gurl:"https://maps.app.goo.gl/Dkei2HSwDsnJxttb7?g_st=ic", q:"제로스페이스 망원" },
+    { ko:"에메모가든", walk:7, en:"Ememo Garden", insta:"mmo_garden",
+      tag:["패션","Fashion","服饰店","服飾店","ファッション","Moda","Mode","Mode"],
+      d:["의류와 가방, 모자 등을 파는 패션 숍입니다. 직접 디자인한 다양한 패턴의 가방을 볼 수 있어요. 백팩이며 옷이며 이것저것 사고 싶게 만드는 곳이라, 쇼핑을 자제해야 한다면 가지 마세요. 저는 지갑 열기를 참기 힘든 곳입니다.",
+         "Clothes, bags and hats — many of the boldly patterned bags are designed in-house. Fair warning: everything here makes you want to buy it. If you're on a shopping ban, don't go in. I can never keep my wallet shut here.",
+         "卖服装、包和帽子的时尚小店，很多大胆图案的包都是自家设计。友情提示：这里的东西件件让人想买。如果正在克制购物，就别进去了——反正我是管不住钱包的。",
+         "賣服裝、包和帽子的時尚小店，很多大膽圖案的包都是自家設計。友情提示：這裡的東西件件讓人想買。如果正在克制購物，就別進去了——反正我是管不住錢包的。",
+         "服やバッグ、帽子を扱うファッションショップ。大胆なパターンのバッグは自社デザインです。正直、何もかも欲しくなる店なので、買い物を我慢中の方は入らないほうが安全。私は毎回財布のひもが緩みます。",
+         "Ropa, bolsos y sombreros — muchos de los bolsos de estampados atrevidos son de diseño propio. Aviso: aquí todo dan ganas de comprarlo. Si estás en régimen de compras, mejor no entres. Yo nunca consigo cerrar la cartera.",
+         "Vêtements, sacs et chapeaux — beaucoup de sacs aux imprimés audacieux sont créés sur place. Attention : ici, tout donne envie. Si vous êtes au régime shopping, n'entrez pas. Moi, je ne sais pas garder mon portefeuille fermé.",
+         "Kleidung, Taschen und Hüte — viele der gemusterten Taschen sind Eigenentwürfe. Warnung: Hier will man alles kaufen. Wer gerade Shopping-Pause macht, bleibt besser draußen. Ich bekomme mein Portemonnaie hier nie zu."],
+      addr:"망원로1길 16", q:"에메모가든 망원" },
+    { ko:"무드", walk:7, en:"Mood", insta:"mood_m.won",
+      tag:["인테리어 소품","Home objects","家居小物","家居小物","インテリア雑貨","Objetos para casa","Objets déco","Wohnaccessoires"],
+      d:["빈티지 소품이 섞여 있는 인테리어 소품 가게입니다. 인테리어에 관심이 많다면 구경하기 좋고, 소장하고 싶은 물건이 많아요. 망원시장 바로 옆이라 시장 구경할 때 함께 들르기 좋습니다.",
+         "A home-objects shop where vintage pieces mingle with new. If interiors are your thing, it's a lovely browse — full of objects you'll want to keep. Right beside Mangwon Market, easy to fold into a market stroll.",
+         "新旧交织的家居小物店，混着不少复古物件。喜欢布置家的人会逛得很开心——想收藏的东西很多。就在望远市场旁边，逛市场时顺路进来正好。",
+         "新舊交織的家居小物店，混著不少復古物件。喜歡佈置家的人會逛得很開心——想收藏的東西很多。就在望遠市場旁邊，逛市場時順路進來正好。",
+         "ヴィンテージが混ざるインテリア雑貨の店。インテリア好きなら眺めるだけでも楽しく、手元に置きたくなるものばかり。望遠市場のすぐ隣なので、市場見物のついでに立ち寄るのにぴったりです。",
+         "Una tienda de objetos para casa donde lo vintage se mezcla con lo nuevo. Si te van los interiores, es un paseo delicioso — lleno de piezas que querrás conservar. Justo al lado del mercado Mangwon: perfecto para combinar.",
+         "Une boutique d'objets pour la maison où le vintage se mêle au neuf. Si la déco vous parle, la flânerie est délicieuse — pleine de pièces qu'on voudrait garder. Juste à côté du marché Mangwon : à combiner avec la balade.",
+         "Ein Laden für Wohnobjekte, in dem sich Vintage und Neues mischen. Wer Interieur liebt, stöbert hier glücklich — voller Stücke zum Behalten. Direkt neben dem Mangwon-Markt: ideal für den Marktbummel."],
+      addr:"포은로8길 16",
+      nurl:"https://naver.me/FuN8t2Hl",
+      gurl:"https://maps.app.goo.gl/RA4HjtgsFYwEnyMB9?g_st=ic", q:"무드 망원 소품샵" },
+    { ko:"프레젠트모먼트", en:"Present Moment", walk:7, insta:"presentmoment.storage",
+      tag:["소품샵","Objects & ornaments","礼品小物店","禮品小物店","雑貨・オーナメント","Objetos y adornos","Objets et ornements","Deko & Ornamente"],
+      d:["365일 크리스마스 같은 곳입니다. 겨울의 포근함을 느낄 수 있는 소품샵이에요. 귀엽고 키치한 소품을 좋아하신다면 한번 들러보세요. 꼭 사지 않아도 구경만으로 즐겁습니다.",
+         "Christmas, 365 days a year — a little shop wrapped in winter coziness. If cute and kitschy objects are your weakness, stop by. Even just looking is a delight.",
+         "365天都是圣诞节的地方——一间裹着冬日暖意的小物店。喜欢可爱又俗趣小物的人一定要来。就算不买，光看也很快乐。",
+         "365天都是聖誕節的地方——一間裹著冬日暖意的小物店。喜歡可愛又俗趣小物的人一定要來。就算不買，光看也很快樂。",
+         "365日クリスマスのような場所。冬のぬくもりを感じられる雑貨店です。かわいくてキッチュな小物が好きなら、ぜひ立ち寄ってみてください。買わなくても眺めるだけで楽しいお店です。",
+         "Navidad los 365 días — una tiendecita envuelta en calidez invernal. Si lo cuco y lo kitsch son tu debilidad, pásate. Solo mirar ya es un placer.",
+         "Noël 365 jours par an — une petite boutique enveloppée de douceur hivernale. Si le mignon et le kitsch sont votre faible, passez-y. Même sans acheter, regarder est un bonheur.",
+         "Weihnachten an 365 Tagen — ein Lädchen voller winterlicher Gemütlichkeit. Wenn Süßes und Kitschiges Ihre Schwäche sind, schauen Sie vorbei. Schon das Gucken macht glücklich."],
+      hours:"13:00–21:00 · 월 휴무",
+      addr:"동교로 49-1", q:"프레젠트모먼트 망원" }
+  ]
+}
+];
+
+/* ============================================================
+   렌더링
+   ============================================================ */
+const $ = id => document.getElementById(id);
 const esc = s => (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const naver = q => "https://map.naver.com/p/search/" + encodeURIComponent(q);
 const google = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
 const naverLink = p => p.nurl || naver(p.qn || p.q);
 const googleLink = p => p.gurl || google(p.qg || p.q);
 
-for (const sec of SECTIONS) {
-  const a = document.createElement("a");
-  a.href = "#" + sec.id;
-  a.textContent = `${sec.ko} ${sec.eyebrow}`;
-  nav.appendChild(a);
+function render() {
+  document.documentElement.lang = ["ko","en","zh-CN","zh-TW","ja","es","fr","de"][LANG];
 
-  const s = document.createElement("section");
-  s.id = sec.id;
-  let head = `<div class="sec-eyebrow">${esc(sec.eyebrow)}</div><h2>${esc(sec.ko)}</h2>`;
-  if (sec.noteKo) head += `<p class="sec-note">${esc(sec.noteKo)} · ${esc(sec.noteEn)}</p>`;
-  s.innerHTML = head;
+  /* 언어 바 */
+  const lb = $("langbar");
+  lb.innerHTML = "";
+  LANG_LABELS.forEach((label, i) => {
+    const b = document.createElement("button");
+    b.textContent = label;
+    if (i === LANG) b.className = "on";
+    b.onclick = () => {
+      LANG = i;
+      try { localStorage.setItem("sidam-lang", LANG_KEYS[i]); } catch (e) {}
+      render();
+      window.scrollTo(0, 0);
+    };
+    lb.appendChild(b);
+  });
 
-  for (const p of sec.items) {
-    const div = document.createElement("div");
-    if (sec.type === "essential") {
-      div.className = "ess";
-      div.innerHTML =
-        `<div><span class="ess-name">${esc(p.ko)}</span>` +
-        `<span class="ess-note">${esc(p.en)}${p.note ? " · " + esc(p.note) : ""}</span></div>` +
-        `<span class="ess-links">` +
-        `<a href="${naverLink(p)}" target="_blank" rel="noopener">Naver Map</a>` +
-        `<a href="${googleLink(p)}" target="_blank" rel="noopener">Google Maps</a></span>`;
-    } else {
-      div.className = "place";
-      let chips = "";
-      if (p.walk) chips += `<span class="chip walk">${esc(p.walk)}</span>`;
-      for (const c of (p.chips || [])) chips += `<span class="chip">${esc(c[0])} · ${esc(c[1])}</span>`;
-      let meta = "";
-      if (p.menu) meta += `<div class="meta-row"><span class="meta-label">메뉴 Menu</span><span class="meta-val">${esc(p.menu)}</span></div>`;
-      if (p.hours) meta += `<div class="meta-row"><span class="meta-label">영업 Hours</span><span class="meta-val">${esc(p.hours)}</span></div>`;
-      if (p.insta) meta += `<div class="meta-row"><span class="meta-label">인스타</span><span class="meta-val">@${esc(p.insta)}</span></div>`;
-      const slug = IMG[p.ko];
-      div.innerHTML =
-        (slug ? `<img class="p-thumb" src="images/${slug}.jpg" alt="${esc(p.ko)}" loading="lazy" onerror="this.remove()">` : "") +
-        `<div class="p-head"><span class="p-name">${esc(p.ko)}</span>` +
-        (p.en ? `<span class="p-en">${esc(p.en)}</span>` : "") + `</div>` +
-        `<div class="p-tag">${esc(p.tag)}</div>` +
-        (p.dKo ? `<p class="p-desc">${esc(p.dKo)}<span class="en">${esc(p.dEn)}</span></p>` : "") +
-        (chips ? `<div class="chips">${chips}</div>` : "") +
-        (meta ? `<div class="meta">${meta}</div>` : "") +
-        `<div class="p-foot"><span class="addr">${esc(p.addr)}</span>` +
-        `<span class="maps"><a href="${naverLink(p)}" target="_blank" rel="noopener">Naver Map</a>` +
-        `<a href="${googleLink(p)}" target="_blank" rel="noopener">Google Maps</a></span></div>`;
+  /* 헤더 + 편지 */
+  $("h-title").textContent = UI.title[LANG];
+  $("h-tagline").textContent = UI.tagline[LANG];
+  $("h-eyebrow").textContent = UI.eyebrow[LANG];
+  const paras = UI.letter[LANG].split("\n");
+  let letterHtml = `<img class="letter-art art-tea" src="images/sketch-tea.png" alt="" loading="lazy" onerror="this.remove()">`;
+  paras.forEach((p, i) => {
+    if (i === paras.length - 1) letterHtml += `<img class="letter-art art-vanity" src="images/sketch-vanity.png" alt="" loading="lazy" onerror="this.remove()">`;
+    letterHtml += `<p>${esc(p)}</p>`;
+  });
+  $("h-letter").innerHTML = letterHtml;
+  $("h-sig").textContent = UI.sig[LANG];
+  $("f-name").textContent = UI.brand[LANG];
+  $("f-line").textContent = UI.tagline[LANG];
+  $("notice").textContent = UI.notice[LANG];
+  document.documentElement.lang = ["ko","en","zh-Hans","zh-Hant","ja","es","fr","de"][LANG];
+
+  /* 목차 + 본문 */
+  const nav = $("nav"); nav.innerHTML = "";
+  const app = $("app"); app.innerHTML = "";
+
+  for (const sec of SECTIONS) {
+    const a = document.createElement("a");
+    a.href = "#" + sec.id;
+    a.textContent = sec.title[LANG];
+    nav.appendChild(a);
+
+    const s = document.createElement("section");
+    s.id = sec.id;
+    let head = `<h2>${esc(sec.title[LANG])}</h2>`;
+    if (sec.noteKey) head += `<p class="sec-note">${esc(UI[sec.noteKey][LANG])}</p>`;
+    if (sec.img) head += `<img class="sec-img" src="images/${sec.img}.jpg" alt="" loading="lazy" onerror="this.remove()">`;
+    s.innerHTML = head;
+
+    for (const p of sec.items) {
+      const div = document.createElement("div");
+      if (sec.type === "essential") {
+        div.className = "ess";
+        div.innerHTML =
+          `<div><span class="ess-name">${esc(p.nm ? p.nm[LANG] : p.ko)}</span>` +
+          `<span class="ess-note">${esc(p.typ[LANG])}${p.note ? " · " + esc(p.note[LANG]) : ""}</span></div>` +
+          `<span class="ess-links">` +
+          `<a href="${naverLink(p)}" target="_blank" rel="noopener">Naver Map</a>` +
+          `<a href="${googleLink(p)}" target="_blank" rel="noopener">Google Maps</a></span>`;
+      } else {
+        div.className = "place";
+        const slug = IMG[p.ko];
+        const primary = LANG === 0 ? p.ko : (p.en || p.ko);
+        const secondary = LANG === 0 ? "" : (p.en ? p.ko : "");
+        let chips = "";
+        if (p.walk) chips += `<span class="chip walk">${esc(walkFmt(p.walk))}</span>`;
+        for (const c of (p.chips || [])) chips += `<span class="chip">${esc(CHIP[c][LANG])}</span>`;
+        let meta = "";
+        if (p.menu) meta += `<div class="meta-row"><span class="meta-label">${esc(UI.menuL[LANG])}</span><span class="meta-val">${esc(p.menu[LANG === 0 ? 0 : 1])}</span></div>`;
+        if (p.hours) meta += `<div class="meta-row"><span class="meta-label">${esc(UI.hoursL[LANG])}</span><span class="meta-val">${esc(hoursFmt(p.hours))}</span></div>`;
+        if (p.insta) meta += `<div class="meta-row"><span class="meta-label">Instagram</span><span class="meta-val">@${esc(p.insta)}</span></div>`;
+        div.innerHTML =
+          (slug ? `<img class="p-thumb" src="images/${slug}.jpg" alt="${esc(p.ko)}" loading="lazy" onerror="this.remove()">` : "") +
+          `<div class="p-head"><span class="p-name">${esc(primary)}</span>` +
+          (secondary ? `<span class="p-en">${esc(secondary)}</span>` : "") + `</div>` +
+          `<div class="p-tag">${esc(p.tag[LANG])}</div>` +
+          `<p class="p-desc">${esc(p.d[LANG])}</p>` +
+          (chips ? `<div class="chips">${chips}</div>` : "") +
+          (meta ? `<div class="meta">${meta}</div>` : "") +
+          `<div class="p-foot"><span class="addr">${esc(addrFmt(p.addr))}</span>` +
+          `<span class="maps"><a href="${naverLink(p)}" target="_blank" rel="noopener">Naver Map</a>` +
+          `<a href="${googleLink(p)}" target="_blank" rel="noopener">Google Maps</a></span></div>`;
+      }
+      s.appendChild(div);
     }
-    s.appendChild(div);
+    if (sec.id === "ess" && LANG !== 0) {
+      const e = document.createElement("div");
+      e.className = "emg";
+      e.textContent = UI.emergency[LANG];
+      s.appendChild(e);
+    }
+    app.appendChild(s);
   }
-  app.appendChild(s);
 }
+render();
 </script>
 </body>
 </html>
