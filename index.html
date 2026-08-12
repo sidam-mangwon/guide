@@ -90,17 +90,21 @@
   }
   .letter-eyebrow {
     font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 16px; text-align: center;
+    color: var(--accent); margin: 2px 0 12px; text-align: left;
   }
-  .letter p { margin: 0 0 14px; font-size: 14.5px; line-height: 1.85; color: var(--ink); }
+  .letter p { margin: 0 0 14px; font-size: 14.5px; line-height: 1.85; color: var(--ink); word-break: keep-all; overflow-wrap: break-word; }
   .letter p:last-of-type { margin-bottom: 0; }
   .letter .sig { margin-top: 18px; font-size: 13px; color: var(--muted); text-align: right; clear: both; }
   .letter-art { width: 104px; }
-  .art-tea { float: right; margin: 4px 0 10px 16px; }
-  /* 화장대 스케치는 float 대신 flex — 마지막 문단이 그림 아래로 삐져나오지 않게 */
-  .letter-row { display: flex; gap: 16px; align-items: flex-start; margin: 0 0 14px; }
-  .letter-row .letter-art { flex-shrink: 0; margin-top: 4px; }
-  .letter-row p { flex: 1; margin: 0; }
+  /* 찻자리 스케치는 편지 맨 위에 크게, 글은 그림 아래에서 통째로 시작 */
+  .art-tea { display: block; width: 210px; max-width: 62%; margin: 0 4% 14px auto; }
+  /* 화장대 스케치: 글이 그림 윤곽(알파)을 따라 흐르게 */
+  .art-vanity {
+    float: left; width: 142px; margin: 4px 2px 2px 0;
+    /* 문주님 스케치 기준 줄 정렬 곡선: 완만한 S자 + 5줄째만 왼쪽 돌출 */
+    shape-outside: polygon(0 0, 78% 0, 78% 10%, 84% 10%, 84% 21%, 74% 21%, 74% 31%, 79% 31%, 79% 42%, 43% 42%, 43% 52%, 69% 52%, 69% 62%, 71% 62%, 71% 100%, 0 100%);
+    shape-margin: 8px;
+  }
 
   /* ---------- nav ---------- */
   nav {
@@ -142,13 +146,18 @@
   .meta-label { color: var(--faint); font-size: 11.5px; padding-top: 2px; letter-spacing: 0.04em; }
   .meta-val { color: var(--muted); font-variant-numeric: tabular-nums; }
   /* 사진 크기는 4장 기준으로 통일 — 장수가 적어도 같은 크기, 왼쪽 정렬 */
+  /* 사진 탭 -> 확대 라이트박스 */
+  #lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(24,21,18,0.92); display: none; align-items: center; justify-content: center; padding: 20px; cursor: zoom-out; }
+  #lightbox.open { display: flex; }
+  #lightbox img { max-width: 100%; max-height: 86vh; border-radius: 12px; }
+  .strip img { cursor: zoom-in; }
   .strip { display: flex; gap: 8px; margin: 10px 0 4px; }
   .strip img { flex: 0 0 calc((100% - 24px) / 4); min-width: 0; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; background: var(--line); display: block; }
   .strip-cap { display: flex; gap: 8px; margin: 4px 0 10px; }
   .strip-cap span { flex: 0 0 calc((100% - 24px) / 4); text-align: center; font-size: 10.5px; letter-spacing: 0.18em; color: var(--faint); }
   .p-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; flex-wrap: wrap; clear: both; }
   .addr { font-size: 12px; color: var(--faint); }
-  .maps { display: flex; gap: 6px; flex-shrink: 0; }
+  .maps { display: flex; gap: 6px; flex-shrink: 0; margin-left: auto; }
   .maps a { font-size: 12px; text-decoration: none; color: var(--accent); border: 1px solid var(--line); border-radius: 8px; padding: 4px 10px; background: var(--surface); }
   .maps a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -181,6 +190,7 @@
     <h1 id="h-title">시담 로컬 가이드북</h1>
     <div class="tagline" id="h-tagline"></div>
     <div class="letter">
+      <img class="letter-art art-tea" id="h-art-tea" src="images/sketch-tea.png" alt="" loading="lazy" onerror="this.remove()">
       <div class="letter-eyebrow" id="h-eyebrow"></div>
       <div id="h-letter"></div>
       <div class="sig" id="h-sig"></div>
@@ -198,6 +208,8 @@
     <div class="f-date">2026.08 · Mangwon-dong, Seoul</div>
   </footer>
 </div>
+
+<div id="lightbox"><img alt=""></div>
 
 <script>
 /* ============================================================
@@ -676,7 +688,7 @@ const SECTIONS = [
          "Wenn am Ende der Gasse das Schild dieses Cafés auftaucht, sind Sie fast zu Hause. Es liegt direkt neben SIDAM und ist mein liebstes Café. An schönen Tagen werden alle Glasfronten geöffnet, und innen und außen werden eins — setzen Sie sich ans Fenster oder nach draußen und schauen Sie den Menschen zu. Der Kaffee ist ebenfalls sehr gut; vor einem langen Spaziergang lohnt ein Becher zum Mitnehmen. Auch Hunde sind willkommen — gut zu wissen, falls Sie ihnen lieber ausweichen."],
       menu:["아메리카노 · 논카페인은 체리 히비스커스 아이스티","Americano; cherry hibiscus iced tea (caffeine-free)"], hours:"12:00–22:00",
       addr:"망원로2길 82", q:"포스트노빌즈 망원" },
-    { ko:"로트", walk:2, en:"ROTE", insta:"rote_seoul",
+    { ko:"로트", walk:2, en:"ROTE", insta:"rote.seoul",
       tag:["카페","Café","咖啡馆","咖啡廳","カフェ","Café","Café","Café"],
       d:["망원동 골목을 걷다 보면, 오래된 전원주택의 겉모습에 현대적인 감각을 더한 카페를 만납니다. 커피와 위스키를 함께 즐길 수 있는 곳이에요. 핸드드립 커피와 페어링된 플래터를 즐겨보세요.",
          "Walking Mangwon's alleys, you come across this café — the shell of an old country house with a modern sensibility inside. Coffee and whisky share the menu here. Try a hand-drip coffee with the paired platter.",
@@ -968,10 +980,10 @@ function render() {
   $("h-tagline").textContent = UI.tagline[LANG];
   $("h-eyebrow").textContent = UI.eyebrow[LANG];
   const paras = UI.letter[LANG].split("\n");
-  let letterHtml = `<img class="letter-art art-tea" src="images/sketch-tea.png" alt="" loading="lazy" onerror="this.remove()">`;
+  let letterHtml = "";
   paras.forEach((p, i) => {
     if (i === paras.length - 1) {
-      letterHtml += `<div class="letter-row"><img class="letter-art" src="images/sketch-vanity.png" alt="" loading="lazy" onerror="this.remove()"><p>${esc(p)}</p></div>`;
+      letterHtml += `<img class="letter-art art-vanity" src="images/sketch-vanity.png" alt="" loading="lazy" onerror="this.remove()"><p>${esc(p)}</p>`;
     } else {
       letterHtml += `<p>${esc(p)}</p>`;
     }
@@ -1054,6 +1066,20 @@ function render() {
   }
 }
 render();
+
+/* 사진 확대 보기 */
+const lb = $("lightbox");
+const lbImg = lb.querySelector("img");
+document.addEventListener("click", e => {
+  const t = e.target;
+  if (t.closest && t.closest(".strip") && t.tagName === "IMG") {
+    lbImg.src = t.src;
+    lb.classList.add("open");
+  } else if (lb.classList.contains("open")) {
+    lb.classList.remove("open");
+  }
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") lb.classList.remove("open"); });
 </script>
 </body>
 </html>
