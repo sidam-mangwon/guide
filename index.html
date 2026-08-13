@@ -94,15 +94,17 @@
   }
   .letter p { margin: 0 0 14px; font-size: 14.5px; line-height: 1.85; color: var(--ink); word-break: keep-all; overflow-wrap: break-word; }
   .letter p:last-of-type { margin-bottom: 0; }
-  .letter .sig { margin-top: 18px; font-size: 13px; color: var(--muted); text-align: right; clear: both; }
+  .letter .nb { white-space: nowrap; }
+  .letter .sig { margin-top: 4px; font-size: 13px; color: var(--muted); text-align: right; clear: both; }
   .letter-art { width: 104px; }
   /* 찻자리 스케치는 편지 맨 위에 크게, 글은 그림 아래에서 통째로 시작 */
   .art-tea { display: block; width: 210px; max-width: 62%; margin: 0 4% 14px auto; }
   /* 화장대 스케치: 글이 그림 윤곽(알파)을 따라 흐르게 */
   .art-vanity {
-    float: left; width: 142px; margin: 4px 2px 2px 0;
-    /* 문주님 스케치 기준 줄 정렬 곡선: 완만한 S자 + 5줄째만 왼쪽 돌출 */
-    shape-outside: polygon(0 0, 78% 0, 78% 10%, 84% 10%, 84% 21%, 74% 21%, 74% 31%, 79% 31%, 79% 42%, 43% 42%, 43% 52%, 69% 52%, 69% 62%, 71% 62%, 71% 100%, 0 100%);
+    /* 아래 여백 46px은 그림보다 글이 길어져도 마지막 줄이 윗줄과 같은 위치에서 시작하게 하는 영역 */
+    float: left; width: 142px; margin: 4px 2px 46px 0;
+    /* 줄 정렬 곡선(세로는 px 고정 - 여백이 늘어도 곡선이 늘어나지 않게): 완만한 S자 + 5줄째만 왼쪽 돌출 */
+    shape-outside: polygon(0 0, 78% 0, 78% 20px, 84% 20px, 84% 43px, 74% 43px, 74% 63px, 79% 63px, 79% 86px, 43% 86px, 43% 106px, 69% 106px, 69% 127px, 71% 127px, 71% 100%, 0 100%);
     shape-margin: 8px;
   }
 
@@ -975,6 +977,17 @@ function render() {
     lb.appendChild(b);
   });
 
+  /* 마지막 한 단어(또는 CJK 몇 글자)가 홀로 줄에 남지 않게 앞말과 묶는다 */
+  function noOrphan(s) {
+    if (LANG >= 2 && LANG <= 4) {
+      const n = Math.min(7, s.length);
+      return esc(s.slice(0, s.length - n)) + `<span class="nb">${esc(s.slice(s.length - n))}</span>`;
+    }
+    const w = s.split(" ");
+    if (w.length < 4) return esc(s);
+    return esc(w.slice(0, -3).join(" ")) + " " + esc(w.slice(-3).join(" "));
+  }
+
   /* 헤더 + 편지 */
   $("h-title").textContent = UI.title[LANG];
   $("h-tagline").textContent = UI.tagline[LANG];
@@ -983,9 +996,9 @@ function render() {
   let letterHtml = "";
   paras.forEach((p, i) => {
     if (i === paras.length - 1) {
-      letterHtml += `<img class="letter-art art-vanity" src="images/sketch-vanity.png" alt="" loading="lazy" onerror="this.remove()"><p>${esc(p)}</p>`;
+      letterHtml += `<img class="letter-art art-vanity" src="images/sketch-vanity.png" alt="" loading="lazy" onerror="this.remove()"><p>${noOrphan(p)}</p>`;
     } else {
-      letterHtml += `<p>${esc(p)}</p>`;
+      letterHtml += `<p>${noOrphan(p)}</p>`;
     }
   });
   $("h-letter").innerHTML = letterHtml;
